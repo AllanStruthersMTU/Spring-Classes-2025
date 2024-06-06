@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14530,        401]
-NotebookOptionsPosition[     12043,        350]
-NotebookOutlinePosition[     12509,        368]
-CellTagsIndexPosition[     12466,        365]
+NotebookDataLength[     16030,        453]
+NotebookOptionsPosition[     13951,        405]
+NotebookOutlinePosition[     14417,        423]
+CellTagsIndexPosition[     14374,        420]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -26,7 +26,9 @@ Cell["Numerical Optimization", "Title",
   3.9265970538914332`*^9}},ExpressionUUID->"2fe82bd1-b6de-441c-85e2-\
 d7fe94868c90"],
 
-Cell["Tools", "Text",
+Cell[CellGroupData[{
+
+Cell["Tools", "Section",
  CellChangeTimes->{{3.926597082827818*^9, 3.926597085600592*^9}, {
   3.9265981266336594`*^9, 
   3.9265981292113132`*^9}},ExpressionUUID->"afc61de8-a916-47c2-bb22-\
@@ -34,12 +36,13 @@ bd63370ec7a8"],
 
 Cell[CellGroupData[{
 
-Cell["Algorithmic Differentiation (AD) and Optimzation", "Section",
+Cell["Algorithmic Differentiation (AD) and Optimization", "Subsection",
  CellChangeTimes->{{3.9264965658846636`*^9, 3.926496573239955*^9}, {
-  3.9264966784274597`*^9, 3.9264966789093204`*^9}, {3.9265970991127057`*^9, 
-  3.92659713848287*^9}, {3.9265971890761533`*^9, 3.9265971901351905`*^9}, {
-  3.926597687546385*^9, 3.926597688055716*^9}, {3.926598142247707*^9, 
-  3.9265981571925435`*^9}},ExpressionUUID->"b79f9579-9c25-4149-94e6-\
+   3.9264966784274597`*^9, 3.9264966789093204`*^9}, {3.9265970991127057`*^9, 
+   3.92659713848287*^9}, {3.9265971890761533`*^9, 3.9265971901351905`*^9}, {
+   3.926597687546385*^9, 3.926597688055716*^9}, {3.926598142247707*^9, 
+   3.9265981571925435`*^9}, 
+   3.9266773014111457`*^9},ExpressionUUID->"b79f9579-9c25-4149-94e6-\
 e5491cbf9580"],
 
 Cell[TextData[{
@@ -47,8 +50,7 @@ Cell[TextData[{
 code. Computing derivatives of the objective function ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"f", "(", "p", ")"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"f", "(", "p", ")"}], TraditionalForm]],ExpressionUUID->
   "c8adce6d-8a74-45d6-8021-078e7a500d74"],
  " is time consuming and error prone.  AD avoids these problems. AD does not \
 however avoid the curse of dimensionality inherent in the chain\n\t",
@@ -57,8 +59,7 @@ however avoid the curse of dimensionality inherent in the chain\n\t",
    RowBox[{
     RowBox[{"f", ":", 
      SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}], "\[Rule]", 
-    "\[DoubleStruckCapitalR]"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    "\[DoubleStruckCapitalR]"}], TraditionalForm]],ExpressionUUID->
   "74364e8e-249b-4b83-a7ed-962be34a46cb"],
  ",   ",
  Cell[BoxData[
@@ -67,8 +68,7 @@ however avoid the curse of dimensionality inherent in the chain\n\t",
     RowBox[{"df", ":", 
      SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}], "\[Rule]", 
     SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "6dfee4d8-d04b-446b-bbaf-cca8d7220f4d"],
+  ExpressionUUID->"6dfee4d8-d04b-446b-bbaf-cca8d7220f4d"],
  ",  ",
  Cell[BoxData[
   FormBox[
@@ -84,48 +84,42 @@ however avoid the curse of dimensionality inherent in the chain\n\t",
  Cell[BoxData[
   FormBox[
    RowBox[{"n", "=", 
-    SuperscriptBox["10", "6"]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    SuperscriptBox["10", "6"]}], TraditionalForm]],ExpressionUUID->
   "6161fa0d-b34e-48b0-b329-cce655338ece"],
  " then the Gradient ",
  Cell[BoxData[
   FormBox[
    RowBox[{"g", "=", 
     RowBox[{"df", "(", 
-     SubscriptBox["x", "0"], ")"}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+     SubscriptBox["x", "0"], ")"}]}], TraditionalForm]],ExpressionUUID->
   "edbe8c5f-6656-4a39-845e-906534030ff9"],
  " is a vector of length a milllion and the Hessian ",
  Cell[BoxData[
   FormBox[
    RowBox[{"A", "=", 
     RowBox[{"ddf", "(", 
-     SubscriptBox["x", "0"], ")"}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+     SubscriptBox["x", "0"], ")"}]}], TraditionalForm]],ExpressionUUID->
   "0ed8d0bb-e75a-4089-9b39-b93cb594de68"],
  " is a symmetric million by million matrix.  A ",
  Cell[BoxData[
   FormBox[
    RowBox[{
     SuperscriptBox["10", "4"], "\[Times]", 
-    SuperscriptBox["10", "4"]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    SuperscriptBox["10", "4"]}], TraditionalForm]],ExpressionUUID->
   "849c7ef5-2f3b-4e51-ab4d-aaa765952f27"],
  " matrix occupies about a Gig. A ",
  Cell[BoxData[
   FormBox[
    RowBox[{
     SuperscriptBox["10", "5"], "\[Times]", 
-    SuperscriptBox["10", "5"]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    SuperscriptBox["10", "5"]}], TraditionalForm]],ExpressionUUID->
   "d1f32f72-b1b8-4eff-839f-2937faa3fd79"],
  " matrix occupies about a 100 Gigs. A ",
  Cell[BoxData[
   FormBox[
    RowBox[{
     SuperscriptBox["10", "6"], "\[Times]", 
-    SuperscriptBox["10", "6"]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    SuperscriptBox["10", "6"]}], TraditionalForm]],ExpressionUUID->
   "777c3933-8331-4fb5-bdeb-ba9850634afe"],
  " matrix would occupy about 10,000 Gigs!"
 }], "Text",
@@ -139,70 +133,146 @@ however avoid the curse of dimensionality inherent in the chain\n\t",
 
 Cell[CellGroupData[{
 
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"m", "=", 
-   RowBox[{"10", "^", "4"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"(", 
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"TableForm", "[", 
    RowBox[{
-    SuperscriptBox["m", "2"], "*", "8"}], ")"}], "/", 
-  RowBox[{"10", "^", "9"}]}]}], "Input",
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"m", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["m", "2"], "*", "8.0"}], ")"}], "/", 
+         RowBox[{"10", "^", "9"}]}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"m", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          SuperscriptBox["10", "3"], ",", 
+          SuperscriptBox["10", "4"], ",", 
+          SuperscriptBox["10", "5"], ",", 
+          SuperscriptBox["10", "6"]}], "}"}]}], "}"}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"TableHeadings", "->", 
+     RowBox[{"{", 
+      RowBox[{"Automatic", ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<Gb\>\""}], "}"}]}], "}"}]}]}], 
+   "]"}]}]], "Input",
  CellChangeTimes->{{3.9265985920942984`*^9, 3.926598662543411*^9}, {
   3.926598726788489*^9, 3.9265987706303883`*^9}, {3.9265988795601573`*^9, 
-  3.926598882185446*^9}},ExpressionUUID->"e27ea04b-0e4f-42ec-899a-\
-62ef98668725"],
+  3.926598882185446*^9}, {3.9266773536218443`*^9, 3.9266774721196632`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"e27ea04b-0e4f-42ec-899a-62ef98668725"],
 
 Cell[BoxData[
- FractionBox["4", "5"]], "Output",
- CellChangeTimes->{{3.9265986315422688`*^9, 3.9265986418615484`*^9}, {
-   3.9265987174946575`*^9, 3.9265987390867844`*^9}, 3.9265987712894983`*^9},
- CellLabel->"Out[16]=",ExpressionUUID->"378defb8-426b-4eea-9470-c09c5b139280"]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"0.5", 
-  SuperscriptBox[
-   RowBox[{"(", 
-    SuperscriptBox["10", "6"], ")"}], "2"], "*", "16"}]], "Input",
- CellChangeTimes->{{3.9265985326073713`*^9, 3.9265985606376295`*^9}},
- CellLabel->"In[3]:=",ExpressionUUID->"b25a3130-4a71-4898-83ef-207824a454b4"],
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"m\"\>",
+       HoldForm], 
+      TagBox["\<\"Gb\"\>",
+       HoldForm]},
+     {"1", "1000", "0.008`"},
+     {"2", "10000", "0.8`"},
+     {"3", "100000", "80.`"},
+     {"4", "1000000", "8000.000000000001`"}
+    },
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, 
+      "Rows" -> {False, True, {False}, False}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, TableHeadings -> {Automatic, {"m", "Gb"}}]]]], "Output",
+ CellChangeTimes->{{3.9266773994778614`*^9, 3.9266774726627803`*^9}},
+ CellLabel->
+  "Out[5]//TableForm=",ExpressionUUID->"a710a01d-294f-4193-a638-eab20eda9d62"]
+}, Open  ]]
+}, Closed]],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.926598565191698*^9, 
-  3.9265985704256268`*^9}},ExpressionUUID->"2ab93f3c-bc37-4fc0-8e7f-\
-d96460f3b4b0"],
+Cell["Subspace Problem", "Subsection",
+ CellChangeTimes->{{3.9264965658846636`*^9, 3.926496573239955*^9}, {
+  3.9264966784274597`*^9, 3.9264966789093204`*^9}, {3.9265970991127057`*^9, 
+  3.92659713848287*^9}, {3.9265971890761533`*^9, 3.9265971901351905`*^9}, {
+  3.926597687546385*^9, 3.926597688055716*^9}, {3.9266775409907675`*^9, 
+  3.9266775455704775`*^9}},ExpressionUUID->"7e5177df-c30f-4bd3-a7b1-\
+8f3de6c16faa"],
 
-Cell[BoxData["8.`*^12"], "Output",
- CellChangeTimes->{{3.926598541736577*^9, 3.9265985614602103`*^9}},
- CellLabel->"Out[3]=",ExpressionUUID->"4d79ef40-9b59-4251-8850-689358f3c74e"]
-}, Open  ]],
-
-Cell["\<\
-Both projects involve incorporating this (relatively recent) sub problem \
-solver in optimization algorithms. \
-\>", "Text",
- CellChangeTimes->{{3.926597958086074*^9, 
-  3.926598061563876*^9}},ExpressionUUID->"ae2d83b1-8041-4769-96cf-\
-8b409d557c53"],
-
-Cell["Planned projects", "Text",
- CellChangeTimes->{{3.926597082827818*^9, 
-  3.926597085600592*^9}},ExpressionUUID->"d3e70251-ae01-4e5e-840d-\
-e7d440cea67c"]
-}, Open  ]],
+Cell[TextData[{
+ "For any smooth ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", ":", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}], "\[Rule]", 
+    "\[DoubleStruckCapitalR]"}], TraditionalForm]],ExpressionUUID->
+  "851580cb-58b8-4ba8-b0b4-8c260f290264"],
+ " we can choose a subspace described by a Tall Skinny orthogonal matrix ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"U", "\[Element]", 
+    SuperscriptBox["\[DoubleStruckCapitalR]", 
+     RowBox[{"n", "\[Times]", "b"}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "5bc673ea-2854-419c-a57f-53a529e735de"],
+ " and restrict a high dimensional original problem\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["min", 
+     RowBox[{"x", "\[Element]", 
+      RowBox[{
+       SuperscriptBox["\[DoubleStruckCapitalR]", "n"], ":", " ", 
+       "x\[Epsilon]\[ScriptCapitalC]"}]}]], 
+    RowBox[{"f", "(", "x", ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "70d0e8eb-a683-4523-b67c-d1e2639ea695"],
+ "\nto a lower dimensional problem\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["argmin", 
+     RowBox[{"p", "\[Element]", 
+      RowBox[{
+       SuperscriptBox["\[DoubleStruckCapitalR]", "p"], ":", " ", 
+       RowBox[{
+        RowBox[{"U", ".", "p"}], "\[Element]", "\[ScriptCapitalC]", 
+        " "}]}]}]], 
+    RowBox[{"f", "(", 
+     RowBox[{"U", ".", "p"}], ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "79d15f81-6f54-496f-9d27-44fd4e37a96b"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.9265976916323133`*^9, 3.926597953723699*^9}, {
+  3.926677626098361*^9, 
+  3.926677934556048*^9}},ExpressionUUID->"083156a1-3614-45e9-8763-\
+8b4e8900200e"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["GEV SubProblem Solver", "Section",
+Cell["GEV SubProblem Solver", "Subsection",
  CellChangeTimes->{{3.9264965658846636`*^9, 3.926496573239955*^9}, {
   3.9264966784274597`*^9, 3.9264966789093204`*^9}, {3.9265970991127057`*^9, 
   3.92659713848287*^9}, {3.9265971890761533`*^9, 3.9265971901351905`*^9}, {
   3.926597687546385*^9, 
-  3.926597688055716*^9}},ExpressionUUID->"2e71bb0a-1378-466f-8d01-\
-91381f288526"],
+  3.926597688055716*^9}},ExpressionUUID->"6ad36e9a-083f-40fb-a960-\
+30b376363e55"],
 
 Cell[TextData[{
  "For any quadratic ",
@@ -213,9 +283,8 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"0.5", 
       RowBox[{"p", ".", "A", ".", "p"}]}], "+", 
-     RowBox[{"g", ".", "p"}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "face761d-0f55-4ed0-9b16-ac0a7a7d775c"],
+     RowBox[{"g", ".", "p"}]}]}], TraditionalForm]],ExpressionUUID->
+  "156bb308-a310-439f-bee9-37f276a127d6"],
  " and SPD matrix B the constrained optimization problem\n\t",
  Cell[BoxData[
   FormBox[
@@ -225,34 +294,20 @@ Cell[TextData[{
       RowBox[{"p", ".", "B", ".", "p"}], "||", " ", 
       RowBox[{"\[LessEqual]", " ", 
        SuperscriptBox["\[CapitalDelta]", "2"]}]}]], 
-    RowBox[{"q", "(", "p", ")"}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "7e4e19d1-4537-4aa0-95f7-76c99a35d2f6"],
+    RowBox[{"q", "(", "p", ")"}]}], TraditionalForm]],ExpressionUUID->
+  "6dae9793-5299-48b4-b8d2-7bfc54bd967a"],
  "\nhas a simple solution.  The solution is expressed in terms of a \
 generalized eigen value problem involving ",
  Cell[BoxData[
-  FormBox["A", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "85f4d2a5-94b5-4834-9684-a25d3c55e985"],
+  FormBox["A", TraditionalForm]],ExpressionUUID->
+  "49103467-3688-4ce2-9ecc-d8b6b7af0210"],
  " and B."
 }], "Text",
  CellChangeTimes->{{3.9265976916323133`*^9, 
-  3.926597953723699*^9}},ExpressionUUID->"176448c7-0799-4f96-93c2-\
-67db14e48db2"],
-
-Cell["\<\
-Both projects involve incorporating this (relatively recent) sub problem \
-solver in optimization algorithms. \
-\>", "Text",
- CellChangeTimes->{{3.926597958086074*^9, 
-  3.926598061563876*^9}},ExpressionUUID->"dc0bb69f-dfeb-4ab3-a8d6-\
-96d9f89d4be5"],
-
-Cell["Planned projects", "Text",
- CellChangeTimes->{{3.926597082827818*^9, 
-  3.926597085600592*^9}},ExpressionUUID->"f1a621d7-bd32-424d-a078-\
-9809c62359a7"]
-}, Closed]],
+  3.926597953723699*^9}},ExpressionUUID->"d6167081-2f20-4e31-8a57-\
+ba8bc12fc920"]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -348,8 +403,8 @@ Saddle points are difficult for many algorithms to escape from. \
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1509, 551.5},
-WindowMargins->{{1387, Automatic}, {Automatic, -419}},
+WindowSize->{1509, 937.5},
+WindowMargins->{{1387, Automatic}, {56.5, Automatic}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 Magnification->2.,
 FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
@@ -369,38 +424,35 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 218, 4, 194, "Title",ExpressionUUID->"2fe82bd1-b6de-441c-85e2-d7fe94868c90"],
-Cell[801, 28, 200, 4, 69, "Text",ExpressionUUID->"afc61de8-a916-47c2-bb22-bd63370ec7a8"],
 Cell[CellGroupData[{
-Cell[1026, 36, 445, 6, 134, "Section",ExpressionUUID->"b79f9579-9c25-4149-94e6-e5491cbf9580"],
-Cell[1474, 44, 3349, 93, 339, "Text",ExpressionUUID->"7a431446-6678-48aa-b901-36b5bace4149",
+Cell[823, 30, 203, 4, 134, "Section",ExpressionUUID->"afc61de8-a916-47c2-bb22-bd63370ec7a8"],
+Cell[CellGroupData[{
+Cell[1051, 38, 481, 7, 107, "Subsection",ExpressionUUID->"b79f9579-9c25-4149-94e6-e5491cbf9580"],
+Cell[1535, 47, 3070, 84, 339, "Text",ExpressionUUID->"7a431446-6678-48aa-b901-36b5bace4149",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[4848, 141, 468, 12, 100, "Input",ExpressionUUID->"e27ea04b-0e4f-42ec-899a-62ef98668725"],
-Cell[5319, 155, 275, 4, 86, "Output",ExpressionUUID->"378defb8-426b-4eea-9470-c09c5b139280"]
-}, Open  ]],
-Cell[5609, 162, 280, 6, 61, "Input",ExpressionUUID->"b25a3130-4a71-4898-83ef-207824a454b4"],
-Cell[CellGroupData[{
-Cell[5914, 172, 154, 3, 56, "Input",ExpressionUUID->"2ab93f3c-bc37-4fc0-8e7f-d96460f3b4b0"],
-Cell[6071, 177, 180, 2, 64, "Output",ExpressionUUID->"4d79ef40-9b59-4251-8850-689358f3c74e"]
-}, Open  ]],
-Cell[6266, 182, 260, 6, 114, "Text",ExpressionUUID->"ae2d83b1-8041-4769-96cf-8b409d557c53"],
-Cell[6529, 190, 158, 3, 69, "Text",ExpressionUUID->"d3e70251-ae01-4e5e-840d-e7d440cea67c"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6724, 198, 370, 6, 134, "Section",ExpressionUUID->"2e71bb0a-1378-466f-8d01-91381f288526"],
-Cell[7097, 206, 1183, 34, 208, "Text",ExpressionUUID->"176448c7-0799-4f96-93c2-67db14e48db2"],
-Cell[8283, 242, 260, 6, 114, "Text",ExpressionUUID->"dc0bb69f-dfeb-4ab3-a8d6-96d9f89d4be5"],
-Cell[8546, 250, 158, 3, 69, "Text",ExpressionUUID->"f1a621d7-bd32-424d-a078-9809c62359a7"]
+Cell[4630, 135, 1162, 31, 143, "Input",ExpressionUUID->"e27ea04b-0e4f-42ec-899a-62ef98668725"],
+Cell[5795, 168, 1111, 32, 223, "Output",ExpressionUUID->"a710a01d-294f-4193-a638-eab20eda9d62"]
+}, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[8741, 258, 356, 5, 178, "Section",ExpressionUUID->"3f88d29d-a325-4b37-bb32-b7690155b8ee"],
-Cell[9100, 265, 680, 17, 159, "Text",ExpressionUUID->"c792b3aa-8169-4d9c-9931-6500164d98ba",
- InitializationCell->True],
-Cell[9783, 284, 1577, 43, 252, "Text",ExpressionUUID->"110ee4b8-c09b-43eb-95f4-02b2cf96d66a"]
+Cell[6955, 206, 418, 6, 71, "Subsection",ExpressionUUID->"7e5177df-c30f-4bd3-a7b1-8f3de6c16faa"],
+Cell[7376, 214, 1721, 49, 253, "Text",ExpressionUUID->"083156a1-3614-45e9-8763-8b4e8900200e"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[9134, 268, 373, 6, 71, "Subsection",ExpressionUUID->"6ad36e9a-083f-40fb-a960-30b376363e55"],
+Cell[9510, 276, 1090, 31, 208, "Text",ExpressionUUID->"d6167081-2f20-4e31-8a57-ba8bc12fc920"]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11397, 332, 317, 6, 210, "Section",ExpressionUUID->"940ecac9-8c04-4c44-8e1f-2671dfd73d98"],
-Cell[11717, 340, 298, 6, 114, "Text",ExpressionUUID->"66197532-a4ac-4f1c-8605-016ae37c41d7"]
+Cell[10649, 313, 356, 5, 210, "Section",ExpressionUUID->"3f88d29d-a325-4b37-bb32-b7690155b8ee"],
+Cell[11008, 320, 680, 17, 159, "Text",ExpressionUUID->"c792b3aa-8169-4d9c-9931-6500164d98ba",
+ InitializationCell->True],
+Cell[11691, 339, 1577, 43, 252, "Text",ExpressionUUID->"110ee4b8-c09b-43eb-95f4-02b2cf96d66a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13305, 387, 317, 6, 210, "Section",ExpressionUUID->"940ecac9-8c04-4c44-8e1f-2671dfd73d98"],
+Cell[13625, 395, 298, 6, 114, "Text",ExpressionUUID->"66197532-a4ac-4f1c-8605-016ae37c41d7"]
 }, Open  ]]
 }, Open  ]]
 }
