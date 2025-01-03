@@ -1,0 +1,576 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     21174,        568]
+NotebookOptionsPosition[     19432,        528]
+NotebookOutlinePosition[     19956,        547]
+CellTagsIndexPosition[     19913,        544]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Intro to Fourier Analysis", "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.944566660315626*^9, 
+  3.9445666686709223`*^9}},ExpressionUUID->"8e791b87-b8fe-4d47-a58b-\
+235908e2ee0d"],
+
+Cell[TextData[{
+ "We want to to plot complex functions ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", ":", "\[DoubleStruckCapitalC]"}], "\[Rule]", 
+    "\[DoubleStruckCapitalC]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "87f6701c-eb6f-42f1-a50e-26f4cd639b54"],
+ ".  "
+}], "Text",
+ CellChangeTimes->{{3.9448262609487514`*^9, 3.944826262690592*^9}, {
+  3.9448350670695515`*^9, 
+  3.9448351283887544`*^9}},ExpressionUUID->"e6f6aae4-315e-4c11-8038-\
+5777140e8455"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "=", 
+    RowBox[{"x", "+", 
+     RowBox[{"\[ImaginaryI]", " ", "y"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "8367be5b-d252-4951-aed4-885340554aec"],
+ " input height and color as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"re", 
+    RowBox[{"(", "f", ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "4d1fbf9a-e55d-4154-8636-58c6b231aa94"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"im", "(", "f", ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "95bb486a-3d32-4d50-8580-bf7dfd15138f"]
+}], "Subsection",
+ CellChangeTimes->{{3.9448351329179363`*^9, 
+  3.944835204425885*^9}},ExpressionUUID->"f7cd3054-dbb8-46a5-a0d6-\
+fb8a86daae77"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "[", "z_", "]"}], ":=", 
+  SuperscriptBox["\[ExponentialE]", "z"]}], "\[IndentingNewLine]", 
+ RowBox[{"TabView", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\"\<Re\>\"", "->", 
+     RowBox[{"Plot3D", "[", 
+      RowBox[{
+       RowBox[{"Re", "[", 
+        RowBox[{"f", "[", 
+         RowBox[{"x", "+", 
+          RowBox[{"I", " ", "y"}]}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", " ", 
+         RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", 
+         RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y"}], "}"}], ",", 
+          RowBox[{"Hue", "[", 
+           RowBox[{"Im", "[", 
+            RowBox[{"f", "[", 
+             RowBox[{"x", "+", " ", 
+              RowBox[{"I", " ", "y"}]}], "]"}], "]"}], "]"}]}], "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"AxesLabel", "->", 
+        RowBox[{"{", 
+         RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<re(f)\>\""}], 
+         "}"}]}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"\"\<Im\>\"", "->", 
+     RowBox[{"Plot3D", "[", 
+      RowBox[{
+       RowBox[{"Im", "[", 
+        RowBox[{"f", "[", 
+         RowBox[{"x", "+", 
+          RowBox[{"I", " ", "y"}]}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", " ", 
+         RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", 
+         RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y"}], "}"}], ",", 
+          RowBox[{"Hue", "[", 
+           RowBox[{"Re", "[", 
+            RowBox[{"f", "[", 
+             RowBox[{"x", "+", " ", 
+              RowBox[{"I", " ", "y"}]}], "]"}], "]"}], "]"}]}], "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"AxesLabel", "->", 
+        RowBox[{"{", 
+         RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<im(f)\>\""}], 
+         "}"}]}]}], "]"}]}]}], "\[IndentingNewLine]", "}"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.944826164934243*^9, 3.944826247010687*^9}, {
+  3.9448262871476164`*^9, 3.944826588917365*^9}, {3.9448266959008217`*^9, 
+  3.944826701060958*^9}, {3.94482675251679*^9, 3.944826761523919*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"fa7cec5e-b669-4d5e-9da6-f3c36cb0e536"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "=", 
+    RowBox[{"r", " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"\[ImaginaryI]", " ", "\[Theta]"}]]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "4d289586-18c0-4c45-bc39-3d9560469b1a"],
+ " input height and color as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"re", 
+    RowBox[{"(", "f", ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "1ffc823d-2223-474d-923b-7dd9ee457d4d"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"im", "(", "f", ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "94b064ef-0601-4e1a-bf62-27b4c93292da"]
+}], "Subsection",
+ CellChangeTimes->{{3.9448351329179363`*^9, 
+  3.9448352296259775`*^9}},ExpressionUUID->"ea3d70e3-313c-4929-adfb-\
+4a124afdacc0"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "[", "z_", "]"}], ":=", 
+  SuperscriptBox["\[ExponentialE]", "z"]}], "\[IndentingNewLine]", 
+ RowBox[{"TabView", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\"\<Re\>\"", "->", 
+     RowBox[{"ParametricPlot3D", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"r", " ", 
+          RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+         RowBox[{"r", " ", 
+          RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+         RowBox[{"Re", "[", 
+          RowBox[{"f", "[", 
+           RowBox[{"r", " ", 
+            SuperscriptBox["E", 
+             RowBox[{"\[ImaginaryI]", " ", "\[Theta]"}]]}], "]"}], "]"}]}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"r", ",", " ", "0", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[Theta]", ",", "0", ",", 
+         RowBox[{"2", "\[Pi]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"r", ",", "\[Theta]"}], "}"}], ",", 
+          RowBox[{"Hue", "[", 
+           RowBox[{"Im", "[", 
+            RowBox[{"f", "[", 
+             RowBox[{"r", " ", 
+              SuperscriptBox["E", 
+               RowBox[{"\[ImaginaryI]", " ", "\[Theta]"}]]}], "]"}], "]"}], 
+           "]"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"BoxRatios", "->", "1"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"AxesLabel", "->", 
+        RowBox[{"{", 
+         RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<re(f)\>\""}], 
+         "}"}]}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"\"\<Im\>\"", "->", 
+     RowBox[{"ParametricPlot3D", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"r", " ", 
+          RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+         RowBox[{"r", " ", 
+          RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+         RowBox[{"Im", "[", 
+          RowBox[{"f", "[", 
+           RowBox[{"r", " ", 
+            SuperscriptBox["E", 
+             RowBox[{"\[ImaginaryI]", " ", "\[Theta]"}]]}], "]"}], "]"}]}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"r", ",", " ", "0", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\[Theta]", ",", "0", ",", 
+         RowBox[{"2", "\[Pi]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"r", ",", "\[Theta]"}], "}"}], ",", 
+          RowBox[{"Hue", "[", 
+           RowBox[{"Re", "[", 
+            RowBox[{"f", "[", 
+             RowBox[{"r", " ", 
+              SuperscriptBox["E", 
+               RowBox[{"\[ImaginaryI]", " ", "\[Theta]"}]]}], "]"}], "]"}], 
+           "]"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"BoxRatios", "->", "1"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"AxesLabel", "->", 
+        RowBox[{"{", 
+         RowBox[{"\"\<x\>\"", ",", "\"\<y\>\"", ",", "\"\<im(f)\>\""}], 
+         "}"}]}]}], "]"}]}]}], "\[IndentingNewLine]", "}"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.9448266294356656`*^9, 3.944826747876066*^9}, {
+  3.94482679782061*^9, 3.9448268965045576`*^9}, {3.9448269297239103`*^9, 
+  3.9448269378168635`*^9}, {3.9448270253722525`*^9, 3.9448270390135913`*^9}, {
+  3.9448350335374045`*^9, 3.944835035159253*^9}, {3.944835254863928*^9, 
+  3.944835265421282*^9}},
+ CellLabel->"In[61]:=",ExpressionUUID->"571e236f-fb20-43a7-9567-5fa5b878000a"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "=", 
+    RowBox[{"x", "+", 
+     RowBox[{"\[ImaginaryI]", " ", "y"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "25cb8920-7b9f-43fd-b136-0181956e9b00"],
+ " input to ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"re", "(", "f", ")"}], ",", 
+     RowBox[{"im", "(", "f", ")"}]}], "}"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "a2de69f0-ce08-4167-8c5b-bb2cf2748340"],
+ " colored by x"
+}], "Subsection",
+ CellChangeTimes->{{3.9448351329179363`*^9, 3.9448352296259775`*^9}, {
+  3.9448352913910866`*^9, 3.9448353148691034`*^9}, {3.944836123575212*^9, 
+  3.9448361343036013`*^9}},ExpressionUUID->"d4bd7ed2-d497-4dae-beed-\
+15b4373bb7c4"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "[", "z_", "]"}], ":=", 
+  SuperscriptBox["\[ExponentialE]", "z"]}], "\[IndentingNewLine]", 
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"ParametricPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", 
+        RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"y", ",", 
+        RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+      RowBox[{"Mesh", "->", "Full"}], ",", 
+      RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ColorFunction", "->", 
+       RowBox[{"Function", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y"}], "}"}], ",", 
+         RowBox[{"Hue", "[", "x", "]"}]}], "]"}]}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ParametricPlot", "[", 
+     RowBox[{
+      RowBox[{"ReIm", "[", 
+       RowBox[{"f", "[", 
+        RowBox[{"x", "+", 
+         RowBox[{"\[ImaginaryI]", " ", "y"}]}], "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", 
+        RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"y", ",", 
+        RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+      RowBox[{"Mesh", "->", "Full"}], ",", 
+      RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ColorFunction", "->", 
+       RowBox[{"Function", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y", ",", "u", ",", "v"}], "}"}], ",", 
+         RowBox[{"Hue", "[", "u", "]"}]}], "]"}]}]}], "]"}]}], "}"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.9448266294356656`*^9, 3.944826747876066*^9}, {
+  3.94482679782061*^9, 3.9448268965045576`*^9}, {3.9448269297239103`*^9, 
+  3.9448269378168635`*^9}, {3.9448270253722525`*^9, 3.9448270390135913`*^9}, {
+  3.9448350335374045`*^9, 3.944835035159253*^9}, {3.944835254863928*^9, 
+  3.944835265421282*^9}, {3.9448353361982417`*^9, 3.944835475893632*^9}, {
+  3.9448355537736826`*^9, 3.944835598894629*^9}, {3.944835740182091*^9, 
+  3.944835981203698*^9}, {3.9448360153914137`*^9, 3.944836040975211*^9}, {
+  3.9448360828474817`*^9, 3.9448360944715176`*^9}, {3.944836184084856*^9, 
+  3.9448361898599763`*^9}},
+ CellLabel->
+  "In[124]:=",ExpressionUUID->"16fbe468-07ed-4616-9209-a01f27010843"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "=", 
+    RowBox[{"x", "+", 
+     RowBox[{"\[ImaginaryI]", " ", "y"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "28a8e50c-5f71-4e00-8873-1c6ff3ddc484"],
+ " input to ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"re", "(", "f", ")"}], ",", 
+     RowBox[{"im", "(", "f", ")"}]}], "}"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "af97fa17-c75c-4b81-9e94-dd1b7322577f"],
+ " colored by y"
+}], "Subsection",
+ CellChangeTimes->{{3.9448351329179363`*^9, 3.9448352296259775`*^9}, {
+  3.9448352913910866`*^9, 3.9448353148691034`*^9}, {3.944836139317247*^9, 
+  3.9448361433590193`*^9}},ExpressionUUID->"d57a6cd7-c752-4de7-ad27-\
+20fd8d8e2237"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "[", "z_", "]"}], ":=", 
+  SuperscriptBox["\[ExponentialE]", "z"]}], "\[IndentingNewLine]", 
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"ParametricPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", 
+        RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"y", ",", 
+        RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+      RowBox[{"Mesh", "->", "Full"}], ",", 
+      RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ColorFunction", "->", 
+       RowBox[{"Function", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y"}], "}"}], ",", 
+         RowBox[{"Hue", "[", "y", "]"}]}], "]"}]}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ParametricPlot", "[", 
+     RowBox[{
+      RowBox[{"ReIm", "[", 
+       RowBox[{"f", "[", 
+        RowBox[{"x", "+", 
+         RowBox[{"\[ImaginaryI]", " ", "y"}]}], "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", 
+        RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"y", ",", 
+        RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+      RowBox[{"Mesh", "->", "Full"}], ",", 
+      RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ColorFunction", "->", 
+       RowBox[{"Function", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y", ",", "u", ",", "v"}], "}"}], ",", 
+         RowBox[{"Hue", "[", "v", "]"}]}], "]"}]}]}], "]"}]}], "}"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.9448266294356656`*^9, 3.944826747876066*^9}, {
+  3.94482679782061*^9, 3.9448268965045576`*^9}, {3.9448269297239103`*^9, 
+  3.9448269378168635`*^9}, {3.9448270253722525`*^9, 3.9448270390135913`*^9}, {
+  3.9448350335374045`*^9, 3.944835035159253*^9}, {3.944835254863928*^9, 
+  3.944835265421282*^9}, {3.9448353361982417`*^9, 3.944835475893632*^9}, {
+  3.9448355537736826`*^9, 3.944835598894629*^9}, {3.944835740182091*^9, 
+  3.944835981203698*^9}, {3.9448360153914137`*^9, 3.944836040975211*^9}, {
+  3.9448360828474817`*^9, 3.9448360944715176`*^9}, {3.9448361518393326`*^9, 
+  3.9448361654943056`*^9}},
+ CellLabel->
+  "In[122]:=",ExpressionUUID->"5a59df4d-3719-4d4e-91a7-df75ef510c83"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "=", 
+    RowBox[{"r", " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"\[ImaginaryI]", " ", "\[Theta]"}]]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "d0723278-d8ee-4dcd-b944-df564c4ccd68"],
+ " input to ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"re", "(", "f", ")"}], ",", 
+     RowBox[{"im", "(", "f", ")"}]}], "}"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "6359a1ce-9402-4f6e-b558-957a20c517eb"],
+ " colored by r"
+}], "Subsection",
+ CellChangeTimes->{{3.9448351329179363`*^9, 3.9448352296259775`*^9}, {
+  3.9448352913910866`*^9, 3.9448353148691034`*^9}, {3.944836123575212*^9, 
+  3.9448361343036013`*^9}, {3.9448362224335766`*^9, 
+  3.944836233687331*^9}},ExpressionUUID->"f58cf5dc-8ef9-4358-aa0f-\
+50684d092c2a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "[", "z_", "]"}], ":=", 
+  SuperscriptBox["\[ExponentialE]", "z"]}], "\[IndentingNewLine]", 
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"ParametricPlot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"r", " ", 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", " ", 
+        RowBox[{"r", " ", 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"r", ",", "0.5", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[Theta]", ",", "0", ",", 
+        RowBox[{"2", "\[Pi]"}]}], "}"}], ",", 
+      RowBox[{"Mesh", "->", "Full"}], ",", 
+      RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ColorFunction", "->", 
+       RowBox[{"Function", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"r", ",", "\[Theta]", ",", "x", ",", " ", "y"}], "}"}], ",", 
+         RowBox[{"Hue", "[", "r", "]"}]}], "]"}]}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ParametricPlot", "[", 
+     RowBox[{
+      RowBox[{"ReIm", "[", 
+       RowBox[{"f", "[", 
+        RowBox[{"r", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"\[ImaginaryI]", " ", "\[Theta]"}]]}], "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"r", ",", "0.5", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[Theta]", ",", "0", ",", 
+        RowBox[{"2", "\[Pi]"}]}], "}"}], ",", 
+      RowBox[{"Mesh", "->", "Full"}], ",", 
+      RowBox[{"PlotRange", "->", "All"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"ColorFunction", "->", 
+       RowBox[{"Function", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"r", ",", "\[Theta]", ",", "u", ",", "v"}], "}"}], ",", 
+         RowBox[{"Hue", "[", "u", "]"}]}], "]"}]}]}], "]"}]}], "}"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.9448266294356656`*^9, 3.944826747876066*^9}, {
+  3.94482679782061*^9, 3.9448268965045576`*^9}, {3.9448269297239103`*^9, 
+  3.9448269378168635`*^9}, {3.9448270253722525`*^9, 3.9448270390135913`*^9}, {
+  3.9448350335374045`*^9, 3.944835035159253*^9}, {3.944835254863928*^9, 
+  3.944835265421282*^9}, {3.9448353361982417`*^9, 3.944835475893632*^9}, {
+  3.9448355537736826`*^9, 3.944835598894629*^9}, {3.944835740182091*^9, 
+  3.944835981203698*^9}, {3.9448360153914137`*^9, 3.944836040975211*^9}, {
+  3.9448360828474817`*^9, 3.9448360944715176`*^9}, {3.944836184084856*^9, 
+  3.9448361898599763`*^9}, {3.94483625109403*^9, 3.944836427796981*^9}},
+ CellLabel->
+  "In[132]:=",ExpressionUUID->"5909d14d-ecd8-46ed-b808-edee155077f3"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{1648, 580},
+WindowMargins->{{1359.5, Automatic}, {309, Automatic}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification:>1.5 Inherited,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"4483ebcc-e872-4c3f-8cb1-e3a606210797"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 324, 5, 146, "Title",ExpressionUUID->"8e791b87-b8fe-4d47-a58b-235908e2ee0d"],
+Cell[907, 29, 500, 14, 52, "Text",ExpressionUUID->"e6f6aae4-315e-4c11-8038-5777140e8455"],
+Cell[CellGroupData[{
+Cell[1432, 47, 781, 24, 81, "Subsection",ExpressionUUID->"f7cd3054-dbb8-46a5-a0d6-fb8a86daae77"],
+Cell[2216, 73, 2746, 68, 328, "Input",ExpressionUUID->"fa7cec5e-b669-4d5e-9da6-f3c36cb0e536"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4999, 146, 832, 25, 55, "Subsection",ExpressionUUID->"ea3d70e3-313c-4929-adfb-4a124afdacc0"],
+Cell[5834, 173, 3686, 88, 417, "Input",ExpressionUUID->"571e236f-fb20-43a7-9567-5fa5b878000a"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[9557, 266, 774, 22, 55, "Subsection",ExpressionUUID->"d4bd7ed2-d497-4dae-beed-15b4373bb7c4"],
+Cell[10334, 290, 2358, 57, 157, "Input",ExpressionUUID->"16fbe468-07ed-4616-9209-a01f27010843"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[12729, 352, 774, 22, 55, "Subsection",ExpressionUUID->"d57a6cd7-c752-4de7-ad27-20fd8d8e2237"],
+Cell[13506, 376, 2360, 57, 157, "Input",ExpressionUUID->"5a59df4d-3719-4d4e-91a7-df75ef510c83"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[15903, 438, 874, 24, 55, "Subsection",ExpressionUUID->"f58cf5dc-8ef9-4358-aa0f-50684d092c2a"],
+Cell[16780, 464, 2624, 60, 169, "Input",ExpressionUUID->"5909d14d-ecd8-46ed-b808-edee155077f3"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
