@@ -1,0 +1,557 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     18284,        549]
+NotebookOptionsPosition[     17450,        525]
+NotebookOutlinePosition[     17978,        544]
+CellTagsIndexPosition[     17935,        541]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "The crazy way to compute\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Integral]", 
+    RowBox[{
+     SuperscriptBox["e", 
+      RowBox[{"\[Alpha]", " ", "x"}]], 
+     RowBox[{"sin", "(", 
+      RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "6c25a8f1-be45-4cc6-9bc7-63e3b1d968fb"]
+}], "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.944566660315626*^9, 3.9445666686709223`*^9}, {
+  3.944911018174672*^9, 3.944911054950674*^9}, {3.9449111181229315`*^9, 
+  3.944911124120557*^9}, {3.944913988985866*^9, 
+  3.944913990264922*^9}},ExpressionUUID->"8e791b87-b8fe-4d47-a58b-\
+235908e2ee0d"],
+
+Cell[TextData[{
+ "In your calculus class you learned how to compute this integral using \
+integration by parts.  As a reminder integration by parts (the product rule \
+backwards) says \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Integral]", 
+     RowBox[{"u", " ", "dv"}]}], "=", 
+    RowBox[{
+     RowBox[{"u", " ", "v"}], " ", "-", " ", 
+     RowBox[{"\[Integral]", 
+      RowBox[{"v", " ", "du"}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "a64d3e87-cb22-4e88-b136-5fa0219d52a4"],
+ "\n The computation went something like this\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Integral]", 
+     RowBox[{
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"sin", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["1", "\[Beta]"]}], 
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"cos", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}]}], "+", 
+     RowBox[{
+      FractionBox["\[Alpha]", "\[Beta]"], 
+      RowBox[{"\[Integral]", 
+       RowBox[{
+        SuperscriptBox["e", 
+         RowBox[{"\[Alpha]", " ", "x"}]], 
+        RowBox[{"cos", "(", 
+         RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}]}]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ea12b1d6-c380-4753-a0e7-df3cf0d92205"],
+ ".\nThis first step uses ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"u", "=", 
+    SuperscriptBox["e", 
+     RowBox[{"\[Alpha]", " ", "x"}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3238a184-934c-4d82-bb13-e222550a6540"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"dv", "=", 
+    RowBox[{"sin", "(", 
+     RowBox[{"\[Beta]", " ", "x"}], ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3aa19992-e7ed-4370-9e5b-42d2fe85ee9a"],
+ ".  Keeping going you did\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Integral]", 
+     RowBox[{
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"cos", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}], "=", 
+    RowBox[{
+     RowBox[{
+      FractionBox["1", "\[Beta]"], 
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"sin", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}]}], "-", 
+     RowBox[{
+      FractionBox["\[Alpha]", "\[Beta]"], 
+      RowBox[{"\[Integral]", 
+       RowBox[{
+        SuperscriptBox["e", 
+         RowBox[{"\[Alpha]", " ", "x"}]], 
+        RowBox[{"sin", "(", 
+         RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}]}]}]}], 
+   TraditionalForm]],ExpressionUUID->"a3e1e71a-a216-407d-811c-e9faaf6cb8a0"],
+ ".\nWhere this second step used ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"u", "=", 
+    SuperscriptBox["e", 
+     RowBox[{"\[Alpha]", " ", "x"}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "d6efe1a8-faf5-48a8-b3c5-5c2f58859e3f"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"dv", "=", 
+    RowBox[{"cos", "(", 
+     RowBox[{"\[Beta]", " ", "x"}], ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ec7f82b0-94c4-4440-969b-3e1b4d1bcbf4"],
+ ".  You put these together to get\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Integral]", 
+     RowBox[{
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"sin", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["1", "\[Beta]"]}], 
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"cos", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}]}], "+", 
+     RowBox[{
+      FractionBox["\[Alpha]", "\[Beta]"], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         FractionBox["1", "\[Beta]"], 
+         SuperscriptBox["e", 
+          RowBox[{"\[Alpha]", " ", "x"}]], 
+         RowBox[{"sin", "(", 
+          RowBox[{"\[Beta]", " ", "x"}], ")"}]}], "-", 
+        RowBox[{
+         FractionBox["\[Alpha]", "\[Beta]"], 
+         RowBox[{"\[Integral]", 
+          RowBox[{
+           SuperscriptBox["e", 
+            RowBox[{"\[Alpha]", " ", "x"}]], 
+           RowBox[{"sin", "(", 
+            RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}]}]}], ")"}]}]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "c6397630-4170-41fe-8489-12d8b81c0fcb"],
+ "\nwhich did not look useful until you gave a name to the thing you were \
+looking for \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    StyleBox["Int",
+     FontVariations->{"Underline"->True}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["1", "\[Beta]"]}], 
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"cos", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}]}], "+", 
+     RowBox[{
+      FractionBox["\[Alpha]", "\[Beta]"], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         FractionBox["1", "\[Beta]"], 
+         SuperscriptBox["e", 
+          RowBox[{"\[Alpha]", " ", "x"}]], 
+         RowBox[{"sin", "(", 
+          RowBox[{"\[Beta]", " ", "x"}], ")"}]}], "-", 
+        RowBox[{
+         FractionBox["\[Alpha]", "\[Beta]"], 
+         StyleBox["Int",
+          FontVariations->{"Underline"->True}]}]}], ")"}]}]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "50c63a78-a2c3-4292-ac36-3a19c6b04537"],
+ "\nat which point you could rearrange to get\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "+", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         FractionBox["\[Alpha]", "\[Beta]"], ")"}], "2"]}], ")"}], 
+     StyleBox["Int",
+      FontVariations->{"Underline"->True}]}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["1", "\[Beta]"]}], 
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"cos", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}]}], "+", 
+     RowBox[{
+      FractionBox["\[Alpha]", 
+       SuperscriptBox["\[Beta]", "2"]], 
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"sin", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "509969d8-1b5d-4105-9e99-310212d93b61"],
+ "\nand you finally got the answer\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+    Cell["Int = ",ExpressionUUID->"779ac759-3e9d-49cd-b9b1-e6ee7b393835"], 
+     RowBox[{"\[Integral]", 
+      RowBox[{
+       SuperscriptBox["e", 
+        RowBox[{"\[Alpha]", " ", "x"}]], 
+       RowBox[{"sin", "(", 
+        RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}]}], "=", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          FractionBox["\[Alpha]", "\[Beta]"], ")"}], "2"]}], ")"}]], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         FractionBox["1", "\[Beta]"]}], 
+        SuperscriptBox["e", 
+         RowBox[{"\[Alpha]", " ", "x"}]], 
+        RowBox[{"cos", "(", 
+         RowBox[{"\[Beta]", " ", "x"}], ")"}]}], "+", 
+       RowBox[{
+        FractionBox["\[Alpha]", 
+         SuperscriptBox["\[Beta]", "2"]], 
+        SuperscriptBox["e", 
+         RowBox[{"\[Alpha]", " ", "x"}]], 
+        RowBox[{"sin", "(", 
+         RowBox[{"\[Beta]", " ", "x"}], ")"}]}]}], ")"}]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "5733d28c-df3d-4d88-98d2-51c5d8c833c0"],
+ "\nwhich you could tidy up to \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Integral]", 
+     RowBox[{
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"sin", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}], "=", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"x", " ", "\[Alpha]"}]], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "\[Beta]"}], " ", 
+         RowBox[{"cos", "(", 
+          RowBox[{"x", " ", "\[Beta]"}], ")"}]}], "+", 
+        RowBox[{"\[Alpha]", " ", 
+         RowBox[{"sin", "(", 
+          RowBox[{"x", " ", "\[Beta]"}], ")"}]}]}], ")"}]}], 
+     RowBox[{
+      SuperscriptBox["\[Alpha]", "2"], "+", 
+      SuperscriptBox["\[Beta]", "2"]}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "397ee6d4-c338-4fdc-acfe-99f465345fbc"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.944911060535827*^9, 3.944911208504713*^9}, {
+  3.944911240842298*^9, 3.944911348135909*^9}, {3.9449117435116444`*^9, 
+  3.9449117435116444`*^9}, {3.9449118167113266`*^9, 3.944912173882258*^9}, {
+  3.944912229676547*^9, 3.9449127268568745`*^9}, {3.9449127574482365`*^9, 
+  3.944912930849654*^9}, {3.9449129773633995`*^9, 3.9449131828622656`*^9}, {
+  3.9449139514417777`*^9, 
+  3.944913980465335*^9}},ExpressionUUID->"89056b9e-83bf-4d2d-a088-\
+ac520d8305d1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "The sensible way to compute\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Integral]", 
+    RowBox[{
+     SuperscriptBox["e", 
+      RowBox[{"\[Alpha]", " ", "x"}]], 
+     RowBox[{"sin", "(", 
+      RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "32218f5f-6c5d-4ff9-94d9-0b511369e39e"]
+}], "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.944566660315626*^9, 3.9445666686709223`*^9}, {
+  3.944911018174672*^9, 3.944911054950674*^9}, {3.9449111181229315`*^9, 
+  3.944911124120557*^9}, {3.944913988985866*^9, 
+  3.9449140071455946`*^9}},ExpressionUUID->"3a4606d4-b72e-4e9c-bb79-\
+57a4e61329b7"],
+
+Cell[TextData[{
+ "This is much more complicated than\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Integral]", 
+     RowBox[{
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"sin", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}], "=", 
+    RowBox[{
+     RowBox[{"Im", "(", 
+      RowBox[{"\[Integral]", 
+       RowBox[{
+        SuperscriptBox["e", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"\[Alpha]", "+", 
+            RowBox[{"\[Beta]", " ", "\[ImaginaryI]"}]}], ")"}], " ", "x"}]], 
+        "dx"}]}], ")"}], "=", 
+     RowBox[{
+      RowBox[{"Im", "(", 
+       FractionBox[
+        SuperscriptBox["e", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"\[Alpha]", "+", 
+            RowBox[{"\[Beta]", " ", "\[ImaginaryI]"}]}], ")"}], " ", "x"}]], 
+        RowBox[{"\[Alpha]", " ", "+", " ", 
+         RowBox[{"\[Beta]", " ", "\[ImaginaryI]"}]}]], ")"}], "=", 
+      RowBox[{"Im", "(", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["e", 
+          RowBox[{"\[Alpha]", " ", "x"}]], "(", 
+         RowBox[{
+          RowBox[{"cos", "(", 
+           RowBox[{"\[Beta]", " ", "x"}], ")"}], "+", " ", 
+          RowBox[{"\[ImaginaryI]", " ", 
+           RowBox[{"sin", "(", 
+            RowBox[{"\[Beta]", " ", "x"}], ")"}]}]}], ")"}], 
+        RowBox[{"\[Alpha]", " ", "+", " ", 
+         RowBox[{"\[Beta]", " ", "\[ImaginaryI]"}]}]], ")"}]}]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "866c072d-c772-477d-bbe6-0511d3b241f1"],
+ "\nand a little bit of complex arithmetic\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["e", 
+        RowBox[{"\[Alpha]", " ", "x"}]], "(", 
+       RowBox[{
+        RowBox[{"cos", "(", 
+         RowBox[{"\[Beta]", " ", "x"}], ")"}], "+", " ", 
+        RowBox[{"\[ImaginaryI]", " ", 
+         RowBox[{"sin", "(", 
+          RowBox[{"\[Beta]", " ", "x"}], ")"}]}]}], ")"}], 
+      RowBox[{"\[Alpha]", " ", "+", " ", 
+       RowBox[{"\[Beta]", " ", "\[ImaginaryI]"}]}]], 
+     FractionBox[
+      RowBox[{"\[Alpha]", " ", "-", " ", 
+       RowBox[{"\[Beta]", " ", "\[ImaginaryI]"}]}], 
+      RowBox[{"\[Alpha]", " ", "-", " ", 
+       RowBox[{"\[Beta]", " ", "\[ImaginaryI]"}]}]]}], "=", 
+    FractionBox[
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["e", 
+        RowBox[{"\[Alpha]", " ", "x"}]], "(", 
+       RowBox[{
+        RowBox[{"cos", "(", 
+         RowBox[{"\[Beta]", " ", "x"}], ")"}], "+", " ", 
+        RowBox[{"\[ImaginaryI]", " ", 
+         RowBox[{"sin", "(", 
+          RowBox[{"\[Beta]", " ", "x"}], ")"}]}]}], ")"}], 
+      RowBox[{"(", 
+       RowBox[{"\[Alpha]", "-", 
+        RowBox[{"\[Beta]", " ", "\[ImaginaryI]"}]}], ")"}]}], 
+     RowBox[{
+      SuperscriptBox["\[Alpha]", "2"], " ", "+", " ", 
+      SuperscriptBox["\[Beta]", "2"]}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "78426ffe-9fb1-4e1a-a702-bfff53b38c86"],
+ "\nfinished up with a multiplication\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"cos", "(", 
+        RowBox[{"\[Beta]", " ", "x"}], ")"}], "+", " ", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        RowBox[{"sin", "(", 
+         RowBox[{"\[Beta]", " ", "x"}], ")"}]}]}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"\[Alpha]", "-", 
+       RowBox[{"\[Beta]", " ", "\[ImaginaryI]"}]}], ")"}]}], "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"\[Alpha]", " ", 
+        RowBox[{"cos", "(", 
+         RowBox[{"x", " ", "\[Beta]"}], ")"}]}], "+", 
+       RowBox[{"\[Beta]", " ", 
+        RowBox[{"sin", "(", 
+         RowBox[{"x", " ", "\[Beta]"}], ")"}]}]}], ")"}], "+", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"\[Alpha]", " ", 
+         RowBox[{"sin", "(", 
+          RowBox[{"x", " ", "\[Beta]"}], ")"}]}], "-", 
+        RowBox[{"\[Beta]", " ", 
+         RowBox[{"cos", "(", 
+          RowBox[{"x", " ", "\[Beta]"}], ")"}]}]}], ")"}]}]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ee5b7fb8-dc73-4fbe-b72c-41fc8a37dfea"],
+ "\nputting it all together gives\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[Integral]", 
+     RowBox[{
+      SuperscriptBox["e", 
+       RowBox[{"\[Alpha]", " ", "x"}]], 
+      RowBox[{"sin", "(", 
+       RowBox[{"\[Beta]", " ", "x"}], ")"}], "dx"}]}], "=", 
+    RowBox[{
+     RowBox[{"Im", "(", 
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["e", 
+          RowBox[{"\[Alpha]", " ", "x"}]], "(", 
+         RowBox[{
+          RowBox[{"cos", "(", 
+           RowBox[{"\[Beta]", " ", "x"}], ")"}], "+", " ", 
+          RowBox[{"\[ImaginaryI]", " ", 
+           RowBox[{"sin", "(", 
+            RowBox[{"\[Beta]", " ", "x"}], ")"}]}]}], ")"}], 
+        RowBox[{"(", 
+         RowBox[{"\[Alpha]", "-", 
+          RowBox[{"\[Beta]", " ", "\[ImaginaryI]"}]}], ")"}]}], 
+       RowBox[{
+        SuperscriptBox["\[Alpha]", "2"], " ", "+", " ", 
+        SuperscriptBox["\[Beta]", "2"]}]], ")"}], "=", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["e", 
+        RowBox[{"\[Alpha]", " ", "x"}]], "(", 
+       RowBox[{
+        RowBox[{"\[Alpha]", " ", 
+         RowBox[{"sin", "(", 
+          RowBox[{"\[Beta]", " ", "x"}], ")"}]}], "-", 
+        RowBox[{"\[Beta]", " ", 
+         RowBox[{"cos", "(", 
+          RowBox[{"\[Beta]", " ", "x"}], ")"}]}]}], ")"}], 
+      RowBox[{
+       SuperscriptBox["\[Alpha]", "2"], " ", "+", " ", 
+       SuperscriptBox["\[Beta]", "2"]}]]}]}], TraditionalForm]],
+  ExpressionUUID->"35345b9e-5b0b-49e1-85b5-4a7a1cb1fd1e"]
+}], "Text",
+ CellChangeTimes->{{3.944911060535827*^9, 3.944911208504713*^9}, {
+  3.944911240842298*^9, 3.944911348135909*^9}, {3.9449117435116444`*^9, 
+  3.9449117435116444`*^9}, {3.9449118167113266`*^9, 3.944912173882258*^9}, {
+  3.944912229676547*^9, 3.9449127268568745`*^9}, {3.9449127574482365`*^9, 
+  3.944912930849654*^9}, {3.9449129773633995`*^9, 3.9449131828622656`*^9}, {
+  3.9449139514417777`*^9, 
+  3.9449139569488173`*^9}},ExpressionUUID->"8c46b395-8cec-4777-9895-\
+502651f1ae27"]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{1467.5, 580},
+WindowMargins->{{1231.5, Automatic}, {232.5, Automatic}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification:>1.5 Inherited,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"23305525-1348-40ed-86ea-23d951130a38"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 807, 19, 239, "Title",ExpressionUUID->"8e791b87-b8fe-4d47-a58b-235908e2ee0d"],
+Cell[1390, 43, 9012, 277, 679, "Text",ExpressionUUID->"89056b9e-83bf-4d2d-a088-ac520d8305d1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10439, 325, 812, 19, 239, "Title",ExpressionUUID->"3a4606d4-b72e-4e9c-bb79-57a4e61329b7"],
+Cell[11254, 346, 6180, 176, 325, "Text",ExpressionUUID->"8c46b395-8cec-4777-9895-502651f1ae27"]
+}, Open  ]]
+}
+]
+*)
+
