@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   2379707,      40004]
-NotebookOptionsPosition[   2377330,      39956]
-NotebookOutlinePosition[   2377854,      39975]
-CellTagsIndexPosition[   2377811,      39972]
+NotebookDataLength[   2381890,      40058]
+NotebookOptionsPosition[   2379317,      40008]
+NotebookOutlinePosition[   2379839,      40027]
+CellTagsIndexPosition[   2379796,      40024]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -39951,12 +39951,64 @@ cpe0kWCgUJpsR9LsQIzELZ84A6Ev/7qZrsjEd81z0i9vUqAi62W7eVHICdty
           RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& )]}}, 1]], "Output",
  CellChangeTimes->{{3.9451717661301007`*^9, 3.945171779740532*^9}},
  CellLabel->"Out[16]=",ExpressionUUID->"0ed8d772-2207-4f59-a270-55c4fee734ac"]
-}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+Lets look at a slightly more interesting function!  I need to mess with the \
+vertical range to improve this a bit. \
+\>", "Text",
+ CellChangeTimes->{{3.9453349963685756`*^9, 
+  3.9453350751998153`*^9}},ExpressionUUID->"d66a0f0c-87e2-4591-870d-\
+364c89da3f80"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "[", "z_", "]"}], ":=", 
+  FractionBox[
+   RowBox[{"1", "+", 
+    RowBox[{"1.2", 
+     SuperscriptBox["z", "2"]}], "-", 
+    RowBox[{"2.3", 
+     SuperscriptBox["z", "3"]}], "+", 
+    SuperscriptBox["z", "4"]}], 
+   RowBox[{"z", "+", 
+    RowBox[{"2.3", " ", 
+     SuperscriptBox["z", "7"]}]}]]}], "\[IndentingNewLine]", 
+ RowBox[{"TabView", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\"\<f\>\"", "->", 
+     RowBox[{"ComplexPlot3D", "[", 
+      RowBox[{
+       RowBox[{"f", "[", "z", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"z", ",", "2"}], "}"}], ",", 
+       RowBox[{"PlotLegends", "->", "Automatic"}], ",", 
+       RowBox[{"Mesh", "->", "Automatic"}]}], "]"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"\"\<1/f\>\"", "->", 
+     RowBox[{"ComplexPlot3D", "[", 
+      RowBox[{
+       RowBox[{"1", "/", 
+        RowBox[{"f", "[", "z", "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"z", ",", "2"}], "}"}], ",", 
+       RowBox[{"PlotLegends", "->", "Automatic"}], ",", 
+       RowBox[{"Mesh", "->", "Automatic"}]}], "]"}]}]}], 
+   "\[IndentingNewLine]", "}"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.945164790102471*^9, 3.945164950270413*^9}, {
+  3.945165019901353*^9, 3.945165132414239*^9}, {3.945170924614478*^9, 
+  3.9451709248880863`*^9}, {3.9451709980919685`*^9, 3.9451710256481295`*^9}, {
+  3.945171777497346*^9, 3.945171777843071*^9}, {3.9453348754144926`*^9, 
+  3.945334958151645*^9}, {3.9453350578866158`*^9, 3.945335062062034*^9}, {
+  3.9453351128304157`*^9, 3.94533513989474*^9}, {3.945335339054864*^9, 
+  3.9453353954742537`*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"c81a6172-e7a5-492a-a0d5-7e2d59b74e6d"]
 }, Open  ]]
 },
 WindowToolbars->{"EditBar", "MultipurposeBar"},
 WindowSize->{1141, 580},
-WindowMargins->{{1357, Automatic}, {328.5, Automatic}},
+WindowMargins->{{1393, Automatic}, {256, Automatic}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 Magnification:>1.5 Inherited,
 FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
@@ -40003,8 +40055,10 @@ Cell[1376775, 23209, 332541, 5550, 551, "Output",ExpressionUUID->"26540a32-316b-
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[1709353, 28764, 1239, 30, 131, "Input",ExpressionUUID->"460a676d-4987-4d1c-8e1e-3d1402bbc755"],
-Cell[1710595, 28796, 666707, 11156, 643, "Output",ExpressionUUID->"0ed8d772-2207-4f59-a270-55c4fee734ac"]
-}, Open  ]]
+Cell[1710595, 28796, 666707, 11156, 626, "Output",ExpressionUUID->"0ed8d772-2207-4f59-a270-55c4fee734ac"]
+}, Open  ]],
+Cell[2377317, 39955, 270, 6, 87, "Text",ExpressionUUID->"d66a0f0c-87e2-4591-870d-364c89da3f80"],
+Cell[2377590, 39963, 1711, 42, 189, "Input",ExpressionUUID->"c81a6172-e7a5-492a-a0d5-7e2d59b74e6d"]
 }, Open  ]]
 }
 ]
