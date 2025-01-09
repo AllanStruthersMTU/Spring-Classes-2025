@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1402955,      24011]
-NotebookOptionsPosition[   1399612,      23949]
-NotebookOutlinePosition[   1400170,      23969]
-CellTagsIndexPosition[   1400127,      23966]
+NotebookDataLength[   1407921,      24128]
+NotebookOptionsPosition[   1403561,      24053]
+NotebookOutlinePosition[   1404085,      24072]
+CellTagsIndexPosition[   1404042,      24069]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1234,7 +1234,7 @@ The Fourier Matrix F is a symmetric matrix with an easily computed inverse.   \
   3.944570468914892*^9, 
   3.944570534183975*^9}},ExpressionUUID->"38e72f2c-47e6-4405-84ae-\
 a38bab0af8a8"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -23713,13 +23713,110 @@ Cell[TextData[{
    RowBox[{"f", "=", 
     RowBox[{"F", ".", "x"}]}], TraditionalForm]],ExpressionUUID->
   "880543a4-5f35-4356-89ee-c627386a1b9f"],
- " shows the wiggle content in a signal.  Noise is typically high frequency. "
+ " shows the wiggle content in a signal. "
 }], "Text",
  CellChangeTimes->{{3.9445703887111707`*^9, 3.944570410727359*^9}, {
   3.944570468914892*^9, 3.944570534183975*^9}, {3.945163463542124*^9, 
-  3.9451635199412093`*^9}, {3.945344806972187*^9, 
-  3.945344823354845*^9}},ExpressionUUID->"24ee6883-6f22-4a6f-94a4-\
-44abf1e68491"]
+  3.9451635199412093`*^9}, {3.945344806972187*^9, 3.945344823354845*^9}, {
+  3.945439669968524*^9, 
+  3.945439825029914*^9}},ExpressionUUID->"24ee6883-6f22-4a6f-94a4-\
+44abf1e68491"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "The ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"abs", "(", 
+     SubscriptBox["f", "i"], ")"}], " "}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "bbd67c3c-ada0-4368-9af2-755dbe209b95"],
+ "gives how much of a the signal is associated with ",
+ Cell[BoxData[
+  FormBox["\"\<i-1\>\"", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ea449625-abb9-4f6f-8bb1-d6f434b131d3"],
+ " wiggles in the signal. "
+}], "Item",
+ CellChangeTimes->{{3.9445703887111707`*^9, 3.944570410727359*^9}, {
+  3.944570468914892*^9, 3.944570534183975*^9}, {3.945163463542124*^9, 
+  3.9451635199412093`*^9}, {3.945344806972187*^9, 3.945344823354845*^9}, {
+  3.945439669968524*^9, 3.945439856659379*^9}, {3.945439963841918*^9, 
+  3.9454399705910945`*^9}},ExpressionUUID->"096dfc47-af5b-41a2-8d50-\
+48f2d783adb4"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"re", "(", 
+    SubscriptBox["f", "i"], ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "2291e1d1-5d80-41d7-9d69-c155082c4a4d"],
+ " gives the amount of cosine present"
+}], "Subitem",
+ CellChangeTimes->{{3.9445703887111707`*^9, 3.944570410727359*^9}, {
+  3.944570468914892*^9, 3.944570534183975*^9}, {3.945163463542124*^9, 
+  3.9451635199412093`*^9}, {3.945344806972187*^9, 3.945344823354845*^9}, {
+  3.945439669968524*^9, 
+  3.9454399302348375`*^9}},ExpressionUUID->"dbf3482b-2ed2-48c4-84e2-\
+9456832c5081"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"im", "(", 
+    SubscriptBox["f", "i"], ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "59478e9f-9dd7-4b57-8ca6-d360158d53f3"],
+ " gives the amount of sine present"
+}], "Subitem",
+ CellChangeTimes->{{3.9445703887111707`*^9, 3.944570410727359*^9}, {
+  3.944570468914892*^9, 3.944570534183975*^9}, {3.945163463542124*^9, 
+  3.9451635199412093`*^9}, {3.945344806972187*^9, 3.945344823354845*^9}, {
+  3.945439669968524*^9, 
+  3.945439940289553*^9}},ExpressionUUID->"e63bc64a-29c0-4b87-a323-\
+b5d57d529266"]
+}, Open  ]],
+
+Cell["\<\
+Noise is typically high frequency.  the DFT is frequently used to denoise a \
+signal. \
+\>", "Item",
+ CellChangeTimes->{{3.9445703887111707`*^9, 3.944570410727359*^9}, {
+  3.944570468914892*^9, 3.944570534183975*^9}, {3.945163463542124*^9, 
+  3.9451635199412093`*^9}, {3.945344806972187*^9, 3.945344823354845*^9}, {
+  3.945439669968524*^9, 3.9454399507112417`*^9}, {3.9454399816705503`*^9, 
+  3.9454400167745466`*^9}},ExpressionUUID->"e1317515-9fda-4af5-ab67-\
+17c358acf171"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Aliasing, Wheels, and video", "Subsection",
+ CellChangeTimes->{{3.945440656447013*^9, 3.9454406663826113`*^9}, {
+  3.945440962447353*^9, 
+  3.9454409799034753`*^9}},ExpressionUUID->"ea7213d3-7c81-47b4-83e2-\
+9bf28e8819ce"],
+
+Cell["\<\
+Regular discrete samples can conflate different frequencies. \
+\>", "Text",
+ CellChangeTimes->{{3.94544099049535*^9, 3.9454409924168386`*^9}, {
+  3.9454410458710985`*^9, 
+  3.9454410928799934`*^9}},ExpressionUUID->"0205fa85-d8e8-43cf-a9ff-\
+17fa60137ef4"],
+
+Cell["https://en.wikipedia.org/wiki/Wagon-wheel_effect", "Text",
+ CellChangeTimes->{
+  3.9454411029193373`*^9},ExpressionUUID->"23413c7f-85c4-4780-9d93-\
+a801ef68ac61"],
+
+Cell["https://www.youtube.com/shorts/S4Qi64wTFXA", "Text",
+ CellChangeTimes->{
+  3.9454404879145837`*^9},ExpressionUUID->"8408824e-a67e-4c8b-a18c-\
+9e6f02b829db"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -23762,26 +23859,21 @@ combination of functions ",
       RowBox[{
        SubscriptBox["\[Theta]", "m"], ",", 
        SubscriptBox["x", "m"]}], "}"}]}], "}"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "37c65546-bdee-42a6-800c-3bb495516177"],
- "\nThe problem was over-determined (you could not generally hit all m \
-points) if ",
+  ExpressionUUID->"37c65546-bdee-42a6-800c-3bb495516177"],
+ "\nThis was over-determined (you could not hit all m points) if ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"m", ">", "n"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"m", ">", "n"}], TraditionalForm]],ExpressionUUID->
   "a881e966-216c-485a-bb20-d3c181de9440"],
- ".  This motivated the least squares problem\n\t",
+ " which the least squares problem\n\t",
  Cell[BoxData[
   FormBox[
    RowBox[{
-    RowBox[{"A", ".", "a"}], "=", "x"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "014f2f73-f607-4d8f-9ff5-b7295b3ce39a"],
+    RowBox[{"A", ".", "a"}], "\[TildeTilde]", "x"}], TraditionalForm]],
+  ExpressionUUID->"014f2f73-f607-4d8f-9ff5-b7295b3ce39a"],
  "\nwhere ",
  Cell[BoxData[
-  FormBox["A", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["A", TraditionalForm]],ExpressionUUID->
   "a6f91f5d-b5cd-40db-ba0d-abefacf57538"],
  " was the Tall Skinny matrix \n\t",
  Cell[BoxData[
@@ -23791,21 +23883,20 @@ points) if ",
      RowBox[{"i", ",", "j"}]], "=", 
     RowBox[{
      SubscriptBox["p", "i"], "(", 
-     SubscriptBox["\[Theta]", "j"], ")"}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+     SubscriptBox["\[Theta]", "j"], ")"}]}], TraditionalForm]],ExpressionUUID->
   "368aed3f-f26f-479e-a8c1-9155d007b777"],
  ". \nIn your Linear Algebra class you typically used polynomials and the \
 data was real.  "
 }], "Text",
- CellChangeTimes->{{3.945335590894248*^9, 
-  3.9453364326819515`*^9}},ExpressionUUID->"c2012f0c-6994-49dc-8643-\
+ CellChangeTimes->{{3.945335590894248*^9, 3.9453364326819515`*^9}, {
+  3.9454400420633116`*^9, 
+  3.9454400817036705`*^9}},ExpressionUUID->"c2012f0c-6994-49dc-8643-\
 2c5830191f34"],
 
 Cell[TextData[{
  "The Fourier matrix ",
  Cell[BoxData[
-  FormBox["F", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["F", TraditionalForm]],ExpressionUUID->
   "8a28951a-fe44-4e4a-873c-adcc0d5400fc"],
  " is what you get with equally spaced angles \[Theta] around the unit circle \
 (in the complex plane of course)  and fit powers of the complex exponential ",
@@ -23825,26 +23916,39 @@ Cell[TextData[{
       RowBox[{"\[ImaginaryI]", " ", 
        RowBox[{"sin", "(", 
         RowBox[{"k", " ", "\[Theta]"}], ")"}]}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "affe091b-dd4e-45f7-b863-9852e87c81ce"],
+  ExpressionUUID->"affe091b-dd4e-45f7-b863-9852e87c81ce"],
  ".   The full Fourier matrix hits every data point by reacting to every \
-twitch in the data.  "
+twitch in the data. "
 }], "Text",
- CellChangeTimes->{{3.945335590894248*^9, 
-  3.9453368082929373`*^9}},ExpressionUUID->"633d23de-bf14-4676-b44f-\
+ CellChangeTimes->{{3.945335590894248*^9, 3.9453368082929373`*^9}, {
+  3.945440119791622*^9, 
+  3.945440243592469*^9}},ExpressionUUID->"633d23de-bf14-4676-b44f-\
 a891c4f9ea3f"],
 
 Cell[TextData[{
- "Fortunately, entries in ",
+ "The complex entries in ",
  Cell[BoxData[
   FormBox[
    RowBox[{"y", "=", 
-    RowBox[{"F", " ", "x"}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    RowBox[{"F", " ", "x"}]}], TraditionalForm]],ExpressionUUID->
   "296b869e-f354-460a-8eb0-eedf850d87ad"],
- "  are listed from no wiggles (constant) to one wiggle to two wiggles, to \
-three wiggles etc. The first three terms gives the best fit (in the least \
-squares sense) of the form ",
+ "  are listed from zero wiggles (constant) to one wiggle to two wiggles, to \
+three wiggles etc. "
+}], "Text",
+ CellChangeTimes->{{3.945335590894248*^9, 3.945336840768149*^9}, {
+  3.945338075082886*^9, 3.945338226630862*^9}, {3.945440254415497*^9, 
+  3.9454402584716396`*^9}, {3.9454402930642548`*^9, 
+  3.945440336305338*^9}},ExpressionUUID->"c9bd442c-9558-48f5-b0d3-\
+7908942618c1"],
+
+Cell["https://www.youtube.com/shorts/S4Qi64wTFXA", "Text",
+ CellChangeTimes->{
+  3.9454404879145837`*^9},ExpressionUUID->"a6885401-b0ac-469a-a025-\
+37992e36dbf2"],
+
+Cell[TextData[{
+ "The first three terms gives the best fit (in the least squares sense) of \
+the form ",
  Cell[BoxData[
   FormBox[
    RowBox[{
@@ -23863,9 +23967,7 @@ squares sense) of the form ",
       SubscriptBox["y", "3"], "(", 
       SuperscriptBox["\[ExponentialE]", 
        RowBox[{"\[ImaginaryI]", " ", "\[Theta]"}]], ")"}], "2"]}], 
-   TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "730cb1f0-fb40-47bf-b9dd-8eb95cd8b732"],
+   TraditionalForm]],ExpressionUUID->"12a10139-e423-4a15-9517-80d5eb27ae50"],
  ". Unfortunately the coefficients are complex.  The real version looks like \
 the best fit in the span of ",
  Cell[BoxData[
@@ -23882,15 +23984,17 @@ the best fit in the span of ",
       RowBox[{"3", "\[Theta]"}], ")"}], ",", 
      RowBox[{"sin", "(", 
       RowBox[{"3", "\[Theta]"}], ")"}]}], "}"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "1a6290a4-8cc4-4818-aa5b-0f16d0f0549a"],
- "."
+  ExpressionUUID->"f98fa1dc-4af7-4dcc-b6ab-ac356f029170"],
+ ".  Throwing away the middle of the DFT signal removes noise and gives the \
+best fit (in the least squares sense) of a few clean trigonometric \
+polynomials to the data. "
 }], "Text",
  CellChangeTimes->{{3.945335590894248*^9, 3.945336840768149*^9}, {
-  3.945338075082886*^9, 
-  3.945338226630862*^9}},ExpressionUUID->"c9bd442c-9558-48f5-b0d3-\
-7908942618c1"]
-}, Closed]],
+  3.945338075082886*^9, 3.945338226630862*^9}, {3.945440254415497*^9, 
+  3.9454402584716396`*^9}, {3.9454402930642548`*^9, 
+  3.945440325679177*^9}},ExpressionUUID->"2a701bd0-9223-4d7b-9ccf-\
+2a1158bc8e47"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -23943,14 +24047,13 @@ Cell[TextData[{
  CellChangeTimes->{{3.945338249208412*^9, 
   3.945338469114423*^9}},ExpressionUUID->"3dfa0661-3dbf-40d2-a8c6-\
 03e8a61c95fa"]
-}, Closed]]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 WindowToolbars->{"EditBar", "MultipurposeBar"},
-WindowSize->{1152, 615.6},
-WindowMargins->{{Automatic, -5.399999999999864}, {
-  Automatic, -5.3999999999999995`}},
+WindowSize->{1141, 580},
+WindowMargins->{{1630.5, Automatic}, {225, Automatic}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 Magnification:>1.5 Inherited,
 FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
@@ -23990,27 +24093,41 @@ Cell[21843, 644, 2405, 65, 328, "Input",ExpressionUUID->"52db9504-3085-40a7-b468
 Cell[24251, 711, 17176, 514, 433, "Output",ExpressionUUID->"22c3c8e3-3f90-4409-9b97-a437f036dc1a"]
 }, Open  ]],
 Cell[41442, 1228, 289, 7, 87, "Text",ExpressionUUID->"38e72f2c-47e6-4405-84ae-a38bab0af8a8"]
-}, Open  ]],
+}, Closed]],
 Cell[CellGroupData[{
-Cell[41768, 1240, 632, 14, 81, "Subsection",ExpressionUUID->"bd6bfadb-7a52-4a84-98b1-e5b156cda347"],
+Cell[41768, 1240, 632, 14, 55, "Subsection",ExpressionUUID->"bd6bfadb-7a52-4a84-98b1-e5b156cda347"],
 Cell[42403, 1256, 224, 4, 52, "Text",ExpressionUUID->"472449b0-24c4-447e-9652-8f43c34bcde2"],
 Cell[CellGroupData[{
 Cell[42652, 1264, 3848, 103, 416, "Input",ExpressionUUID->"e0303fe4-361d-42bd-ab9c-cac1f8ec2511"],
 Cell[46503, 1369, 1344623, 22330, 416, "Output",ExpressionUUID->"850bc381-2403-4d48-989a-3f8526c67e2f"]
 }, Open  ]],
 Cell[1391141, 23702, 247, 4, 52, "Text",ExpressionUUID->"8f3e3579-c94c-443d-8aa9-69bcc3d45312"],
-Cell[1391391, 23708, 590, 13, 121, "Text",ExpressionUUID->"24ee6883-6f22-4a6f-94a4-44abf1e68491"]
+Cell[1391391, 23708, 603, 14, 87, "Text",ExpressionUUID->"24ee6883-6f22-4a6f-94a4-44abf1e68491"],
+Cell[CellGroupData[{
+Cell[1392019, 23726, 854, 21, 48, "Item",ExpressionUUID->"096dfc47-af5b-41a2-8d50-48f2d783adb4"],
+Cell[1392876, 23749, 587, 14, 39, "Subitem",ExpressionUUID->"dbf3482b-2ed2-48c4-84e2-9456832c5081"],
+Cell[1393466, 23765, 583, 14, 39, "Subitem",ExpressionUUID->"e63bc64a-29c0-4b87-a323-b5d57d529266"]
+}, Open  ]],
+Cell[1394064, 23782, 485, 9, 48, "Item",ExpressionUUID->"e1317515-9fda-4af5-ab67-17c358acf171"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1392018, 23726, 417, 6, 81, "Subsection",ExpressionUUID->"09c15f91-8ea2-431b-8e2c-ef4360d87b0f"],
-Cell[1392438, 23734, 2221, 67, 260, "Text",ExpressionUUID->"c2012f0c-6994-49dc-8643-2c5830191f34"],
-Cell[1394662, 23803, 1213, 31, 122, "Text",ExpressionUUID->"633d23de-bf14-4676-b44f-a891c4f9ea3f"],
-Cell[1395878, 23836, 1976, 55, 122, "Text",ExpressionUUID->"c9bd442c-9558-48f5-b0d3-7908942618c1"]
-}, Closed]],
+Cell[1394586, 23796, 228, 4, 81, "Subsection",ExpressionUUID->"ea7213d3-7c81-47b4-83e2-9bf28e8819ce"],
+Cell[1394817, 23802, 265, 6, 52, "Text",ExpressionUUID->"0205fa85-d8e8-43cf-a9ff-17fa60137ef4"],
+Cell[1395085, 23810, 168, 3, 52, "Text",ExpressionUUID->"23413c7f-85c4-4780-9d93-a801ef68ac61"],
+Cell[1395256, 23815, 162, 3, 52, "Text",ExpressionUUID->"8408824e-a67e-4c8b-a18c-9e6f02b829db"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[1397891, 23896, 457, 7, 55, "Subsection",ExpressionUUID->"2d586b37-6a03-4e00-8427-68b66625d601"],
-Cell[1398351, 23905, 1221, 39, 55, "Text",ExpressionUUID->"3dfa0661-3dbf-40d2-a8c6-03e8a61c95fa"]
-}, Closed]]
+Cell[1395455, 23823, 417, 6, 81, "Subsection",ExpressionUUID->"09c15f91-8ea2-431b-8e2c-ef4360d87b0f"],
+Cell[1395875, 23831, 2101, 62, 295, "Text",ExpressionUUID->"c2012f0c-6994-49dc-8643-2c5830191f34"],
+Cell[1397979, 23895, 1199, 30, 122, "Text",ExpressionUUID->"633d23de-bf14-4676-b44f-a891c4f9ea3f"],
+Cell[1399181, 23927, 586, 14, 87, "Text",ExpressionUUID->"c9bd442c-9558-48f5-b0d3-7908942618c1"],
+Cell[1399770, 23943, 162, 3, 52, "Text",ExpressionUUID->"a6885401-b0ac-469a-a025-37992e36dbf2"],
+Cell[1399935, 23948, 1868, 47, 191, "Text",ExpressionUUID->"2a701bd0-9223-4d7b-9ccf-2a1158bc8e47"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1401840, 24000, 457, 7, 81, "Subsection",ExpressionUUID->"2d586b37-6a03-4e00-8427-68b66625d601"],
+Cell[1402300, 24009, 1221, 39, 90, "Text",ExpressionUUID->"3dfa0661-3dbf-40d2-a8c6-03e8a61c95fa"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }
