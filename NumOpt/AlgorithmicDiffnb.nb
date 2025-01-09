@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    446015,       9546]
-NotebookOptionsPosition[    442417,       9483]
-NotebookOutlinePosition[    442947,       9502]
-CellTagsIndexPosition[    442904,       9499]
+NotebookDataLength[    449832,       9651]
+NotebookOptionsPosition[    446002,       9584]
+NotebookOutlinePosition[    446532,       9603]
+CellTagsIndexPosition[    446489,       9600]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -9477,6 +9477,107 @@ and then fixed it! It does seem mandatory to ignore this difficulty at first. \
   3.9454216989450707`*^9, 
   3.945421943512991*^9}},ExpressionUUID->"1abf6741-8963-4f28-b70b-\
 533664186e66"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Mixing it up", "Subsection",
+ CellChangeTimes->{{3.9443952047499743`*^9, 3.944395213314677*^9}, {
+  3.9443967397979164`*^9, 3.944396740587636*^9}, {3.945420391866824*^9, 
+  3.9454204173032103`*^9}, {3.945421188690527*^9, 3.9454212078893323`*^9}, {
+  3.94542208858587*^9, 
+  3.9454220930818796`*^9}},ExpressionUUID->"7f85da55-a1b1-4479-a531-\
+e18bf490f9cf"],
+
+Cell[TextData[{
+ "In optimization it is relatively common to compute second derivatives of an \
+objective function\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", ":", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}], "->", 
+    "\[DoubleStruckCapitalR]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "7a879d49-947a-40d4-81e2-480b4b83f241"],
+ "\t\nusing \[OpenCurlyDoubleQuote]forward over reverse\
+\[CloseCurlyDoubleQuote].  This does reverse mode to compute the entire \
+gradient \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"g", "=", 
+    RowBox[{
+     RowBox[{"\[Del]", 
+      RowBox[{"f", ":", 
+       SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}]}], "->", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3d11eff3-9a22-45d3-9a97-6a83cdc72eaf"],
+ "\nand then does forward mode to compute directional derivatives of the \
+gradient.  If you compute the directional derivatives in the directions ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["e", "1"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "5f53f037-33c9-4f86-bf0e-7f24b7058866"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["e", "2"], ",", "\[Ellipsis]", ",", 
+    SubscriptBox["e", "n"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "b8862e1f-72c8-4461-a209-739b9cd2984a"],
+ " you get the Hessian\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"H", "=", 
+    RowBox[{
+     RowBox[{"[", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[PartialD]", "1"], "g"}], ",", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "2"], "g"}], ",", "\[Ellipsis]", ",", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "n"], "g"}]}], "]"}], "\[Element]", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", 
+      RowBox[{"n", "\[Times]", "n"}]]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "fa5fc2ff-5052-46fd-922c-22c1b693c3d6"],
+ "\nOne of my interests is sampling the Hessian by computing a selection of \
+directions \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"[", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        SubscriptBox["u", "1"]], "g"}], ",", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        SubscriptBox["u", "2"]], "g"}], ",", "\[Ellipsis]", ",", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        SubscriptBox["u", "s"]], "g"}]}], "]"}], "=", 
+    RowBox[{
+     RowBox[{"H", ".", 
+      RowBox[{"[", 
+       RowBox[{
+        SubscriptBox["u", "1"], ",", 
+        SubscriptBox["u", "2"], ",", "\[Ellipsis]", ",", 
+        SubscriptBox["u", "s"]}], "]"}]}], "\[Element]", 
+     SuperscriptBox["\[DoubleStruckCapitalR]", 
+      RowBox[{"n", "\[Times]", "s"}]]}]}], TraditionalForm]],ExpressionUUID->
+  "e712d011-443d-49df-8984-a869258f64cd"],
+ "\nOf course the question is what do you do with this accurate set of mixed \
+directional derivatives.  "
+}], "Text",
+ CellChangeTimes->{{3.9454212144637194`*^9, 3.9454213412070265`*^9}, {
+  3.9454220965551744`*^9, 
+  3.9454225774674625`*^9}},ExpressionUUID->"d4b240fb-b367-4aa8-8901-\
+ce959562ba11"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -9545,6 +9646,10 @@ Cell[439584, 9409, 329, 5, 81, "Subsection",ExpressionUUID->"766f80d9-c561-44e7-
 Cell[439916, 9416, 187, 3, 52, "Text",ExpressionUUID->"0d436bb8-4f75-498f-ad08-b5e441b7f173"],
 Cell[440106, 9421, 450, 8, 121, "Text",ExpressionUUID->"c033577a-eda3-4839-9734-6c1648a15e70"],
 Cell[440559, 9431, 1818, 47, 328, "Text",ExpressionUUID->"1abf6741-8963-4f28-b70b-533664186e66"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[442414, 9483, 362, 6, 81, "Subsection",ExpressionUUID->"7f85da55-a1b1-4479-a531-e18bf490f9cf"],
+Cell[442779, 9491, 3183, 88, 364, "Text",ExpressionUUID->"d4b240fb-b367-4aa8-8901-ce959562ba11"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
