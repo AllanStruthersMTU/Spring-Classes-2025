@@ -1,0 +1,196 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6510,        188]
+NotebookOptionsPosition[      5810,        167]
+NotebookOutlinePosition[      6338,        186]
+CellTagsIndexPosition[      6295,        183]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Trig Identities ", "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.944566660315626*^9, 3.9445666686709223`*^9}, {
+  3.944911018174672*^9, 3.944911054950674*^9}, {3.9449111181229315`*^9, 
+  3.944911124120557*^9}, {3.944913988985866*^9, 3.944913990264922*^9}, {
+  3.9454389298937893`*^9, 
+  3.9454389427418385`*^9}},ExpressionUUID->"8e791b87-b8fe-4d47-a58b-\
+235908e2ee0d"],
+
+Cell[TextData[{
+ "We know \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"cos", "(", 
+        SubscriptBox["\[Theta]", "1"], ")"}], "+", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        RowBox[{"sin", "(", 
+         SubscriptBox["\[Theta]", "1"], ")"}]}]}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"cos", "(", 
+        SubscriptBox["\[Theta]", "2"], ")"}], "+", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        RowBox[{"sin", "(", 
+         SubscriptBox["\[Theta]", "2"], ")"}]}]}], ")"}]}], "=", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SubscriptBox["\[Theta]", "1"]}]], 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SubscriptBox["\[Theta]", "2"]}]]}], "=", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"\[ImaginaryI]", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         SubscriptBox["\[Theta]", "1"], "+", 
+         SubscriptBox["\[Theta]", "2"]}], ")"}]}]]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "75ce9c74-b2d2-4e52-8f79-0e28e6046854"],
+ "\nso\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"cos", "(", 
+       SubscriptBox["\[Theta]", "1"], ")"}], " ", 
+      RowBox[{"cos", "(", 
+       SubscriptBox["\[Theta]", "2"], ")"}]}], "-", 
+     RowBox[{
+      RowBox[{"sin", "(", 
+       SubscriptBox["\[Theta]", "1"], ")"}], " ", 
+      RowBox[{"sin", "(", 
+       SubscriptBox["\[Theta]", "2"], ")"}]}], "+", 
+     RowBox[{"\[ImaginaryI]", "(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"sin", "(", 
+         SubscriptBox["\[Theta]", "1"], ")"}], " ", 
+        RowBox[{"cos", "(", 
+         SubscriptBox["\[Theta]", "2"], ")"}]}], "+", 
+       RowBox[{
+        RowBox[{"sin", "(", 
+         SubscriptBox["\[Theta]", "2"], ")"}], " ", 
+        RowBox[{"cos", "(", 
+         SubscriptBox["\[Theta]", "1"], ")"}]}]}], ")"}]}], "=", 
+    RowBox[{
+     RowBox[{"cos", "(", 
+      RowBox[{
+       SubscriptBox["\[Theta]", "1"], "+", 
+       SubscriptBox["\[Theta]", "2"]}], ")"}], "+", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      RowBox[{"sin", "(", 
+       RowBox[{
+        SubscriptBox["\[Theta]", "1"], "+", 
+        SubscriptBox["\[Theta]", "2"]}], ")"}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ed1f24f5-2b1b-4665-be49-d556d9c79fdd"],
+ ".\nand we get two trig identities for free. "
+}], "Text",
+ CellChangeTimes->{{3.944911060535827*^9, 3.944911208504713*^9}, {
+  3.944911240842298*^9, 3.944911348135909*^9}, {3.9449117435116444`*^9, 
+  3.9449117435116444`*^9}, {3.9449118167113266`*^9, 3.944912173882258*^9}, {
+  3.944912229676547*^9, 3.9449127268568745`*^9}, {3.9449127574482365`*^9, 
+  3.944912930849654*^9}, {3.9449129773633995`*^9, 3.9449131828622656`*^9}, {
+  3.9449139514417777`*^9, 3.944913980465335*^9}, {3.9454389500796647`*^9, 
+  3.9454390697825575`*^9}, {3.945439147815873*^9, 3.945439158305151*^9}, {
+  3.945439211937298*^9, 
+  3.9454393214466934`*^9}},ExpressionUUID->"89056b9e-83bf-4d2d-a088-\
+ac520d8305d1"],
+
+Cell[TextData[{
+ "The triple angle formulas are easy!\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"\[ImaginaryI]", " ", "3", " ", "\[Theta]"}]], "=", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"\[ImaginaryI]", " ", "\[Theta]"}]], ")"}], "3"], "=", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"cos", "(", "\[Theta]", ")"}], "+", 
+         RowBox[{"\[ImaginaryI]", " ", 
+          RowBox[{"sin", "(", "\[Theta]", ")"}]}]}], ")"}], "3"], "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["cos", "3"], "(", "\[Theta]", ")"}], "-", 
+         RowBox[{"3", " ", 
+          RowBox[{
+           SuperscriptBox["sin", "2"], "(", "\[Theta]", ")"}], " ", 
+          RowBox[{"cos", "(", "\[Theta]", ")"}]}]}], ")"}], "+", 
+       RowBox[{"\[ImaginaryI]", "(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"sin", "(", "\[Theta]", ")"}], " ", 
+          RowBox[{
+           SuperscriptBox["cos", "2"], "(", "\[Theta]", ")"}]}], "-", 
+         RowBox[{
+          SuperscriptBox["sin", "3"], "(", "\[Theta]", ")"}]}], ")"}]}]}]}]}],
+    TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "a6870b1d-25de-479f-bba8-e0192a766571"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.9454393383269176`*^9, 3.9454394271207533`*^9}, {
+  3.9454394683693714`*^9, 
+  3.9454395342063766`*^9}},ExpressionUUID->"eb0db8ec-c816-451e-88ec-\
+cb6fa0383311"]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{1467.5, 580},
+WindowMargins->{{1231.5, Automatic}, {232.5, Automatic}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification:>1.5 Inherited,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9bfd1aa2-b47c-463a-8051-b65fe014f72b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 514, 8, 146, "Title",ExpressionUUID->"8e791b87-b8fe-4d47-a58b-235908e2ee0d"],
+Cell[1097, 32, 3135, 86, 190, "Text",ExpressionUUID->"89056b9e-83bf-4d2d-a088-ac520d8305d1"],
+Cell[4235, 120, 1559, 44, 88, "Text",ExpressionUUID->"eb0db8ec-c816-451e-88ec-cb6fa0383311"]
+}, Open  ]]
+}
+]
+*)
+
