@@ -1,0 +1,159 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5218,        151]
+NotebookOptionsPosition[      4488,        129]
+NotebookOutlinePosition[      5046,        149]
+CellTagsIndexPosition[      5003,        146]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Differentiation and the CR Equations", "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+   3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+   3.9443940027240753`*^9}, {3.944566660315626*^9, 3.9445666686709223`*^9}, {
+   3.9451640246777716`*^9, 3.945164029754927*^9}, 3.945164250898985*^9, {
+   3.9459438579275284`*^9, 3.9459439139570093`*^9}, {3.94594397025324*^9, 
+   3.9459439787661915`*^9}},ExpressionUUID->"8e791b87-b8fe-4d47-a58b-\
+235908e2ee0d"],
+
+Cell[TextData[{
+ "A complex function ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", ":", "\[DoubleStruckCapitalC]"}], "->", 
+    "\[DoubleStruckCapitalC]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "b2c50a58-6334-4e90-9eeb-60e213d984c4"],
+ " is differentiable at z if \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "'"}], "[", "z", "]"}], "=", 
+    RowBox[{
+     SubscriptBox["lim", 
+      RowBox[{"\[CapitalDelta]z", "->", "0"}]], 
+     FractionBox[
+      RowBox[{
+       RowBox[{"f", "[", 
+        RowBox[{"z", "+", "\[CapitalDelta]z"}], "]"}], "-", 
+       RowBox[{"f", "[", "z", "]"}]}], "\[CapitalDelta]z"]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "88ed3f7f-fed8-4455-ad5e-ad7ba324ecc0"],
+ "\nexists. In \[DoubleStruckCapitalR] (aka calculus one) you had two ways to \
+shrink to zero ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[CapitalDelta]x", "->", 
+    SuperscriptBox["0", "+"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ee515329-8430-4e14-bddb-47fcb5517a72"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[CapitalDelta]x", "->", 
+    SuperscriptBox["0", "-"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "787491c5-dabc-4128-8b8d-b59b90614d48"],
+ ". In \[DoubleStruckCapitalC] (aka complex analysis) there are lots of ways \
+to shrink ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[CapitalDelta]x", "+", 
+    RowBox[{"\[ImaginaryI]", " ", "\[CapitalDelta]y"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "aa9410c5-f362-4f6f-861d-a9be1496add6"],
+ " to zero! The definition of derivative means that all the different ways \
+must give the same limit. "
+}], "Text",
+ CellChangeTimes->{{3.945943987639233*^9, 3.9459440248726935`*^9}, {
+  3.9459440617234306`*^9, 
+  3.945944413208781*^9}},ExpressionUUID->"1843fe47-0a6b-4ffa-9972-\
+157a98dd9ec3"],
+
+Cell[TextData[{
+ " Two of the many are\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[CapitalDelta]x", "+", 
+     RowBox[{"\[ImaginaryI]", " ", "0"}]}], "\[Rule]", "0"}], 
+   TraditionalForm]],ExpressionUUID->"56be569c-b672-4786-96d6-6bcbc1c93a65"],
+ "\nand \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"0", "+", 
+     RowBox[{"\[ImaginaryI]", " ", "\[CapitalDelta]y"}]}], "\[Rule]", "0"}], 
+   TraditionalForm]],ExpressionUUID->"6169a695-0134-42b0-b4ca-cc64d6d20fea"],
+ ".\nIf ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", "(", "z", ")"}], "=", 
+    RowBox[{
+     RowBox[{"u", "(", 
+      RowBox[{"x", ",", "y"}], ")"}], "+", 
+     RowBox[{"\[ImaginaryI]", " ", 
+      RowBox[{"v", "(", 
+       RowBox[{"x", ",", "y"}], ")"}]}]}]}], TraditionalForm]],ExpressionUUID->
+  "b03986ce-d92c-4ccd-85ee-4f9eafdacca8"],
+ " the condition that these two limits match gives partial differential \
+equations linking the real and imaginary parts of ",
+ Cell[BoxData[
+  FormBox["f", TraditionalForm]],ExpressionUUID->
+  "8cc117a9-f0ff-4efd-ab28-bc4610cac2ea"],
+ ".  These are the famous Cauchy-Reimann equations.\n\
+https://en.wikipedia.org/wiki/Cauchy%E2%80%93Riemann_equations"
+}], "Text",
+ CellChangeTimes->{{3.945943987639233*^9, 3.9459440248726935`*^9}, {
+  3.9459440617234306`*^9, 3.945944570968589*^9}, {3.9459446020650816`*^9, 
+  3.945944610735243*^9}},ExpressionUUID->"1f71db3f-d254-4351-a088-\
+5639e61fa73f"]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{1152, 615.6},
+WindowMargins->{{Automatic, -5.399999999999864}, {
+  Automatic, -5.3999999999999995`}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification:>1.5 Inherited,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"97ecfd17-5ec0-43f5-b5b4-b94319100dd3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 513, 7, 146, "Title",ExpressionUUID->"8e791b87-b8fe-4d47-a58b-235908e2ee0d"],
+Cell[1096, 31, 1933, 55, 195, "Text",ExpressionUUID->"1843fe47-0a6b-4ffa-9972-157a98dd9ec3"],
+Cell[3032, 88, 1440, 38, 259, "Text",ExpressionUUID->"1f71db3f-d254-4351-a088-5639e61fa73f"]
+}, Open  ]]
+}
+]
+*)
+
