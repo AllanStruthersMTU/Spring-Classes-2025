@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16558,        495]
-NotebookOptionsPosition[     15188,        462]
-NotebookOutlinePosition[     15710,        481]
-CellTagsIndexPosition[     15667,        478]
+NotebookDataLength[     16234,        483]
+NotebookOptionsPosition[     14865,        450]
+NotebookOutlinePosition[     15386,        469]
+CellTagsIndexPosition[     15343,        466]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -137,9 +137,9 @@ https://en.wikipedia.org/wiki/Cauchy%E2%80%93Riemann_equations"
 
 Cell[CellGroupData[{
 
-Cell["Cauchy-Reimann", "Section",
- CellChangeTimes->{{3.9461139161038647`*^9, 
-  3.9461139323035173`*^9}},ExpressionUUID->"5922c68c-6c46-43bb-805e-\
+Cell["Cauchy-Riemann", "Section",
+ CellChangeTimes->{{3.9461139161038647`*^9, 3.9461139323035173`*^9}, 
+   3.9461191454996505`*^9},ExpressionUUID->"5922c68c-6c46-43bb-805e-\
 bda25f1d8f81"],
 
 Cell[TextData[{
@@ -202,8 +202,7 @@ Cell[TextData[{
         SubscriptBox["\[PartialD]", "x"], 
         RowBox[{"v", "(", 
          RowBox[{"x", ",", "y"}], ")"}]}]}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "f290c6ee-5cba-444f-aa53-aaa446569750"],
+  ExpressionUUID->"f290c6ee-5cba-444f-aa53-aaa446569750"],
  "\nwhile the second ",
  Cell[BoxData[
   FormBox[
@@ -252,8 +251,7 @@ Cell[TextData[{
        SubscriptBox["\[PartialD]", "y"], 
        RowBox[{"v", "(", 
         RowBox[{"x", ",", "y"}], ")"}]}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "38edb673-7d2e-4eec-b108-c66c1100aeaf"],
+  ExpressionUUID->"38edb673-7d2e-4eec-b108-c66c1100aeaf"],
  ".\nFor the limit to make sense these must be equals so\n\t",
  Cell[BoxData[
   FormBox[
@@ -278,8 +276,7 @@ Cell[TextData[{
      RowBox[{
       SubscriptBox["\[PartialD]", "y"], 
       RowBox[{"v", "(", 
-       RowBox[{"x", ",", "y"}], ")"}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+       RowBox[{"x", ",", "y"}], ")"}]}]}]}], TraditionalForm]],ExpressionUUID->
   "d342dfb5-b516-4b7c-8ae0-e5b992736a27"],
  "\nor \n\t",
  Cell[BoxData[
@@ -306,14 +303,13 @@ Cell[TextData[{
         SubscriptBox["\[PartialD]", "y"], 
         RowBox[{"u", "(", 
          RowBox[{"x", ",", "y"}], ")"}]}]}]}
-    }], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    }], TraditionalForm]],ExpressionUUID->
   "b3717730-3ce1-47c0-9ec3-764b28413540"],
- "\nThese are the Cauchy-Reimann equations. "
+ "\nThese are the Cauchy-Riemann equations. "
 }], "Text",
  CellChangeTimes->{{3.946113525774822*^9, 3.9461138967799892`*^9}, {
-  3.9461139749908075`*^9, 
-  3.946113977168083*^9}},ExpressionUUID->"83a5230f-6074-429d-870a-\
+   3.9461139749908075`*^9, 3.946113977168083*^9}, 
+   3.946119151126904*^9},ExpressionUUID->"83a5230f-6074-429d-870a-\
 343354b2f75c"]
 }, Open  ]],
 
@@ -341,14 +337,12 @@ Cell[TextData[{
  Cell[BoxData[
   FormBox[GridBox[{
      {"\[CapitalDelta]u", "=", "0"}
-    }], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    }], TraditionalForm]],ExpressionUUID->
   "f852f344-0b32-484f-9702-d072bc9c1738"],
  "  and ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"\[CapitalDelta]v", "=", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"\[CapitalDelta]v", "=", "0"}], TraditionalForm]],ExpressionUUID->
   "4f5f1f1c-cb61-4f65-bba8-ad62d927d545"],
  "\nbecause by CR\n\t",
  Cell[BoxData[
@@ -395,8 +389,7 @@ Cell[TextData[{
          SubscriptBox["\[PartialD]", "xy"], 
          RowBox[{"u", "(", 
           RowBox[{"x", ",", "y"}], ")"}]}]}]}]}
-    }], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    }], TraditionalForm]],ExpressionUUID->
   "25de8755-3370-4593-bbb1-8fc3785fc8cc"],
  "\nand since ",
  Cell[BoxData[
@@ -404,8 +397,7 @@ Cell[TextData[{
    RowBox[{
     SubscriptBox["\[PartialD]", "xy"], 
     RowBox[{"=", 
-     SubscriptBox["\[PartialD]", "yx"]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+     SubscriptBox["\[PartialD]", "yx"]}]}], TraditionalForm]],ExpressionUUID->
   "ef235af5-9c87-4b49-b2e7-56451abb3bd1"],
  " for smooth functions  we have \n\t",
  Cell[BoxData[
@@ -416,13 +408,11 @@ Cell[TextData[{
     RowBox[{
      SubscriptBox["\[PartialD]", "yy"], GridBox[{
        {"v", "=", "\[CapitalDelta]v", "=", "0"}
-      }]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+      }]}]}], TraditionalForm]],ExpressionUUID->
   "a06d216e-f4dc-4575-9b3b-623e999a6a1e"],
  ".\nThe version for the harmonic conjugate ",
  Cell[BoxData[
-  FormBox["u", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["u", TraditionalForm]],ExpressionUUID->
   "5153afe0-bbe7-4130-b218-dfe6e96727db"],
  " is the same.   "
 }], "Text",
@@ -436,16 +426,14 @@ Cell[TextData[{
  "The harmonic equation ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"\[CapitalDelta]u", "=", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"\[CapitalDelta]u", "=", "0"}], TraditionalForm]],ExpressionUUID->
   "6bb7fbdb-df89-4ebc-acbd-ded24244c33d"],
  " is the first non 1-D Partial Differential Equation (PDE) you learn how to \
 solve. It turns up in 2D fluid flow, 2D Electricity and Magnetism, \
 aerodynamics, and a host of other places. Harmonic functions satisfy ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"\[CapitalDelta]u", "=", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"\[CapitalDelta]u", "=", "0"}], TraditionalForm]],ExpressionUUID->
   "d55133a3-0830-48cf-ae2e-b9ed5ca5c023"],
  " more details are at  https://en.wikipedia.org/wiki/Harmonic_function Until \
 1960 complex variable techniques were very common in designing all sorts of \
@@ -461,8 +449,8 @@ computing the lift on a 2D aerofoil.  "
 }, Open  ]]
 },
 WindowToolbars->{"EditBar", "MultipurposeBar"},
-WindowSize->{1141, 580},
-WindowMargins->{{1473, Automatic}, {204, Automatic}},
+WindowSize->{1141.2, 604.8},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 Magnification:>1.5 Inherited,
 FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
@@ -488,13 +476,13 @@ Cell[1281, 38, 1933, 55, 195, "Text",ExpressionUUID->"1843fe47-0a6b-4ffa-9972-15
 Cell[3217, 95, 1495, 39, 259, "Text",ExpressionUUID->"1f71db3f-d254-4351-a088-5639e61fa73f"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4749, 139, 163, 3, 100, "Section",ExpressionUUID->"5922c68c-6c46-43bb-805e-bda25f1d8f81"],
-Cell[4915, 144, 5438, 172, 370, "Text",ExpressionUUID->"83a5230f-6074-429d-870a-343354b2f75c"]
+Cell[4749, 139, 188, 3, 100, "Section",ExpressionUUID->"5922c68c-6c46-43bb-805e-bda25f1d8f81"],
+Cell[4940, 144, 5338, 168, 370, "Text",ExpressionUUID->"83a5230f-6074-429d-870a-343354b2f75c"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10390, 321, 167, 3, 100, "Section",ExpressionUUID->"164fef27-0b00-4801-a843-d76ee7c0b270"],
-Cell[10560, 326, 3429, 106, 323, "Text",ExpressionUUID->"d32e35ef-e983-44c5-89da-678d862c8d28"],
-Cell[13992, 434, 1168, 24, 225, "Text",ExpressionUUID->"3b038a02-6a72-4fd3-a350-05544e3298b4"]
+Cell[10315, 317, 167, 3, 100, "Section",ExpressionUUID->"164fef27-0b00-4801-a843-d76ee7c0b270"],
+Cell[10485, 322, 3243, 100, 323, "Text",ExpressionUUID->"d32e35ef-e983-44c5-89da-678d862c8d28"],
+Cell[13731, 424, 1106, 22, 225, "Text",ExpressionUUID->"3b038a02-6a72-4fd3-a350-05544e3298b4"]
 }, Open  ]]
 }, Open  ]]
 }
