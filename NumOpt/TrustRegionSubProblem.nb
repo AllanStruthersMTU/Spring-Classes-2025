@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17161,        491]
-NotebookOptionsPosition[     15103,        449]
-NotebookOutlinePosition[     15629,        468]
-CellTagsIndexPosition[     15586,        465]
+NotebookDataLength[     17862,        506]
+NotebookOptionsPosition[     15674,        461]
+NotebookOutlinePosition[     16200,        480]
+CellTagsIndexPosition[     16157,        477]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -82,6 +82,17 @@ SIAM Journal on Optimization 27.1 (2017): 269-291.\
    3.9464635230390525`*^9}, {3.946463567209669*^9, 3.9464635795836344`*^9}, 
    3.946463611565501*^9},ExpressionUUID->"333077d3-2330-4a50-a57d-\
 0125f81e3a91"],
+
+Cell[CellGroupData[{
+
+Cell["Trust Region Newton Algorithm", "Subtitle",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.946463319261049*^9, 
+  3.946463329254393*^9}, {3.9464683533988256`*^9, 
+  3.946468358320442*^9}},ExpressionUUID->"46cb9971-bb9d-406e-9b1b-\
+03f87b737f51"],
 
 Cell[TextData[{
  "Here is a single step of a plausible algorithm.  It is a Trust Region \
@@ -165,8 +176,8 @@ Newton algorithm with a radius ",
    RowBox[{"||", "g", "||"}], TraditionalForm]],
   FormatType->TraditionalForm,ExpressionUUID->
   "c0ecf7fc-3f79-4df2-b17c-928597e3f157"],
- " was less than some tolerance.  The only thing that is not specified is how \
-to choose/update the trust region radius ",
+ " was less than some tolerance.  The only thing that is not specified here \
+is how to choose/update the trust region radius ",
  Cell[BoxData[
   FormBox[
    SubscriptBox["\[CapitalDelta]", "k"], TraditionalForm]],
@@ -174,8 +185,8 @@ to choose/update the trust region radius ",
   "197cc751-32d3-4210-af40-4a54be85fb58"]
 }], "Text",
  CellChangeTimes->{{3.946465861481419*^9, 3.946466340115288*^9}, {
-  3.946466565425431*^9, 
-  3.9464665683867893`*^9}},ExpressionUUID->"6a78a89e-32d1-445c-902d-\
+  3.946466565425431*^9, 3.9464665683867893`*^9}, {3.9464683187827177`*^9, 
+  3.946468319635134*^9}},ExpressionUUID->"6a78a89e-32d1-445c-902d-\
 889d7cd41b58"],
 
 Cell[CellGroupData[{
@@ -446,6 +457,7 @@ eigenvalue problem by a few steps of the power method.!\
 f3a7479d51c9"]
 }, Open  ]]
 }, Open  ]]
+}, Open  ]]
 },
 WindowToolbars->{"EditBar", "MultipurposeBar"},
 WindowSize->{982.5, 736},
@@ -471,26 +483,29 @@ Cell[CellGroupData[{
 Cell[580, 22, 421, 6, 146, "Title",ExpressionUUID->"8e791b87-b8fe-4d47-a58b-235908e2ee0d"],
 Cell[1004, 30, 1475, 42, 161, "Text",ExpressionUUID->"52d2d1c4-50f1-4cf8-95db-0b4fd6379271"],
 Cell[2482, 74, 501, 9, 121, "Text",ExpressionUUID->"333077d3-2330-4a50-a57d-0125f81e3a91"],
-Cell[2986, 85, 2978, 93, 369, "Text",ExpressionUUID->"6a78a89e-32d1-445c-902d-889d7cd41b58"],
 Cell[CellGroupData[{
-Cell[5989, 182, 364, 6, 100, "Section",ExpressionUUID->"166232e8-0c31-4027-9160-5de5902d8361"],
-Cell[6356, 190, 178, 3, 52, "Text",ExpressionUUID->"2c3f69e6-de9b-441c-91e5-128eda1e9da6"],
+Cell[3008, 87, 481, 7, 79, "Subtitle",ExpressionUUID->"46cb9971-bb9d-406e-9b1b-03f87b737f51"],
+Cell[3492, 96, 3031, 93, 369, "Text",ExpressionUUID->"6a78a89e-32d1-445c-902d-889d7cd41b58"],
 Cell[CellGroupData[{
-Cell[6559, 197, 2369, 73, 243, "Input",ExpressionUUID->"894faed2-0efd-460c-9e4d-2b6e88435202"],
-Cell[8931, 272, 557, 11, 52, "Output",ExpressionUUID->"648ccf69-7542-46c1-8fa0-aa52d691ae7b"]
+Cell[6548, 193, 364, 6, 100, "Section",ExpressionUUID->"166232e8-0c31-4027-9160-5de5902d8361"],
+Cell[6915, 201, 178, 3, 52, "Text",ExpressionUUID->"2c3f69e6-de9b-441c-91e5-128eda1e9da6"],
+Cell[CellGroupData[{
+Cell[7118, 208, 2369, 73, 243, "Input",ExpressionUUID->"894faed2-0efd-460c-9e4d-2b6e88435202"],
+Cell[9490, 283, 557, 11, 52, "Output",ExpressionUUID->"648ccf69-7542-46c1-8fa0-aa52d691ae7b"]
 }, Open  ]],
-Cell[9503, 286, 174, 3, 52, "Text",ExpressionUUID->"21493e9d-fb32-42de-a02a-15e62cdceb8c"],
+Cell[10062, 297, 174, 3, 52, "Text",ExpressionUUID->"21493e9d-fb32-42de-a02a-15e62cdceb8c"],
 Cell[CellGroupData[{
-Cell[9702, 293, 2865, 89, 387, "Input",ExpressionUUID->"f51890a8-1b58-4f17-9b78-a4526dcc0433"],
-Cell[12570, 384, 355, 8, 52, "Output",ExpressionUUID->"c9efac74-8c4b-466d-a5a1-790be8daf643"],
-Cell[12928, 394, 334, 7, 52, "Output",ExpressionUUID->"8926ec5d-fc7b-4750-aed1-d8aa97f3883b"]
+Cell[10261, 304, 2865, 89, 387, "Input",ExpressionUUID->"f51890a8-1b58-4f17-9b78-a4526dcc0433"],
+Cell[13129, 395, 355, 8, 52, "Output",ExpressionUUID->"c9efac74-8c4b-466d-a5a1-790be8daf643"],
+Cell[13487, 405, 334, 7, 52, "Output",ExpressionUUID->"8926ec5d-fc7b-4750-aed1-d8aa97f3883b"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13311, 407, 412, 6, 100, "Section",ExpressionUUID->"27cb510c-e6b9-4d50-8000-425c054aa9bc"],
-Cell[13726, 415, 331, 7, 52, "Text",ExpressionUUID->"1511b4ec-b889-4395-8738-44c4703bef84"],
-Cell[14060, 424, 378, 8, 121, "Text",ExpressionUUID->"08907535-f20f-4b50-9106-f8e5183459a8"],
-Cell[14441, 434, 634, 11, 156, "Text",ExpressionUUID->"ace29ca6-27e2-4587-99d4-f3a7479d51c9"]
+Cell[13870, 418, 412, 6, 100, "Section",ExpressionUUID->"27cb510c-e6b9-4d50-8000-425c054aa9bc"],
+Cell[14285, 426, 331, 7, 52, "Text",ExpressionUUID->"1511b4ec-b889-4395-8738-44c4703bef84"],
+Cell[14619, 435, 378, 8, 121, "Text",ExpressionUUID->"08907535-f20f-4b50-9106-f8e5183459a8"],
+Cell[15000, 445, 634, 11, 156, "Text",ExpressionUUID->"ace29ca6-27e2-4587-99d4-f3a7479d51c9"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }
