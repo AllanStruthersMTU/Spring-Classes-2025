@@ -1,0 +1,403 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14082,        395]
+NotebookOptionsPosition[     12122,        354]
+NotebookOutlinePosition[     12648,        373]
+CellTagsIndexPosition[     12605,        370]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Trust Region SubProblem", "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.946463319261049*^9, 
+  3.946463329254393*^9}},ExpressionUUID->"8e791b87-b8fe-4d47-a58b-\
+235908e2ee0d"],
+
+Cell[TextData[{
+ "We are going to need to repeatedly ",
+ StyleBox["approximately",
+  FontVariations->{"Underline"->True}],
+ " solve\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["argmin", 
+     RowBox[{
+      SqrtBox[
+       RowBox[{"p", ".", "B", ".", "p"}]], "\[LessEqual]", 
+      "\[CapitalDelta]"}]], "(", 
+    RowBox[{
+     RowBox[{"g", ".", "p"}], "+", 
+     RowBox[{"0.5", 
+      RowBox[{"p", ".", "H", ".", "p"}]}]}], ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "6cc5073b-f7f0-4b5a-82c4-519bd5e4612f"],
+ "\nin our algorithms where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"g", "\[Element]", 
+    SuperscriptBox["\[DoubleStruckCapitalR]", "n"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "a6d5485f-f370-487f-9d24-50c054f896dd"],
+ " with B and H ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "\[Times]", "n"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "1075ac70-199f-4cce-ac3c-460da61c5336"],
+ " symmetric matrices with ",
+ Cell[BoxData[
+  FormBox["B", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ded82c72-f898-4980-b4aa-de8d863d5320"],
+ " positive definite. A simple accurate algorithm is described in "
+}], "Text",
+ CellChangeTimes->{{3.945419713648871*^9, 3.9454199185364113`*^9}, {
+  3.9464633331107817`*^9, 3.9464635129001474`*^9}, {3.9464635836155295`*^9, 
+  3.946463606509431*^9}},ExpressionUUID->"52d2d1c4-50f1-4cf8-95db-\
+0b4fd6379271"],
+
+Cell["\<\
+Adachi, S., Iwata, S., Nakatsukasa, Y., & Takeda, A.
+Solving the trust-region subproblem by a generalized eigenvalue problem.
+SIAM Journal on Optimization 27.1 (2017): 269-291.\
+\>", "Text",
+ CellChangeTimes->{{3.945419713648871*^9, 3.945419927295216*^9}, {
+   3.946463432437645*^9, 3.946463433245592*^9}, {3.9464635186937656`*^9, 
+   3.9464635230390525`*^9}, {3.946463567209669*^9, 3.9464635795836344`*^9}, 
+   3.946463611565501*^9},ExpressionUUID->"333077d3-2330-4a50-a57d-\
+0125f81e3a91"],
+
+Cell[CellGroupData[{
+
+Cell["Adachi Algorithm", "Section",
+ CellChangeTimes->{{3.944394028275735*^9, 3.9443940429804287`*^9}, {
+  3.9443980015900307`*^9, 3.944398004381872*^9}, {3.944398204053638*^9, 
+  3.9443982098374424`*^9}, {3.9444832170626287`*^9, 3.944483225811733*^9}, {
+  3.946463635989499*^9, 
+  3.9464636400939555`*^9}},ExpressionUUID->"166232e8-0c31-4027-9160-\
+5de5902d8361"],
+
+Cell["We need to build a test problem.", "Text",
+ CellChangeTimes->{{3.9464638682450476`*^9, 
+  3.9464638828931875`*^9}},ExpressionUUID->"2c3f69e6-de9b-441c-91e5-\
+128eda1e9da6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"n", ",", "\[CapitalDelta]"}], "}"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"23", ",", "0.1"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"A", ",", "B"}], "}"}], "=", 
+   RowBox[{"RandomReal", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "n", ",", "n"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"B", "=", 
+   RowBox[{"B", ".", 
+    RowBox[{"B", "\[Transpose]"}]}]}], ";", 
+  RowBox[{"A", "=", 
+   RowBox[{"A", "+", 
+    RowBox[{"A", "\[Transpose]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"g", ",", "p0"}], "}"}], "=", 
+   RowBox[{"RandomReal", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "n"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "[", "p_List", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"g", ".", "p"}], "+", 
+   RowBox[{"0.5", " ", 
+    RowBox[{"p", ".", "A", ".", "p"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "[", "p_", "]"}], ":=", 
+  RowBox[{
+   SuperscriptBox["\[CapitalDelta]", "2"], "-", 
+   RowBox[{"p", ".", "B", ".", "p"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"val", ",", "sub"}], "}"}], "=", 
+   RowBox[{"FindMinimum", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"f", "[", "p", "]"}], ",", 
+       RowBox[{
+        RowBox[{"c", "[", "p", "]"}], "\[GreaterEqual]", "0"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"p", ",", " ", "p0"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"f", "[", "p", "]"}], ",", 
+    RowBox[{"c", "[", "p", "]"}]}], "}"}], "/.", "sub"}]}], "Input",
+ CellChangeTimes->{{3.946463651997627*^9, 3.9464637758393545`*^9}, {
+  3.9464638095721607`*^9, 3.9464638307109165`*^9}, {3.946463889860891*^9, 
+  3.9464639644359446`*^9}, {3.946464759837943*^9, 3.946464777580254*^9}, {
+  3.9464652259303994`*^9, 3.9464652514759054`*^9}, {3.946465312598055*^9, 
+  3.9464653283134804`*^9}},
+ CellLabel->
+  "In[305]:=",ExpressionUUID->"894faed2-0efd-460c-9e4d-2b6e88435202"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "1.5623371857804496`"}], ",", 
+   RowBox[{"-", "8.318002201954111`*^-9"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.9464638318355274`*^9, {3.9464639041115856`*^9, 3.9464639217232637`*^9}, {
+   3.9464639520259595`*^9, 3.94646396506889*^9}, 3.946464585443599*^9, {
+   3.946464761990103*^9, 3.9464647786487713`*^9}, {3.9464652111789503`*^9, 
+   3.9464652525849237`*^9}, {3.9464653132613707`*^9, 3.946465329394266*^9}},
+ CellLabel->
+  "Out[312]=",ExpressionUUID->"648ccf69-7542-46c1-8fa0-aa52d691ae7b"]
+}, Open  ]],
+
+Cell["The algorithm is pretty simple", "Text",
+ CellChangeTimes->{{3.946464163893862*^9, 
+  3.9464641698853827`*^9}},ExpressionUUID->"21493e9d-fb32-42de-a02a-\
+15e62cdceb8c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"M0", ",", "M1"}], "}"}], "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{"ArrayFlatten", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"(", "\[NoBreak]", GridBox[{
+          {
+           RowBox[{"-", "B"}], "A"},
+          {"A", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"KroneckerProduct", "[", 
+              RowBox[{"g", ",", "g"}], "]"}]}], "/", 
+            SuperscriptBox["\[CapitalDelta]", "2"]}]}
+         }], "\[NoBreak]", ")"}], ",", 
+       RowBox[{"-", 
+        RowBox[{"(", "\[NoBreak]", GridBox[{
+           {"0", "B"},
+           {"B", "0"}
+          }], "\[NoBreak]", ")"}]}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Lambda]Min", ",", "y1y2Min"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Lambda]Max", ",", "y1y2Max"}], "}"}]}], "}"}], "=", 
+   RowBox[{"Chop", "[", 
+    RowBox[{
+     RowBox[{"Sort", "[", 
+      RowBox[{
+       RowBox[{"Eigensystem", "[", 
+        RowBox[{"{", 
+         RowBox[{"M0", ",", "M1"}], "}"}], "]"}], "\[Transpose]"}], "]"}], 
+     "\[LeftDoubleBracket]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], "\[RightDoubleBracket]"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"y1Min", ",", "y2Min"}], "}"}], "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"y1y2Min", ",", "n"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"y1Max", ",", "y2Max"}], "}"}], "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"y1y2Max", ",", "n"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p1Min", "=", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"Sign", "[", 
+      RowBox[{"g", ".", "y2Min"}], "]"}]}], "\[CapitalDelta]", " ", 
+    FractionBox["y1Min", 
+     SqrtBox[
+      RowBox[{"y1Min", ".", "B", ".", "y1Min"}]]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p1Max", "=", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"Sign", "[", 
+      RowBox[{"g", ".", "y2Max"}], "]"}]}], "\[CapitalDelta]", " ", 
+    FractionBox["y1Max", 
+     SqrtBox[
+      RowBox[{"y1Max", ".", "B", ".", "y1Max"}]]]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"f", "[", "p1Min", "]"}], ",", 
+   RowBox[{"c", "[", "p1Min", "]"}]}], "}"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"f", "[", "p1Max", "]"}], ",", 
+   RowBox[{"c", "[", "p1Max", "]"}]}], "}"}]}], "Input",
+ CellChangeTimes->{{3.9464639782574835`*^9, 3.9464639848538804`*^9}, {
+   3.946464189630881*^9, 3.946464570852046*^9}, 3.946464702667847*^9, {
+   3.9464649790434046`*^9, 3.946465202415518*^9}},
+ CellLabel->
+  "In[313]:=",ExpressionUUID->"f51890a8-1b58-4f17-9b78-a4526dcc0433"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "1.5623367362037972`"}], ",", 
+   RowBox[{"-", "1.0980799602933189`*^-15"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.9464651788470984`*^9, 3.9464652553890333`*^9}, {
+  3.94646531737617*^9, 3.9464653319360685`*^9}},
+ CellLabel->
+  "Out[319]=",ExpressionUUID->"c9efac74-8c4b-466d-a5a1-790be8daf643"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"7865.959483723406`", ",", 
+   RowBox[{"-", "6.578229280740366`*^-12"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.9464651788470984`*^9, 3.9464652553890333`*^9}, {
+  3.94646531737617*^9, 3.9464653319441204`*^9}},
+ CellLabel->
+  "Out[320]=",ExpressionUUID->"8926ec5d-fc7b-4750-aed1-d8aa97f3883b"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Project Two Plan", "Section",
+ CellChangeTimes->{{3.944394028275735*^9, 3.9443940429804287`*^9}, {
+  3.9443980015900307`*^9, 3.944398004381872*^9}, {3.944398204053638*^9, 
+  3.9443982098374424`*^9}, {3.9444832170626287`*^9, 3.944483225811733*^9}, {
+  3.946463635989499*^9, 3.9464636400939555`*^9}, {3.946465289828759*^9, 
+  3.9464652955161595`*^9}},ExpressionUUID->"27cb510c-e6b9-4d50-8000-\
+425c054aa9bc"],
+
+Cell["\<\
+The article below compares the full TRS algorithm to other \
+\[OpenCurlyDoubleQuote]fancy\[CloseCurlyDoubleQuote] algorithms. \
+\>", "Text",
+ CellChangeTimes->{{3.9464638682450476`*^9, 3.9464638828931875`*^9}, {
+  3.9464653729962025`*^9, 
+  3.946465480133936*^9}},ExpressionUUID->"1511b4ec-b889-4395-8738-\
+44c4703bef84"],
+
+Cell["\<\
+A COMPARISON OF EIGENVALUE-BASED ALGORITHMS AND THE GENERALIZED LANCZOS \
+TRUST-REGION ALGORITHM FOR SOLVING THE TRUST-REGION SUBPROBLEM\:2217 \
+ZHONGXIAO JIA AND FA WANG.\
+\>", "Text",
+ CellChangeTimes->{{3.9464638682450476`*^9, 3.9464638828931875`*^9}, {
+  3.9464653729962025`*^9, 
+  3.9464654752501383`*^9}},ExpressionUUID->"08907535-f20f-4b50-9106-\
+f8e5183459a8"],
+
+Cell["\<\
+Our second project is to compare the full TRS algorithm to some very simple \
+approximations on a set of plausible problems. Our first approximation \
+involves ignoring the possibility of the hard case and approximating the \
+eigenvalue problem by a few steps of the power method.!\
+\>", "Text",
+ CellChangeTimes->{{3.9464638682450476`*^9, 3.9464638828931875`*^9}, {
+  3.9464653729962025`*^9, 3.946465533547472*^9}, {3.946465574068034*^9, 
+  3.946465583636942*^9}, {3.946465639659071*^9, 3.9464656726414843`*^9}, {
+  3.9464657089088783`*^9, 
+  3.946465738572579*^9}},ExpressionUUID->"ace29ca6-27e2-4587-99d4-\
+f3a7479d51c9"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{982.5, 736},
+WindowMargins->{{Automatic, -1118.5}, {207, Automatic}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification:>1.5 Inherited,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e8e46f41-b7db-4d7b-b751-0541a9ab4275"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 421, 6, 146, "Title",ExpressionUUID->"8e791b87-b8fe-4d47-a58b-235908e2ee0d"],
+Cell[1004, 30, 1475, 42, 161, "Text",ExpressionUUID->"52d2d1c4-50f1-4cf8-95db-0b4fd6379271"],
+Cell[2482, 74, 501, 9, 121, "Text",ExpressionUUID->"333077d3-2330-4a50-a57d-0125f81e3a91"],
+Cell[CellGroupData[{
+Cell[3008, 87, 364, 6, 100, "Section",ExpressionUUID->"166232e8-0c31-4027-9160-5de5902d8361"],
+Cell[3375, 95, 178, 3, 52, "Text",ExpressionUUID->"2c3f69e6-de9b-441c-91e5-128eda1e9da6"],
+Cell[CellGroupData[{
+Cell[3578, 102, 2369, 73, 243, "Input",ExpressionUUID->"894faed2-0efd-460c-9e4d-2b6e88435202"],
+Cell[5950, 177, 557, 11, 52, "Output",ExpressionUUID->"648ccf69-7542-46c1-8fa0-aa52d691ae7b"]
+}, Open  ]],
+Cell[6522, 191, 174, 3, 52, "Text",ExpressionUUID->"21493e9d-fb32-42de-a02a-15e62cdceb8c"],
+Cell[CellGroupData[{
+Cell[6721, 198, 2865, 89, 387, "Input",ExpressionUUID->"f51890a8-1b58-4f17-9b78-a4526dcc0433"],
+Cell[9589, 289, 355, 8, 52, "Output",ExpressionUUID->"c9efac74-8c4b-466d-a5a1-790be8daf643"],
+Cell[9947, 299, 334, 7, 52, "Output",ExpressionUUID->"8926ec5d-fc7b-4750-aed1-d8aa97f3883b"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10330, 312, 412, 6, 100, "Section",ExpressionUUID->"27cb510c-e6b9-4d50-8000-425c054aa9bc"],
+Cell[10745, 320, 331, 7, 52, "Text",ExpressionUUID->"1511b4ec-b889-4395-8738-44c4703bef84"],
+Cell[11079, 329, 378, 8, 121, "Text",ExpressionUUID->"08907535-f20f-4b50-9106-f8e5183459a8"],
+Cell[11460, 339, 634, 11, 156, "Text",ExpressionUUID->"ace29ca6-27e2-4587-99d4-f3a7479d51c9"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
