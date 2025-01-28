@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     42799,        916]
-NotebookOptionsPosition[     41392,        883]
-NotebookOutlinePosition[     41858,        901]
-CellTagsIndexPosition[     41815,        898]
+NotebookDataLength[     42782,        913]
+NotebookOptionsPosition[     41374,        880]
+NotebookOutlinePosition[     41841,        898]
+CellTagsIndexPosition[     41798,        895]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -36,8 +36,15 @@ examples.  Here is one that require little background.\
 
 Cell[TextData[{
  "We want to work out how to guide a standard damped mass spring system to a \
-given position in an optimal manner.  The ODE for our mass spring system is \n\
-\t",
+given position in an optimal manner.  The ODE for our mass spring system with \
+a linear spring and more general damping model ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"g", "(", 
+    RowBox[{"y", "'"}], ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "54c0c814-063b-4aa8-aff3-e00a4186ee89"],
+ " is \n\t",
  Cell[BoxData[
   FormBox[
    RowBox[{
@@ -48,16 +55,14 @@ given position in an optimal manner.  The ODE for our mass spring system is \n\
       RowBox[{"-", "k"}], " ", "y"}], " ", "-", " ", 
      RowBox[{"g", "(", 
       RowBox[{"y", "'"}], ")"}], "+", 
-     RowBox[{"f", "(", "t", ")"}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+     RowBox[{"f", "(", "t", ")"}]}]}], TraditionalForm]],ExpressionUUID->
   "4d9694b6-a2e8-406f-be77-73f7865d229c"],
  "\nwith initial conditions ",
  Cell[BoxData[
   FormBox[
    RowBox[{
     RowBox[{"y", "(", "0", ")"}], "=", "1.2"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "a77081dd-8322-406a-afa9-e452abc46453"],
+  ExpressionUUID->"a77081dd-8322-406a-afa9-e452abc46453"],
  " and ",
  Cell[BoxData[
   FormBox[
@@ -65,14 +70,12 @@ given position in an optimal manner.  The ODE for our mass spring system is \n\
     RowBox[{
      RowBox[{"y", "'"}], 
      RowBox[{"(", "0", ")"}]}], "=", 
-    RowBox[{"-", "0.5"}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    RowBox[{"-", "0.5"}]}], TraditionalForm]],ExpressionUUID->
   "d4c7a968-ee44-4630-8233-4c055f2ccda7"],
  ".  We want to choose the force ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"f", "(", "t", ")"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"f", "(", "t", ")"}], TraditionalForm]],ExpressionUUID->
   "471c0dd6-b9da-4d0b-a928-c5ce84b4ce92"],
  " to guide the mass to rest ",
  Cell[BoxData[
@@ -80,45 +83,39 @@ given position in an optimal manner.  The ODE for our mass spring system is \n\
    RowBox[{
     RowBox[{
      RowBox[{"y", "'"}], 
-     RowBox[{"(", "T", ")"}]}], "=", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+     RowBox[{"(", "T", ")"}]}], "=", "0"}], TraditionalForm]],ExpressionUUID->
   "ca8f4baa-0b67-4e0d-94a9-e22f10ffbed5"],
  " at some final position ",
  Cell[BoxData[
   FormBox[
    RowBox[{
     RowBox[{"y", "(", "T", ")"}], "=", 
-    RowBox[{"-", "0.2"}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    RowBox[{"-", "0.2"}]}], TraditionalForm]],ExpressionUUID->
   "5c9193cf-d2c7-4249-9700-24686e6a8560"],
  " to minimize some functional of the values of ",
  Cell[BoxData[
-  FormBox["f", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["f", TraditionalForm]],ExpressionUUID->
   "f77ff33d-adbb-4a44-a30a-83a7b5e3016b"],
  " and/or y and/or ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"y", "'"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"y", "'"}], TraditionalForm]],ExpressionUUID->
   "136da7b0-966a-495f-977b-e2cad99ff9d8"],
  " for ",
  Cell[BoxData[
   FormBox[
    RowBox[{"0", "\[LessEqual]", "t", "\[LessEqual]", "T"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "17e85107-f21a-4bf9-bd14-6668d3a97d08"],
+  ExpressionUUID->"17e85107-f21a-4bf9-bd14-6668d3a97d08"],
  ".  Constraints on the force or displacement or velocity could all make a \
 lots of physical sense.   We are going to assume that the time ",
  Cell[BoxData[
-  FormBox["T", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["T", TraditionalForm]],ExpressionUUID->
   "1f97e46e-297e-4f67-bfce-64d21e0dfa5e"],
  " is given.  Trying to make T small is a different sort of problem.  "
 }], "Text",
  CellChangeTimes->{{3.946813305415236*^9, 3.9468136851538796`*^9}, {
-  3.946813762100288*^9, 
-  3.946813816381442*^9}},ExpressionUUID->"7579143b-87d9-4cda-9657-\
+  3.946813762100288*^9, 3.946813816381442*^9}, {3.947063295215543*^9, 
+  3.947063318939493*^9}},ExpressionUUID->"7579143b-87d9-4cda-9657-\
 3e9855bf3cff"],
 
 Cell[CellGroupData[{
@@ -882,7 +879,7 @@ Cell[TextData[{
 }, Open  ]]
 },
 WindowSize->{1509, 937.5},
-WindowMargins->{{1387, Automatic}, {56.5, Automatic}},
+WindowMargins->{{1232, Automatic}, {133.5, Automatic}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 Magnification->2.,
 FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
@@ -903,19 +900,19 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 218, 4, 194, "Title",ExpressionUUID->"2fe82bd1-b6de-441c-85e2-d7fe94868c90"],
 Cell[801, 28, 278, 6, 69, "Text",ExpressionUUID->"2d317abc-96d4-4e08-aed2-80338b9720a8"],
-Cell[1082, 36, 2882, 85, 384, "Text",ExpressionUUID->"7579143b-87d9-4cda-9657-3e9855bf3cff"],
+Cell[1082, 36, 2864, 82, 429, "Text",ExpressionUUID->"7579143b-87d9-4cda-9657-3e9855bf3cff"],
 Cell[CellGroupData[{
-Cell[3989, 125, 257, 4, 107, "Subsection",ExpressionUUID->"c3f55f21-9f0f-42a0-8b51-0407adce23b6"],
-Cell[4249, 131, 287, 7, 69, "Text",ExpressionUUID->"ac613861-c811-4f85-a548-5aa2a1a4a068"]
+Cell[3971, 122, 257, 4, 107, "Subsection",ExpressionUUID->"c3f55f21-9f0f-42a0-8b51-0407adce23b6"],
+Cell[4231, 128, 287, 7, 69, "Text",ExpressionUUID->"ac613861-c811-4f85-a548-5aa2a1a4a068"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4573, 143, 313, 5, 107, "Subsection",ExpressionUUID->"8058083f-0a66-4925-be2d-5626b32496ce"],
-Cell[4889, 150, 723, 16, 114, "Text",ExpressionUUID->"311794bf-a76f-4069-816d-8d78e4f95e01"],
+Cell[4555, 140, 313, 5, 107, "Subsection",ExpressionUUID->"8058083f-0a66-4925-be2d-5626b32496ce"],
+Cell[4871, 147, 723, 16, 114, "Text",ExpressionUUID->"311794bf-a76f-4069-816d-8d78e4f95e01"],
 Cell[CellGroupData[{
-Cell[5637, 170, 1312, 38, 171, "Input",ExpressionUUID->"fe0ef042-2451-4268-8d78-1a76bd1a5e8a"],
-Cell[6952, 210, 33585, 644, 121, "Output",ExpressionUUID->"27b0f2ff-5d0c-4fb6-91ce-41af8dc584d8"]
+Cell[5619, 167, 1312, 38, 171, "Input",ExpressionUUID->"fe0ef042-2451-4268-8d78-1a76bd1a5e8a"],
+Cell[6934, 207, 33585, 644, 121, "Output",ExpressionUUID->"27b0f2ff-5d0c-4fb6-91ce-41af8dc584d8"]
 }, Open  ]],
-Cell[40552, 857, 812, 22, 114, "Text",ExpressionUUID->"4a27f3bc-bfb2-4f0f-944e-43f6b202dd46"]
+Cell[40534, 854, 812, 22, 114, "Text",ExpressionUUID->"4a27f3bc-bfb2-4f0f-944e-43f6b202dd46"]
 }, Open  ]]
 }, Open  ]]
 }
