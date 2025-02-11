@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17890,        523]
-NotebookOptionsPosition[     16092,        483]
-NotebookOutlinePosition[     16711,        504]
-CellTagsIndexPosition[     16668,        501]
+NotebookDataLength[     17952,        524]
+NotebookOptionsPosition[     16154,        484]
+NotebookOutlinePosition[     16773,        505]
+CellTagsIndexPosition[     16730,        502]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -466,7 +466,7 @@ We are assuming we have a good fit at ",
       SubscriptBox["x", "k"], ")"}]}]}], TraditionalForm]],
   FormatType->TraditionalForm,ExpressionUUID->
   "48da557b-4c07-4ad8-9eb2-cf67464e2a22"],
- ".  The algorithm to update ",
+ ".  The standard algorithm to update ",
  Cell[BoxData[
   FormBox[
    SubscriptBox["\[CapitalDelta]", "k"], TraditionalForm]],
@@ -476,7 +476,8 @@ We are assuming we have a good fit at ",
 }], "Text",
  CellChangeTimes->{{3.8836519350584226`*^9, 3.883651958867465*^9}, {
   3.883652002545802*^9, 3.8836520497291355`*^9}, {3.948287740843844*^9, 
-  3.9482881178084574`*^9}},ExpressionUUID->"30397eec-7144-4493-8d2b-\
+  3.9482881178084574`*^9}, {3.9482884283596706`*^9, 
+  3.9482884307649894`*^9}},ExpressionUUID->"30397eec-7144-4493-8d2b-\
 f60bf9ede2cb"]
 }, Open  ]]
 }, Open  ]]
@@ -522,7 +523,7 @@ Cell[9374, 272, 3443, 108, 219, "Text",ExpressionUUID->"670a1142-e475-427d-9551-
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[12854, 385, 274, 4, 97, "Section",ExpressionUUID->"914c7e54-aa39-44a8-8134-fbfac074524c"],
-Cell[13131, 391, 2933, 88, 288, "Text",ExpressionUUID->"30397eec-7144-4493-8d2b-f60bf9ede2cb"]
+Cell[13131, 391, 2995, 89, 321, "Text",ExpressionUUID->"30397eec-7144-4493-8d2b-f60bf9ede2cb"]
 }, Open  ]]
 }, Open  ]]
 }
