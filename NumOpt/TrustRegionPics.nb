@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17952,        524]
-NotebookOptionsPosition[     16154,        484]
-NotebookOutlinePosition[     16773,        505]
-CellTagsIndexPosition[     16730,        502]
+NotebookDataLength[     17423,        506]
+NotebookOptionsPosition[     15594,        465]
+NotebookOutlinePosition[     16244,        487]
+CellTagsIndexPosition[     16201,        484]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -112,20 +112,17 @@ Cell[TextData[{
  "\nThere are some older more iterative algorithms that give accurate answers \
 provided ",
  Cell[BoxData[
-  FormBox["A", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["A", TraditionalForm]],ExpressionUUID->
   "7a8b49dd-3185-4e81-b8be-c2a873371f55"],
  " is SPD.  All the older accurate solvers require ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"B", "=", "I"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"B", "=", "I"}], TraditionalForm]],ExpressionUUID->
   "ea7c0c36-7758-42c6-83d3-cbc4e26800da"],
  " and are complicated.  Nobody uses non-spherical trust regions ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"B", "\[NotEqual]", "I"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"B", "\[NotEqual]", "I"}], TraditionalForm]],ExpressionUUID->
   "ae17b2ca-9f18-41b6-a41f-3c11bca26a89"],
  " because of this.  One of our projects enforces bound constraints using non \
 spherical trust regions. Our other project looks at simple approximations to \
@@ -158,15 +155,13 @@ Cell[TextData[{
  "The Cauchy point is easy.  Just head distance ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["\[CapitalDelta]", "k"], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   SubscriptBox["\[CapitalDelta]", "k"], TraditionalForm]],ExpressionUUID->
   "472732e4-ec57-41d4-9128-3f274b4f42ea"],
  " in the steepest descent direction ",
  Cell[BoxData[
   FormBox[
    RowBox[{"-", 
-    SubscriptBox["p", "k"]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    SubscriptBox["p", "k"]}], TraditionalForm]],ExpressionUUID->
   "8f12a7db-ed19-4e3f-a1e0-87ff37bf4693"],
  ".  This implements a variant of steepest descent and suffers from all the \
 drawbacks of algorithms that do not use curvature information. \n\t",
@@ -179,8 +174,7 @@ drawbacks of algorithms that do not use curvature information. \n\t",
       SubscriptBox["\[CapitalDelta]", "k"]}], 
      FractionBox["g", 
       RowBox[{"||", 
-       SubscriptBox["g", "k"], "||"}]]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+       SubscriptBox["g", "k"], "||"}]]}]}], TraditionalForm]],ExpressionUUID->
   "6e92e2b8-530f-4203-9abe-687ce7869ac1"]
 }], "Text",
  CellChangeTimes->{{3.9482862534482503`*^9, 3.9482862762644463`*^9}, {
@@ -201,8 +195,7 @@ Cell[TextData[{
  "We know two special directions: the approximate steepest descent direction ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"-", "g"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"-", "g"}], TraditionalForm]],ExpressionUUID->
   "aafb0c37-aad5-4d6e-89e6-a15d5007a400"],
  " and the Newton direction ",
  Cell[BoxData[
@@ -210,18 +203,15 @@ Cell[TextData[{
    RowBox[{
     RowBox[{"-", 
      SuperscriptBox["A", 
-      RowBox[{"-", "1"}]]}], "g"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+      RowBox[{"-", "1"}]]}], "g"}], TraditionalForm]],ExpressionUUID->
   "705e49af-02bc-4bfa-b317-448c030fb4e2"],
  ".  Both are descent directions if ",
  Cell[BoxData[
-  FormBox["A", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["A", TraditionalForm]],ExpressionUUID->
   "8335f0d1-a772-4ee6-a890-765277bad36d"],
  " is SPD. If ",
  Cell[BoxData[
-  FormBox["A", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["A", TraditionalForm]],ExpressionUUID->
   "ce36b968-3ec5-4fa5-b83e-6b7353630710"],
  " is SPD then the Newton direction is the direction we want to go. \n\t",
  Cell[BoxData[
@@ -249,9 +239,7 @@ Cell[TextData[{
            SubscriptBox["\[Alpha]", "2"], 
            SuperscriptBox["A", 
             RowBox[{"-", "1"}]], "g"}]}], ")"}]}]}], "}"}]}]}], 
-   TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "c591a1cd-49c0-4f7c-912a-7634612f7c4d"],
+   TraditionalForm]],ExpressionUUID->"c591a1cd-49c0-4f7c-912a-7634612f7c4d"],
  "\nIn other words find the best linear combination of two special \
 directions.  This had a known solution as a particular root of a 4th degree \
 polynomial.  This probably motivated/inspired  Adachi et al. "
@@ -394,8 +382,7 @@ Cell[TextData[{
 We are assuming we have a good fit at ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["x", "k"], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   SubscriptBox["x", "k"], TraditionalForm]],ExpressionUUID->
   "e21cac8c-6df8-4b74-ac1d-9b031986b859"],
  " and that the model function\n\t",
  Cell[BoxData[
@@ -410,8 +397,7 @@ We are assuming we have a good fit at ",
     RowBox[{
      RowBox[{"0.5", 
       RowBox[{"p", ".", "A", ".", "p"}]}], "+", 
-     RowBox[{"g", ".", "p"}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+     RowBox[{"g", ".", "p"}]}]}], TraditionalForm]],ExpressionUUID->
   "6fadb1c0-ab0a-400c-9516-c3729d24d3d6"],
  " for ",
  Cell[BoxData[
@@ -419,13 +405,11 @@ We are assuming we have a good fit at ",
    RowBox[{"||", "p", "||", 
     RowBox[{"\[LessEqual]", 
      SubscriptBox["\[CapitalDelta]", "k"]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "b034a8aa-912f-40da-9b06-9379cee97488"],
+  ExpressionUUID->"b034a8aa-912f-40da-9b06-9379cee97488"],
  "\nWe have computed a step ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["p", "k"], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   SubscriptBox["p", "k"], TraditionalForm]],ExpressionUUID->
   "264f9e7c-bd01-4477-ab1b-d7ef69f786ca"],
  " using one of these possible approximate algorithms for\n\t",
  Cell[BoxData[
@@ -448,9 +432,8 @@ We are assuming we have a good fit at ",
       SubscriptBox["m", "k"], "(", 
       SubscriptBox["p", "k"], ")"}], "<", 
      RowBox[{
-      SubscriptBox["m", "k"], "(", "0", ")"}]}], "=", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "b2650b65-0cee-4588-82fb-1d43628cdd28"],
+      SubscriptBox["m", "k"], "(", "0", ")"}]}], "=", "0"}], 
+   TraditionalForm]],ExpressionUUID->"b2650b65-0cee-4588-82fb-1d43628cdd28"],
  ".\nWe can check if ",
  Cell[BoxData[
   FormBox[
@@ -463,14 +446,12 @@ We are assuming we have a good fit at ",
      RowBox[{
       SubscriptBox["m", "k"], "(", "p", ")"}], "+", 
      RowBox[{"f", "(", 
-      SubscriptBox["x", "k"], ")"}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+      SubscriptBox["x", "k"], ")"}]}]}], TraditionalForm]],ExpressionUUID->
   "48da557b-4c07-4ad8-9eb2-cf67464e2a22"],
  ".  The standard algorithm to update ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["\[CapitalDelta]", "k"], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   SubscriptBox["\[CapitalDelta]", "k"], TraditionalForm]],ExpressionUUID->
   "fbdf05a8-845e-447f-9499-b6056becbb91"],
  " worries about several possibilities.  "
 }], "Text",
@@ -483,8 +464,9 @@ f60bf9ede2cb"]
 }, Open  ]]
 },
 WindowToolbars->"EditBar",
-WindowSize->{1141, 575},
-WindowMargins->{{1625.5, Automatic}, {Automatic, -120}},
+WindowSize->{912, 446.4},
+WindowMargins->{{Automatic, -27.59999999999991}, {
+  55.200000000000045`, Automatic}},
 TaggingRules-><|
  "PresenterSettings" -> <|"Dialogs" -> {}|>, "TryRealOnly" -> False|>,
 Magnification:>1.5 Inherited,
@@ -505,25 +487,25 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 492, 10, 438, "Title",ExpressionUUID->"bb443c9e-1a1c-437e-b10c-400e63a30bb8"],
+Cell[580, 22, 492, 10, 451, "Title",ExpressionUUID->"bb443c9e-1a1c-437e-b10c-400e63a30bb8"],
 Cell[1075, 34, 1872, 51, 118, "Text",ExpressionUUID->"ac8f2459-c5b6-46e8-8ae2-62f95df6ae3c"],
-Cell[2950, 87, 1794, 49, 223, "Text",ExpressionUUID->"47507030-95df-4904-a269-27174105513d"],
-Cell[4747, 138, 456, 9, 117, "Text",ExpressionUUID->"b5f6b05c-2c4c-4921-9cf9-73b78f2f1c03"],
+Cell[2950, 87, 1701, 46, 223, "Text",ExpressionUUID->"47507030-95df-4904-a269-27174105513d"],
+Cell[4654, 135, 456, 9, 117, "Text",ExpressionUUID->"b5f6b05c-2c4c-4921-9cf9-73b78f2f1c03"],
 Cell[CellGroupData[{
-Cell[5228, 151, 167, 3, 57, "Subsubsection",ExpressionUUID->"2ecf1684-5e3f-4bb1-8869-c1748578dd33"],
-Cell[5398, 156, 1153, 32, 160, "Text",ExpressionUUID->"77a40c63-efe6-4b51-9854-6fd76ba7411d"]
+Cell[5135, 148, 167, 3, 57, "Subsubsection",ExpressionUUID->"2ecf1684-5e3f-4bb1-8869-c1748578dd33"],
+Cell[5305, 153, 1060, 29, 160, "Text",ExpressionUUID->"77a40c63-efe6-4b51-9854-6fd76ba7411d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6588, 193, 243, 4, 57, "Subsubsection",ExpressionUUID->"3a12ae91-29a0-41ba-9ccc-c46823c58d05"],
-Cell[6834, 199, 2237, 62, 221, "Text",ExpressionUUID->"884ba311-48c5-40ba-a293-815a908111e7"]
+Cell[6402, 187, 243, 4, 57, "Subsubsection",ExpressionUUID->"3a12ae91-29a0-41ba-9ccc-c46823c58d05"],
+Cell[6648, 193, 2079, 56, 221, "Text",ExpressionUUID->"884ba311-48c5-40ba-a293-815a908111e7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9108, 266, 263, 4, 57, "Subsubsection",ExpressionUUID->"7dddbaf1-21ce-40f5-acaa-80326ae8acd2"],
-Cell[9374, 272, 3443, 108, 219, "Text",ExpressionUUID->"670a1142-e475-427d-9551-c00678f0ddc6"]
+Cell[8764, 254, 263, 4, 57, "Subsubsection",ExpressionUUID->"7dddbaf1-21ce-40f5-acaa-80326ae8acd2"],
+Cell[9030, 260, 3443, 108, 252, "Text",ExpressionUUID->"670a1142-e475-427d-9551-c00678f0ddc6"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12854, 385, 274, 4, 97, "Section",ExpressionUUID->"914c7e54-aa39-44a8-8134-fbfac074524c"],
-Cell[13131, 391, 2995, 89, 321, "Text",ExpressionUUID->"30397eec-7144-4493-8d2b-f60bf9ede2cb"]
+Cell[12510, 373, 274, 4, 97, "Section",ExpressionUUID->"914c7e54-aa39-44a8-8134-fbfac074524c"],
+Cell[12787, 379, 2779, 82, 355, "Text",ExpressionUUID->"30397eec-7144-4493-8d2b-f60bf9ede2cb"]
 }, Open  ]]
 }, Open  ]]
 }
