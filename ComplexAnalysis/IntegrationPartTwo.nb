@@ -1,0 +1,328 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11179,        320]
+NotebookOptionsPosition[      9885,        288]
+NotebookOutlinePosition[     10404,        306]
+CellTagsIndexPosition[     10361,        303]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Complex Integration", "Title",
+ CellChangeTimes->{{3.9476802960619326`*^9, 3.9476802972782016`*^9}, {
+  3.947754112418275*^9, 3.947754153393594*^9}, {3.9482039387035885`*^9, 
+  3.9482039411542025`*^9}, {3.9484551751602645`*^9, 
+  3.9484551770508733`*^9}},ExpressionUUID->"aa162031-8f8e-4e85-bcb2-\
+e0906461c14b"],
+
+Cell[CellGroupData[{
+
+Cell["Contour Deformation", "Subsection",
+ CellChangeTimes->{{3.948204355826491*^9, 3.9482043653253503`*^9}, {
+  3.9484594636781836`*^9, 3.9484594670322757`*^9}, {3.948460707605191*^9, 
+  3.9484607133000174`*^9}},ExpressionUUID->"e456974f-f2d0-4ac6-90eb-\
+8588cfcf655a"],
+
+Cell[TextData[{
+ "The integral of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", "(", "z", ")"}], TraditionalForm]],ExpressionUUID->
+  "4016eeec-d822-46bb-931e-bcbf1b9b403e"],
+ " along the contour ",
+ Cell[BoxData[
+  FormBox["c", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "dde94ff2-1a60-4621-a009-ac96d205783f"],
+ " in the complex plane described by ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "(", "t", ")"}], TraditionalForm]],ExpressionUUID->
+  "f73f37cb-f967-4ded-843b-474bfd09282e"],
+ " for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "<", "t", "<", "1"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "47546781-3af5-41d0-8fe5-3a28225f08b7"],
+ " is\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Integral]", "c"], 
+     RowBox[{
+      RowBox[{"f", "(", "z", ")"}], "dz"}]}], "=", 
+    RowBox[{
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", "0", "1"], 
+      RowBox[{
+       RowBox[{"f", "(", 
+        RowBox[{"z", "(", "t", ")"}], ")"}], 
+       RowBox[{"z", "'"}], 
+       RowBox[{"(", "t", ")"}], "dt"}]}], "=", 
+     RowBox[{
+      SubscriptBox["\[Limit]", 
+       RowBox[{"n", "->", "\[Infinity]"}]], 
+      RowBox[{
+       SubsuperscriptBox["\[Sum]", 
+        RowBox[{"k", "=", "1"}], "n"], 
+       RowBox[{
+        RowBox[{"f", "(", 
+         RowBox[{"z", "(", 
+          RowBox[{"k", " ", "\[CapitalDelta]t"}], ")"}], ")"}], 
+        RowBox[{"z", "'"}], 
+        RowBox[{"(", 
+         RowBox[{"k", " ", "\[CapitalDelta]t"}], ")"}], 
+        "\[CapitalDelta]t"}]}]}]}]}], TraditionalForm]],ExpressionUUID->
+  "28d56796-ec80-41a1-8b86-6dd447dfda09"],
+ "\nFor a function analytic within a closed contour ",
+ Cell[BoxData[
+  FormBox["c", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "0d8501dc-6246-4715-a759-1d09df08aec7"],
+ " we have\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[ContourIntegral]", "c"], " ", 
+     RowBox[{
+      RowBox[{"f", "(", "z", ")"}], "dz"}]}], "=", "0"}], TraditionalForm]],
+  ExpressionUUID->"82edc170-5ffa-4af3-8e99-7b4db7bcef6f"],
+ ".\nThis means that we can deform a complicated contour which encloses \
+several isolated singularities into tiny circles around each singularity.   \
+Adding up the pieces from each tiny circle will give the integral we want.  \
+This is the basis of the residue calculus. "
+}], "Text",
+ InitializationCell->True,
+ CellChangeTimes->{{3.948203945027239*^9, 3.9482043475325074`*^9}, {
+  3.9482043945805454`*^9, 3.9482044861516886`*^9}, {3.9482045371834335`*^9, 
+  3.948204718982936*^9}, {3.948204766899021*^9, 3.948204879915916*^9}, {
+  3.948205575238019*^9, 3.9482056366425076`*^9}, {3.9484561178459964`*^9, 
+  3.94845612315869*^9}, {3.948459497362296*^9, 3.9484596789675603`*^9}, {
+  3.9484597929958487`*^9, 3.9484598168870473`*^9}, {3.94846045634948*^9, 
+  3.9484604831078196`*^9}, {3.94846083069193*^9, 3.9484608325114837`*^9}, {
+  3.948461101179034*^9, 
+  3.9484611931904707`*^9}},ExpressionUUID->"19b0755c-0946-4f60-8932-\
+feb76164b3c6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Integration for Simple Poles on Tiny Circles.", "Subsection",
+ CellChangeTimes->{{3.948204355826491*^9, 3.9482043653253503`*^9}, {
+  3.9484594636781836`*^9, 3.9484594670322757`*^9}, {3.948459749333217*^9, 
+  3.948459770000492*^9}},ExpressionUUID->"ea00139e-36b5-4b70-926d-\
+1918a8fdbab9"],
+
+Cell[TextData[{
+ "A counter clockwise parametrization for a tiny circle around a pole ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"p", "[", "z", "]"}], "=", 
+    FractionBox["r", 
+     RowBox[{"z", "-", "c"}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "6562233f-080a-4610-abb1-015e23b09165"],
+ " is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"z", "(", "t", ")"}], "=", 
+    RowBox[{"c", "+", 
+     RowBox[{"\[Epsilon]", " ", 
+      SuperscriptBox["E", 
+       RowBox[{"2", "\[Pi]", " ", "\[ImaginaryI]", " ", "t"}]]}]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "c4d8b0bf-2ba9-4136-8e14-dd7670dd45f0"],
+ " so ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"z", "'"}], "[", "t", "]"}], "=", 
+    RowBox[{"2", "\[Pi]", " ", "\[ImaginaryI]", " ", "\[Epsilon]", " ", 
+     SuperscriptBox["E", 
+      RowBox[{"2", "\[Pi]", " ", "\[ImaginaryI]", " ", "t"}]]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "14b3346b-17d6-4b5f-ab82-885e3063c2b9"],
+ ". \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", "1"], 
+     RowBox[{
+      RowBox[{"p", "[", 
+       RowBox[{"z", "[", "t", "]"}], "]"}], "*", 
+      RowBox[{
+       RowBox[{"z", "'"}], "[", "t", "]"}], "dt"}]}], "=", 
+    RowBox[{
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", "0", "1"], 
+      RowBox[{
+       FractionBox["r", 
+        RowBox[{
+         RowBox[{"z", "[", "t", "]"}], "-", "c"}]], "*", 
+       RowBox[{
+        RowBox[{"z", "'"}], "[", "t", "]"}], "dt"}]}], "=", 
+     RowBox[{
+      RowBox[{
+       SubsuperscriptBox["\[Integral]", "0", "1"], 
+       RowBox[{
+        FractionBox["r", 
+         RowBox[{"c", "+", 
+          RowBox[{"\[Epsilon]", " ", 
+           SuperscriptBox["E", 
+            RowBox[{"2", "\[Pi]", " ", "\[ImaginaryI]", " ", "t"}]]}], "-", 
+          "c"}]], "*", "2", "\[Pi]", " ", "\[ImaginaryI]", " ", "\[Epsilon]", 
+        " ", 
+        SuperscriptBox["E", 
+         RowBox[{"2", "\[Pi]", " ", "\[ImaginaryI]", " ", "t"}]], "dt"}]}], 
+      "=", 
+      RowBox[{
+       RowBox[{
+        SubsuperscriptBox["\[Integral]", "0", "1"], 
+        RowBox[{
+         FractionBox["r", 
+          RowBox[{"\[Epsilon]", " ", 
+           SuperscriptBox["E", 
+            RowBox[{"2", "\[Pi]", " ", "\[ImaginaryI]", " ", "t"}]]}]], "*", 
+         "2", "\[Pi]", " ", "\[ImaginaryI]", " ", "\[Epsilon]", " ", 
+         SuperscriptBox["E", 
+          RowBox[{"2", "\[Pi]", " ", "\[ImaginaryI]", " ", "t"}]], "dt"}]}], 
+       "=", 
+       RowBox[{
+        RowBox[{
+         SubsuperscriptBox["\[Integral]", "0", "1"], 
+         RowBox[{
+          FractionBox["r", 
+           RowBox[{"\[Epsilon]", " "}]], "*", "2", "\[Pi]", " ", 
+          "\[ImaginaryI]", " ", "\[Epsilon]", " ", "dt"}]}], "=", 
+        RowBox[{
+         RowBox[{
+          SubsuperscriptBox["\[Integral]", "0", "1"], 
+          RowBox[{"r", "*", "2", "\[Pi]", " ", "\[ImaginaryI]", " ", "dt"}]}],
+          "=", 
+         RowBox[{"2", "\[Pi]", " ", "\[ImaginaryI]", " ", "r"}]}]}]}]}]}]}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "2c73a674-ec07-4b8f-b8f6-9a15949b0ed1"],
+ "\nThe integral round a tiny circle around a pole ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["r", 
+    RowBox[{"z", "-", "c"}]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ee0b8c22-4dfd-4311-94f3-27be0a584a6b"],
+ " is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", " ", "\[Pi]", " ", "\[ImaginaryI]", " ", "r"}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "36b3ad4a-2c3c-404b-a075-5be59448b9c1"],
+ ".   "
+}], "Text",
+ CellChangeTimes->{{3.9484596923027697`*^9, 3.948459739134317*^9}, {
+  3.948459774142127*^9, 3.9484597888074207`*^9}, {3.948459821262272*^9, 
+  3.948460196024053*^9}, {3.948460527197935*^9, 
+  3.9484605308842325`*^9}},ExpressionUUID->"1707965d-feb1-4d74-adc3-\
+92286ff52409"],
+
+Cell[TextData[{
+ "In words the counter clockwise integral around a simple pole ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["r", 
+    RowBox[{"z", "-", "c"}]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "72787ab8-f16c-489d-b841-6bf4154f08f1"],
+ " is simply 2 \[Pi] \[ImaginaryI] times the residue ",
+ Cell[BoxData[
+  FormBox["r", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3a2c957f-eded-4751-92bf-8c4fce887fce"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.9484604889805527`*^9, 
+  3.9484606012739964`*^9}},ExpressionUUID->"2a43e8d5-d884-43bc-9ff1-\
+64bd928eff72"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Residue Theorem\t", "Subsection",
+ CellChangeTimes->{{3.948204355826491*^9, 3.948204386747565*^9}, {
+  3.9482063501388483`*^9, 3.9482063533864384`*^9}, {3.9482068165301075`*^9, 
+  3.94820684047431*^9}, {3.9484603224779587`*^9, 
+  3.94846032563652*^9}},ExpressionUUID->"b3d9b809-93b7-4487-bc1b-\
+9e9ba7e55d39"],
+
+Cell["\<\
+As we will see these two results underlie a technique (called residue \
+calculus) that lets you compute lots of integrals.  \
+\>", "Text",
+ CellChangeTimes->{{3.94846033965611*^9, 3.948460351076948*^9}, {
+  3.948460606988021*^9, 
+  3.9484606974684305`*^9}},ExpressionUUID->"f57babbc-db39-4229-aae5-\
+763199c01e20"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{1125, 789.5999999999999},
+WindowMargins->{{Automatic, 4.7999999999999545`}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"365ca7b9-370f-40eb-90b7-727716c805e1"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 318, 5, 98, "Title",ExpressionUUID->"aa162031-8f8e-4e85-bcb2-e0906461c14b"],
+Cell[CellGroupData[{
+Cell[923, 31, 270, 4, 54, "Subsection",ExpressionUUID->"e456974f-f2d0-4ac6-90eb-8588cfcf655a"],
+Cell[1196, 37, 3054, 82, 154, "Text",ExpressionUUID->"19b0755c-0946-4f60-8932-feb76164b3c6",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4287, 124, 294, 4, 54, "Subsection",ExpressionUUID->"ea00139e-36b5-4b70-926d-1918a8fdbab9"],
+Cell[4584, 130, 3981, 116, 93, "Text",ExpressionUUID->"1707965d-feb1-4d74-adc3-92286ff52409"],
+Cell[8568, 248, 610, 17, 38, "Text",ExpressionUUID->"2a43e8d5-d884-43bc-9ff1-64bd928eff72"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9215, 270, 315, 5, 54, "Subsection",ExpressionUUID->"b3d9b809-93b7-4487-bc1b-9e9ba7e55d39"],
+Cell[9533, 277, 324, 7, 35, "Text",ExpressionUUID->"f57babbc-db39-4229-aae5-763199c01e20"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

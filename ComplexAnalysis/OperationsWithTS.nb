@@ -1,0 +1,1292 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     46217,       1284]
+NotebookOptionsPosition[     43570,       1232]
+NotebookOutlinePosition[     44093,       1251]
+CellTagsIndexPosition[     44050,       1248]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Operations with Taylor Series", "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+   3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+   3.9443940027240753`*^9}, {3.944566660315626*^9, 3.9445666686709223`*^9}, {
+   3.9451640246777716`*^9, 3.945164029754927*^9}, 3.945164250898985*^9, {
+   3.946974046790117*^9, 3.9469740486428137`*^9}, {3.947582421308018*^9, 
+   3.947582432759435*^9}},ExpressionUUID->"8e791b87-b8fe-4d47-a58b-\
+235908e2ee0d"],
+
+Cell[TextData[{
+ "If I have a TS (and within the radius of convergence R)\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", "(", "z", ")"}], "=", 
+    RowBox[{
+     SubsuperscriptBox["\[Sum]", 
+      RowBox[{"k", "=", "0"}], "\[Infinity]"], 
+     SuperscriptBox[
+      RowBox[{
+       SubscriptBox["a", "k"], "(", 
+       RowBox[{"z", "-", 
+        SubscriptBox["z", "0"]}], ")"}], "k"]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "e5a7316d-6554-49d4-b5c5-dfc8d4d9606c"],
+ "\nthen what should the following be\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "'"}], 
+     RowBox[{"(", "z", ")"}]}], "=", 
+    RowBox[{
+     SubsuperscriptBox["\[Sum]", 
+      RowBox[{"k", "=", "0"}], "\[Infinity]"], 
+     RowBox[{"k", " ", 
+      SuperscriptBox[
+       RowBox[{
+        SubscriptBox["a", "k"], "(", 
+        RowBox[{"z", "-", 
+         SubscriptBox["z", "0"]}], ")"}], 
+       RowBox[{"k", "-", "1"}]]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "a2af4c77-59eb-43ee-bcca-3c934c41dba2"],
+ "\nand \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"F", "(", "z", ")"}], "=", 
+    RowBox[{
+     SubscriptBox["c", "0"], "+", 
+     RowBox[{
+      SubsuperscriptBox["\[Sum]", 
+       RowBox[{"k", "=", "0"}], "\[Infinity]"], 
+      RowBox[{
+       FractionBox[
+        SubscriptBox["a", "k"], 
+        RowBox[{"k", "+", "1"}]], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"z", "-", 
+          SubscriptBox["z", "0"]}], ")"}], 
+        RowBox[{"k", "+", "1"}]]}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "002e4c11-6bd2-4bae-853a-7f1220ba506f"]
+}], "Text",
+ CellChangeTimes->{{3.9475824371273365`*^9, 3.9475826988653526`*^9}, {
+  3.947589171586671*^9, 3.9475891830877085`*^9}, {3.9475892849306574`*^9, 
+  3.9475892887282715`*^9}},ExpressionUUID->"34c977bb-d424-47b4-9353-\
+a46fa31ef571"],
+
+Cell[TextData[{
+ "Can we write down a TS for the inverse of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", "(", "z", ")"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "51b625de-b227-4fe5-a8c4-0354a5147e9e"],
+ ".  To keep it simple lets center both series at ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "=", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "447632a0-c0ad-4fe4-b853-aae0bc9d1675"],
+ " and assume ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", "(", "0", ")"}], "=", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "6512748f-dc0e-421f-a813-01963dfbff35"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"g", "(", "0", ")"}], "=", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "d46f1d0d-f315-4770-a9cf-013cbc5e1048"],
+ " and not worry about the convergence. We have\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", "(", "z", ")"}], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["a", "0"], "+", 
+      RowBox[{
+       SubsuperscriptBox["\[Sum]", 
+        RowBox[{"k", "=", "1"}], "\[Infinity]"], 
+       RowBox[{
+        SubscriptBox["a", "k"], " ", 
+        SuperscriptBox["z", "k"]}]}]}], "=", 
+     RowBox[{
+      SubsuperscriptBox["\[Sum]", 
+       RowBox[{"k", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SubscriptBox["a", "k"], " ", 
+       SuperscriptBox["z", "k"]}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "db17d3f4-0df4-482e-9c6b-fe130d3701c9"],
+ "\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"g", "(", "w", ")"}], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["b", "0"], "+", 
+      RowBox[{
+       SubsuperscriptBox["\[Sum]", 
+        RowBox[{"k", "=", "1"}], "\[Infinity]"], 
+       RowBox[{
+        SubscriptBox["b", "k"], " ", 
+        SuperscriptBox["w", "k"]}]}]}], "=", 
+     RowBox[{
+      SubsuperscriptBox["\[Sum]", 
+       RowBox[{"k", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SubscriptBox["b", "k"], " ", 
+       SuperscriptBox["w", "k"]}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "b2863920-f18f-4f38-a7b0-e0460328d3be"],
+ "\nand ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", "(", 
+     RowBox[{"g", "(", "z", ")"}], ")"}], "=", "z"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "8ffd05c7-6657-47bb-82f2-fc3a69139f6c"],
+ ".  Just plug them in\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"0", "+", 
+     RowBox[{
+      SubscriptBox["a", "1"], "(", 
+      RowBox[{
+       SubsuperscriptBox["\[Sum]", 
+        RowBox[{"k", "=", "1"}], "\[Infinity]"], 
+       RowBox[{
+        SubscriptBox["b", "k"], " ", 
+        SuperscriptBox["z", "k"]}]}], ")"}], "+", 
+     SuperscriptBox[
+      RowBox[{
+       SubscriptBox["a", "2"], "(", 
+       RowBox[{
+        SubsuperscriptBox["\[Sum]", 
+         RowBox[{"k", "=", "1"}], "\[Infinity]"], 
+        RowBox[{
+         SubscriptBox["b", "k"], " ", 
+         SuperscriptBox["z", "k"]}]}], ")"}], "2"], "+", "\[Ellipsis]"}], "=", 
+    RowBox[{"0", "+", " ", 
+     RowBox[{"1", " ", "z"}], "+", 
+     RowBox[{"0", 
+      SuperscriptBox["z", "2"]}], "+", "\[Ellipsis]"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "6310f0c2-3634-4cbc-94d7-e0ead5b1ccb6"],
+ "\nand tidy "
+}], "Text",
+ CellChangeTimes->{{3.9475827100398264`*^9, 3.9475828027544265`*^9}, {
+  3.9475828338597193`*^9, 3.9475831406476192`*^9}, {3.947583536270722*^9, 
+  3.947583632572672*^9}, {3.9475893493331113`*^9, 3.947589349659504*^9}, {
+  3.9475895384491444`*^9, 
+  3.9475895418687615`*^9}},ExpressionUUID->"66ba4cd3-fb2d-430c-9863-\
+4e4ec2ba54f8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{"a", ",", "b", ",", "TSf", ",", "TSg", ",", "z", ",", "w"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", "=", "5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TSf", "[", "z_", "]"}], "=", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"a", "[", "k", "]"}], 
+      SuperscriptBox["z", "k"]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", "n"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TSg", "[", "w_", "]"}], "=", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"b", "[", "k", "]"}], " ", 
+      SuperscriptBox["w", "k"]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", "n"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"CoefficientList", "[", 
+    RowBox[{
+     RowBox[{"TSf", "[", 
+      RowBox[{"TSg", "[", "z", "]"}], "]"}], ",", "z"}], "]"}], 
+   "\[LeftDoubleBracket]", 
+   RowBox[{"1", ";;", "n"}], "\[RightDoubleBracket]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.9475831467667875`*^9, 3.947583331131699*^9}, {
+  3.9475833784109955`*^9, 3.947583408223632*^9}, {3.947583445071312*^9, 
+  3.947583481708762*^9}, {3.947583641759948*^9, 3.947583722648754*^9}, {
+  3.947589589380481*^9, 3.9475896114418955`*^9}, {3.9475896798118625`*^9, 
+  3.947589749769313*^9}, {3.9475897913538876`*^9, 3.947589796754298*^9}, {
+  3.947589876925536*^9, 3.9475898956894674`*^9}},
+ CellLabel->
+  "In[194]:=",ExpressionUUID->"80af6d71-b431-4fc2-8226-cd3d678f3376"],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {"0"},
+     {
+      RowBox[{
+       RowBox[{"a", "[", "1", "]"}], " ", 
+       RowBox[{"b", "[", "1", "]"}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "[", "2", "]"}], " ", 
+        SuperscriptBox[
+         RowBox[{"b", "[", "1", "]"}], "2"]}], "+", 
+       RowBox[{
+        RowBox[{"a", "[", "1", "]"}], " ", 
+        RowBox[{"b", "[", "2", "]"}]}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "[", "3", "]"}], " ", 
+        SuperscriptBox[
+         RowBox[{"b", "[", "1", "]"}], "3"]}], "+", 
+       RowBox[{"2", " ", 
+        RowBox[{"a", "[", "2", "]"}], " ", 
+        RowBox[{"b", "[", "1", "]"}], " ", 
+        RowBox[{"b", "[", "2", "]"}]}], "+", 
+       RowBox[{
+        RowBox[{"a", "[", "1", "]"}], " ", 
+        RowBox[{"b", "[", "3", "]"}]}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "[", "4", "]"}], " ", 
+        SuperscriptBox[
+         RowBox[{"b", "[", "1", "]"}], "4"]}], "+", 
+       RowBox[{"3", " ", 
+        RowBox[{"a", "[", "3", "]"}], " ", 
+        SuperscriptBox[
+         RowBox[{"b", "[", "1", "]"}], "2"], " ", 
+        RowBox[{"b", "[", "2", "]"}]}], "+", 
+       RowBox[{
+        RowBox[{"a", "[", "2", "]"}], " ", 
+        SuperscriptBox[
+         RowBox[{"b", "[", "2", "]"}], "2"]}], "+", 
+       RowBox[{"2", " ", 
+        RowBox[{"a", "[", "2", "]"}], " ", 
+        RowBox[{"b", "[", "1", "]"}], " ", 
+        RowBox[{"b", "[", "3", "]"}]}], "+", 
+       RowBox[{
+        RowBox[{"a", "[", "1", "]"}], " ", 
+        RowBox[{"b", "[", "4", "]"}]}]}]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.5599999999999999]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   Column],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.947589755422002*^9, 3.9475897972256474`*^9, {3.9475898829650245`*^9, 
+   3.9475898964161177`*^9}},
+ CellLabel->
+  "Out[198]//TableForm=",ExpressionUUID->"837fcea1-e9a8-4774-b9d0-\
+d98878f1ed3e"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The \[OpenCurlyDoubleQuote]z\[CloseCurlyDoubleQuote] equation is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", "=", 
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], 
+     RowBox[{"b", "[", "1", "]"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "777ef639-09d4-4b81-a492-2ecf3915fbf5"],
+ ".  \nThe ",
+ Cell[BoxData[
+  FormBox["\"\<\!\(\*SuperscriptBox[\(z\), \(2\)]\)\>\"", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "8173d57c-5708-40cc-9dbf-749741bcce1b"],
+ " equation is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"a", "[", "2", "]"}], " ", 
+      SuperscriptBox[
+       RowBox[{"b", "[", "1", "]"}], "2"]}], "+", 
+     RowBox[{
+      RowBox[{"a", "[", "1", "]"}], 
+      RowBox[{"b", "[", "2", "]"}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ffded03d-6239-4e0e-95a4-f1f7d8e3c955"],
+ "\n\[Ellipsis]\nThe \[OpenCurlyDoubleQuote]z\[CloseCurlyDoubleQuote] \
+equation defines ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"b", "[", "1", "]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f4fcf8a1-b103-4d5d-86da-9e7eab8063fb"],
+ " from ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", "[", "1", "]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "ef62455d-8b9d-4a02-9dde-b0b5f814d303"],
+ ".\nThe ",
+ Cell[BoxData[
+  FormBox["\"\<\!\(\*SuperscriptBox[\(z\), \(2\)]\)\>\"", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "fc08a7c0-2270-4627-9fe8-1ac87dbdb7c3"],
+ " equation defines ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"b", "[", "2", "]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "7c9e3c38-da73-46e8-8016-c89b681166e4"],
+ " from ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", "[", 
+    RowBox[{"1", ":", "2"}], "]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "19a53464-3f3b-4ee9-b99f-85191e66b7d7"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"b", "[", "1", "]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "136f0712-f8fb-42a7-84a5-f89c6982e5cd"],
+ ".\n The ",
+ Cell[BoxData[
+  FormBox["\"\<\!\(\*SuperscriptBox[\(z\), \(3\)]\)\>\"", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "d238dfd2-3e11-4c9a-92fe-a16e85c0ad10"],
+ " equation defines ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"b", "[", "3", "]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "5283a005-6d1a-4add-9286-9b11a29522a2"],
+ " from ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", "[", 
+    RowBox[{"1", ":", "3"}], "]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "58595261-0b56-4749-99a1-c163ee640e8b"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"b", "[", 
+    RowBox[{"1", ":", "2"}], "]"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "8d557a2e-e056-4cc9-9fb5-ffe5cc6568c9"],
+ ".\n \[Ellipsis]\n Since this is pretty mechanical there is a command for it \
+in Mathematica"
+}], "Text",
+ CellChangeTimes->{{3.9475837412219534`*^9, 3.947583947749555*^9}, {
+  3.947584090340492*^9, 
+  3.947584106520089*^9}},ExpressionUUID->"9b6f4a72-90ab-457b-8a48-\
+6b28fe046bcb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "InverseSeries"}]], "Input",
+ CellChangeTimes->{{3.947584040821248*^9, 3.9475840452677307`*^9}},
+ CellLabel->
+  "In[199]:=",ExpressionUUID->"78c436e2-76b3-49d4-84d8-c9c4ab4ff5cc"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox[
+           PaneBox[
+            TooltipBox[
+             ButtonBox[
+              PaneSelectorBox[{False->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIcon"]], True->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIconHot"]]}, Dynamic[
+                CurrentValue["MouseOver"]]],
+              Appearance->None,
+              BaseStyle->"Link",
+              ButtonData->"paclet:ref/InverseSeries",
+              ButtonNote->"paclet:ref/InverseSeries"],
+             "\"paclet:ref/InverseSeries\""],
+            FrameMargins->{{0, 4}, {0, 2}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"\\!\\(\\*RowBox[{\\\"InverseSeries\\\", \\\"[\\\", \
+StyleBox[\\\"s\\\", \\\"TI\\\"], \\\"]\\\"}]\\) takes the series \
+\\!\\(\\*StyleBox[\\\"s\\\", \\\"TI\\\"]\\), and gives a series for the \
+inverse of the function represented by \\!\\(\\*StyleBox[\\\"s\\\", \
+\\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\\\"InverseSeries\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"s\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"x\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) uses the variable \\!\\(\\*StyleBox[\\\"x\\\", \
+\\\"TI\\\"]\\) in the inverse series.\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Documentation\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Documentation\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Documentation", "Tooltip"]& ], 
+                   TemplateBox[{
+                    
+                    TemplateBox[{
+                    "\"Local \[RightGuillemet]\"", "paclet:ref/InverseSeries",
+                     "paclet:ref/InverseSeries", "Link", {
+                    RGBColor[0.9686274509803922, 0.4666666666666667, 0.]}, 
+                    BaseStyle -> {
+                    RGBColor[0.0784313725490196, 0.1568627450980392, 0.6]}}, 
+                    "HyperlinkTemplate"], "\"  \"", 
+                    StyleBox[
+                    "\"|\"", "InformationRowLabel", StripOnInput -> False], 
+                    "\"  \"", 
+                    TemplateBox[{"\"Web \[RightGuillemet]\"", {
+                    URL[
+                    "http://reference.wolfram.com/language/ref/InverseSeries.\
+html"], None}, "http://reference.wolfram.com/language/ref/InverseSeries.html",
+                     "Hyperlink", {
+                    RGBColor[0.9686274509803922, 0.4666666666666667, 0.]}, 
+                    BaseStyle -> {
+                    RGBColor[0.0784313725490196, 0.1568627450980392, 0.6]}}, 
+                    "HyperlinkTemplate"]},
+                    "RowDefault"]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Attributes\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Attributes\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Attributes", "Tooltip"]& ], 
+                   RowBox[{"{", 
+                    RowBox[{"Protected", ",", "ReadProtected"}], "}"}]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"System`InverseSeries\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->{{6, 6}, {6, 3}}], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox[
+           PaneBox[
+            TooltipBox[
+             ButtonBox[
+              PaneSelectorBox[{False->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIcon"],
+                ImageSizeCache->{19.5, {6., 13.5}}], True->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIconHot"],
+                ImageSizeCache->{19.5, {6., 13.5}}]}, Dynamic[
+                CurrentValue["MouseOver"]]],
+              Appearance->None,
+              BaseStyle->"Link",
+              ButtonData->"paclet:ref/InverseSeries",
+              ButtonNote->"paclet:ref/InverseSeries"],
+             "\"paclet:ref/InverseSeries\""],
+            FrameMargins->{{0, 4}, {0, 2}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"\\!\\(\\*RowBox[{\\\"InverseSeries\\\", \\\"[\\\", \
+StyleBox[\\\"s\\\", \\\"TI\\\"], \\\"]\\\"}]\\) takes the series \
+\\!\\(\\*StyleBox[\\\"s\\\", \\\"TI\\\"]\\), and gives a series for the \
+inverse of the function represented by \\!\\(\\*StyleBox[\\\"s\\\", \
+\\\"TI\\\"]\\). \\n\\!\\(\\*RowBox[{\\\"InverseSeries\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"s\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"x\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) uses the variable \\!\\(\\*StyleBox[\\\"x\\\", \
+\\\"TI\\\"]\\) in the inverse series.\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{15., {5., 10.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{15., {5., 10.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[<|
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "\!\(\*RowBox[{\"InverseSeries\", \"[\", StyleBox[\"s\", \"TI\"], \"]\"}]\
+\) takes the series \!\(\*StyleBox[\"s\", \"TI\"]\), and gives a series for \
+the inverse of the function represented by \!\(\*StyleBox[\"s\", \"TI\"]\). \n\
+\!\(\*RowBox[{\"InverseSeries\", \"[\", RowBox[{StyleBox[\"s\", \"TI\"], \
+\",\", StyleBox[\"x\", \"TI\"]}], \"]\"}]\) uses the variable \!\(\*StyleBox[\
+\"x\", \"TI\"]\) in the inverse series.", 
+    "Documentation" -> <|
+     "Local" -> "paclet:ref/InverseSeries", "Web" -> 
+      "http://reference.wolfram.com/language/ref/InverseSeries.html"|>, 
+    "OwnValues" -> None, "UpValues" -> None, "DownValues" -> None, 
+    "SubValues" -> None, "DefaultValues" -> None, "NValues" -> None, 
+    "FormatValues" -> None, "Options" -> None, 
+    "Attributes" -> {Protected, ReadProtected}, "FullName" -> 
+    "System`InverseSeries"|>, False]]], "Output",
+ CellChangeTimes->{3.947584046734783*^9, 3.9475899702224555`*^9},
+ CellLabel->
+  "Out[199]=",ExpressionUUID->"3eff8371-87f3-4f60-94dc-519958741487"]
+}, Open  ]],
+
+Cell["Here is InverseSeries in action", "Text",
+ CellChangeTimes->{{3.9475841889075003`*^9, 3.947584194035139*^9}, {
+  3.947584252165744*^9, 
+  3.9475842580491896`*^9}},ExpressionUUID->"ac5bd7d2-5bab-4515-8a15-\
+9d8c60f4f9cd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "6"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TSf", "=", 
+  RowBox[{"Series", "[", 
+   RowBox[{
+    RowBox[{"x", " ", 
+     SuperscriptBox["\[ExponentialE]", "x"]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "n"}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"InverseSeries", "[", "TSf", "]"}]}], "Input",
+ CellChangeTimes->{{3.947584124338112*^9, 3.9475842391838503`*^9}, 
+   3.9475900239256935`*^9},
+ CellLabel->"In[200]:=",
+ CellID->26416,ExpressionUUID->"0cc80be4-9dd1-4c15-9d45-eeae90042825"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"x", "+", 
+   SuperscriptBox["x", "2"], "+", 
+   FractionBox[
+    SuperscriptBox["x", "3"], "2"], "+", 
+   FractionBox[
+    SuperscriptBox["x", "4"], "6"], "+", 
+   FractionBox[
+    SuperscriptBox["x", "5"], "24"], "+", 
+   FractionBox[
+    SuperscriptBox["x", "6"], "120"], "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "x", "]"}], "7"],
+    SeriesData[$CellContext`x, 0, {}, 1, 7, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`x, 0, {1, 1, 
+    Rational[1, 2], 
+    Rational[1, 6], 
+    Rational[1, 24], 
+    Rational[1, 120]}, 1, 7, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.9475841512953095`*^9, 3.9475841767984667`*^9}, {
+   3.9475842091584196`*^9, 3.9475842395634956`*^9}, 3.947590024615404*^9},
+ CellLabel->
+  "Out[201]=",ExpressionUUID->"f6d06cf6-311a-43c6-9736-30937d345789"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"x", "-", 
+   SuperscriptBox["x", "2"], "+", 
+   FractionBox[
+    RowBox[{"3", " ", 
+     SuperscriptBox["x", "3"]}], "2"], "-", 
+   FractionBox[
+    RowBox[{"8", " ", 
+     SuperscriptBox["x", "4"]}], "3"], "+", 
+   FractionBox[
+    RowBox[{"125", " ", 
+     SuperscriptBox["x", "5"]}], "24"], "-", 
+   FractionBox[
+    RowBox[{"54", " ", 
+     SuperscriptBox["x", "6"]}], "5"], "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "x", "]"}], "7"],
+    SeriesData[$CellContext`x, 0, {}, 1, 7, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`x, 0, {1, -1, 
+    Rational[3, 2], 
+    Rational[-8, 3], 
+    Rational[125, 24], 
+    Rational[-54, 5]}, 1, 7, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.9475841512953095`*^9, 3.9475841767984667`*^9}, {
+   3.9475842091584196`*^9, 3.9475842395634956`*^9}, 3.9475900246231775`*^9},
+ CellLabel->
+  "Out[202]=",ExpressionUUID->"16035c80-0f4f-45c9-a5dc-facd54a0f465"]
+}, Open  ]],
+
+Cell["For those that really like formulas!", "Text",
+ CellChangeTimes->{{3.9475845593414307`*^9, 3.9475845716477118`*^9}, {
+  3.9475846196611595`*^9, 
+  3.9475846317090178`*^9}},ExpressionUUID->"3b97de76-7dfa-4ff7-a9f4-\
+bb553cd4aee7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "f", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TSf", "=", 
+  RowBox[{"Series", "[", 
+   RowBox[{
+    RowBox[{"f", "[", "x", "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "n"}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"InverseSeries", "[", "TSf", "]"}]}], "Input",
+ CellChangeTimes->{{3.947584124338112*^9, 3.9475842391838503`*^9}, {
+  3.947584577953788*^9, 3.9475845918526993`*^9}, {3.947591748519061*^9, 
+  3.9475917489064865`*^9}},
+ CellLabel->"In[20]:=",
+ CellID->712571874,ExpressionUUID->"af4760fc-8904-48ea-a84c-a12226aec5dd"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   RowBox[{"f", "[", "0", "]"}], "+", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["f", "\[Prime]",
+      MultilineFunction->None], "[", "0", "]"}], " ", "x"}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{
+     SuperscriptBox["f", "\[Prime]\[Prime]",
+      MultilineFunction->None], "[", "0", "]"}], " ", 
+    SuperscriptBox["x", "2"]}], "+", 
+   RowBox[{
+    FractionBox["1", "6"], " ", 
+    RowBox[{
+     SuperscriptBox["f", 
+      TagBox[
+       RowBox[{"(", "3", ")"}],
+       Derivative],
+      MultilineFunction->None], "[", "0", "]"}], " ", 
+    SuperscriptBox["x", "3"]}], "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "x", "]"}], "4"],
+    SeriesData[$CellContext`x, 0, {}, 0, 4, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`x, 0, {
+    $CellContext`f[0], 
+    Derivative[1][$CellContext`f][0], Rational[1, 2] 
+    Derivative[2][$CellContext`f][0], Rational[1, 6] 
+    Derivative[3][$CellContext`f][0]}, 0, 4, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.9475845932684226`*^9, 3.947590074971683*^9, 
+  3.9475901134544125`*^9, 3.947591750085776*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"e49a4e84-6893-4092-a4ae-913ff616ac33"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"x", "-", 
+     RowBox[{"f", "[", "0", "]"}]}], 
+    RowBox[{
+     SuperscriptBox["f", "\[Prime]",
+      MultilineFunction->None], "[", "0", "]"}]], "-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["f", "\[Prime]\[Prime]",
+       MultilineFunction->None], "[", "0", "]"}], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"x", "-", 
+        RowBox[{"f", "[", "0", "]"}]}], ")"}], "2"]}], 
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      RowBox[{
+       SuperscriptBox["f", "\[Prime]",
+        MultilineFunction->None], "[", "0", "]"}], "3"]}]], "+", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        SuperscriptBox[
+         RowBox[{
+          SuperscriptBox["f", "\[Prime]\[Prime]",
+           MultilineFunction->None], "[", "0", "]"}], "2"], 
+        RowBox[{"2", " ", 
+         SuperscriptBox[
+          RowBox[{
+           SuperscriptBox["f", "\[Prime]",
+            MultilineFunction->None], "[", "0", "]"}], "2"]}]], "-", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["f", 
+          TagBox[
+           RowBox[{"(", "3", ")"}],
+           Derivative],
+          MultilineFunction->None], "[", "0", "]"}], 
+        RowBox[{"6", " ", 
+         RowBox[{
+          SuperscriptBox["f", "\[Prime]",
+           MultilineFunction->None], "[", "0", "]"}]}]]}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"x", "-", 
+        RowBox[{"f", "[", "0", "]"}]}], ")"}], "3"]}], 
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["f", "\[Prime]",
+       MultilineFunction->None], "[", "0", "]"}], "3"]], "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", 
+      RowBox[{"x", "-", 
+       RowBox[{"f", "[", "0", "]"}]}], "]"}], "4"],
+    SeriesData[$CellContext`x, 
+     $CellContext`f[0], {}, 1, 4, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`x, 
+   $CellContext`f[0], {
+   Derivative[1][$CellContext`f][0]^(-1), Rational[-1, 2] 
+    Derivative[1][$CellContext`f][0]^(-3) Derivative[2][$CellContext`f][0], 
+    Derivative[1][$CellContext`f][0]^(-3) (
+     Rational[1, 2] Derivative[1][$CellContext`f][0]^(-2) 
+      Derivative[2][$CellContext`f][0]^2 + 
+     Rational[-1, 6] Derivative[1][$CellContext`f][0]^(-1) 
+      Derivative[3][$CellContext`f][0])}, 1, 4, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.9475845932684226`*^9, 3.947590074971683*^9, 
+  3.9475901134544125`*^9, 3.947591750090762*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"3538f135-a032-49b2-b7fe-83d2dc1a4b4f"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The formulas are cleaner if ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", "[", "0", "]"}], "=", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "00d96614-754c-4f79-9934-8d3aa0ba8e46"]
+}], "Text",
+ CellChangeTimes->{{3.9475845593414307`*^9, 3.9475845716477118`*^9}, {
+  3.9475846196611595`*^9, 
+  3.947584663743732*^9}},ExpressionUUID->"dbd00382-8966-4398-a79c-\
+7fde5eaa34a7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "f", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", "=", "4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "0", "]"}], "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TSf", "=", 
+  RowBox[{"Series", "[", 
+   RowBox[{
+    RowBox[{"f", "[", "x", "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "n"}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"InverseSeries", "[", "TSf", "]"}]}], "Input",
+ CellChangeTimes->{{3.947584124338112*^9, 3.9475842391838503`*^9}, {
+  3.947584577953788*^9, 3.9475845918526993`*^9}, {3.9475846679643817`*^9, 
+  3.947584675065926*^9}, {3.947590169895851*^9, 3.947590192313308*^9}, {
+  3.947591756320033*^9, 3.9475917566876817`*^9}},
+ CellLabel->"In[24]:=",
+ CellID->190052711,ExpressionUUID->"c06d6297-b0e2-4f39-8f9f-dba7e36e8e49"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["f", "\[Prime]",
+      MultilineFunction->None], "[", "0", "]"}], " ", "x"}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{
+     SuperscriptBox["f", "\[Prime]\[Prime]",
+      MultilineFunction->None], "[", "0", "]"}], " ", 
+    SuperscriptBox["x", "2"]}], "+", 
+   RowBox[{
+    FractionBox["1", "6"], " ", 
+    RowBox[{
+     SuperscriptBox["f", 
+      TagBox[
+       RowBox[{"(", "3", ")"}],
+       Derivative],
+      MultilineFunction->None], "[", "0", "]"}], " ", 
+    SuperscriptBox["x", "3"]}], "+", 
+   RowBox[{
+    FractionBox["1", "24"], " ", 
+    RowBox[{
+     SuperscriptBox["f", 
+      TagBox[
+       RowBox[{"(", "4", ")"}],
+       Derivative],
+      MultilineFunction->None], "[", "0", "]"}], " ", 
+    SuperscriptBox["x", "4"]}], "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "x", "]"}], "5"],
+    SeriesData[$CellContext`x, 0, {}, 1, 5, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`x, 0, {
+    Derivative[1][$CellContext`f][0], Rational[1, 2] 
+    Derivative[2][$CellContext`f][0], Rational[1, 6] 
+    Derivative[3][$CellContext`f][0], Rational[1, 24] 
+    Derivative[4][$CellContext`f][0]}, 1, 5, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.9475846716170764`*^9, 3.947584675957404*^9}, 
+   3.947590137598055*^9, {3.9475901708115544`*^9, 3.9475901932638645`*^9}, 
+   3.947591757203867*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"5ed26faa-ec4b-4909-8cd5-e2c248b4689d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   FractionBox["x", 
+    RowBox[{
+     SuperscriptBox["f", "\[Prime]",
+      MultilineFunction->None], "[", "0", "]"}]], "-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["f", "\[Prime]\[Prime]",
+       MultilineFunction->None], "[", "0", "]"}], " ", 
+     SuperscriptBox["x", "2"]}], 
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      RowBox[{
+       SuperscriptBox["f", "\[Prime]",
+        MultilineFunction->None], "[", "0", "]"}], "3"]}]], "+", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        SuperscriptBox[
+         RowBox[{
+          SuperscriptBox["f", "\[Prime]\[Prime]",
+           MultilineFunction->None], "[", "0", "]"}], "2"], 
+        RowBox[{"2", " ", 
+         SuperscriptBox[
+          RowBox[{
+           SuperscriptBox["f", "\[Prime]",
+            MultilineFunction->None], "[", "0", "]"}], "2"]}]], "-", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["f", 
+          TagBox[
+           RowBox[{"(", "3", ")"}],
+           Derivative],
+          MultilineFunction->None], "[", "0", "]"}], 
+        RowBox[{"6", " ", 
+         RowBox[{
+          SuperscriptBox["f", "\[Prime]",
+           MultilineFunction->None], "[", "0", "]"}]}]]}], ")"}], " ", 
+     SuperscriptBox["x", "3"]}], 
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["f", "\[Prime]",
+       MultilineFunction->None], "[", "0", "]"}], "3"]], "+", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["f", "\[Prime]\[Prime]",
+           MultilineFunction->None], "[", "0", "]"}], " ", 
+         RowBox[{
+          SuperscriptBox["f", 
+           TagBox[
+            RowBox[{"(", "3", ")"}],
+            Derivative],
+           MultilineFunction->None], "[", "0", "]"}]}], 
+        RowBox[{"4", " ", 
+         SuperscriptBox[
+          RowBox[{
+           SuperscriptBox["f", "\[Prime]",
+            MultilineFunction->None], "[", "0", "]"}], "2"]}]], "-", 
+       FractionBox[
+        RowBox[{
+         RowBox[{
+          SuperscriptBox["f", "\[Prime]\[Prime]",
+           MultilineFunction->None], "[", "0", "]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{
+           FractionBox[
+            RowBox[{"5", " ", 
+             SuperscriptBox[
+              RowBox[{
+               SuperscriptBox["f", "\[Prime]\[Prime]",
+                MultilineFunction->None], "[", "0", "]"}], "2"]}], 
+            RowBox[{"4", " ", 
+             SuperscriptBox[
+              RowBox[{
+               SuperscriptBox["f", "\[Prime]",
+                MultilineFunction->None], "[", "0", "]"}], "2"]}]], "-", 
+           FractionBox[
+            RowBox[{
+             SuperscriptBox["f", 
+              TagBox[
+               RowBox[{"(", "3", ")"}],
+               Derivative],
+              MultilineFunction->None], "[", "0", "]"}], 
+            RowBox[{"3", " ", 
+             RowBox[{
+              SuperscriptBox["f", "\[Prime]",
+               MultilineFunction->None], "[", "0", "]"}]}]]}], ")"}]}], 
+        RowBox[{"2", " ", 
+         RowBox[{
+          SuperscriptBox["f", "\[Prime]",
+           MultilineFunction->None], "[", "0", "]"}]}]], "-", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["f", 
+          TagBox[
+           RowBox[{"(", "4", ")"}],
+           Derivative],
+          MultilineFunction->None], "[", "0", "]"}], 
+        RowBox[{"24", " ", 
+         RowBox[{
+          SuperscriptBox["f", "\[Prime]",
+           MultilineFunction->None], "[", "0", "]"}]}]]}], ")"}], " ", 
+     SuperscriptBox["x", "4"]}], 
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["f", "\[Prime]",
+       MultilineFunction->None], "[", "0", "]"}], "4"]], "+", 
+   InterpretationBox[
+    SuperscriptBox[
+     RowBox[{"O", "[", "x", "]"}], "5"],
+    SeriesData[$CellContext`x, 0, {}, 1, 5, 1],
+    Editable->False]}],
+  SeriesData[$CellContext`x, 0, {
+   Derivative[1][$CellContext`f][0]^(-1), Rational[-1, 2] 
+    Derivative[1][$CellContext`f][0]^(-3) Derivative[2][$CellContext`f][0], 
+    Derivative[1][$CellContext`f][0]^(-3) (
+     Rational[1, 2] Derivative[1][$CellContext`f][0]^(-2) 
+      Derivative[2][$CellContext`f][0]^2 + 
+     Rational[-1, 6] Derivative[1][$CellContext`f][0]^(-1) 
+      Derivative[3][$CellContext`f][0]), 
+    Derivative[1][$CellContext`f][0]^(-4) (
+     Rational[1, 4] Derivative[1][$CellContext`f][0]^(-2) 
+      Derivative[2][$CellContext`f][0] Derivative[3][$CellContext`f][0] + 
+     Rational[-1, 2] Derivative[1][$CellContext`f][0]^(-1) 
+      Derivative[2][$CellContext`f][0] (
+       Rational[5, 4] Derivative[1][$CellContext`f][0]^(-2) 
+        Derivative[2][$CellContext`f][0]^2 + 
+       Rational[-1, 3] Derivative[1][$CellContext`f][0]^(-1) 
+        Derivative[3][$CellContext`f][0]) + 
+     Rational[-1, 24] Derivative[1][$CellContext`f][0]^(-1) 
+      Derivative[4][$CellContext`f][0])}, 1, 5, 1],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.9475846716170764`*^9, 3.947584675957404*^9}, 
+   3.947590137598055*^9, {3.9475901708115544`*^9, 3.9475901932638645`*^9}, 
+   3.9475917572118454`*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"b301a983-c059-4f7a-87cf-6024e7112c3f"]
+}, Open  ]],
+
+Cell[TextData[{
+ "We will have to change things a bit if ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["a", "1"], "=", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "de7309ac-6c9e-4355-b5d4-7362616fafdc"],
+ ".  Remember ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["a", "1"], "=", 
+    RowBox[{
+     RowBox[{"f", "'"}], "[", "0", "]"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "e9786caf-f4dd-4b50-8f9d-4e5543bea41b"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.9475845593414307`*^9, 3.9475845716477118`*^9}, {
+  3.9475846196611595`*^9, 
+  3.947584753581419*^9}},ExpressionUUID->"638133d5-8801-4188-9526-\
+2519c8da15ed"]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{992.4, 574.8},
+WindowMargins->{{55.8, Automatic}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification:>1.5 Inherited,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f710898f-2439-4c02-997f-e18e3c036fc6"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 503, 7, 146, "Title",ExpressionUUID->"8e791b87-b8fe-4d47-a58b-235908e2ee0d"],
+Cell[1086, 31, 1935, 60, 229, "Text",ExpressionUUID->"34c977bb-d424-47b4-9353-a46fa31ef571"],
+Cell[3024, 93, 3710, 114, 260, "Text",ExpressionUUID->"66ba4cd3-fb2d-430c-9863-4e4ec2ba54f8"],
+Cell[CellGroupData[{
+Cell[6759, 211, 1601, 43, 166, "Input",ExpressionUUID->"80af6d71-b431-4fc2-8226-cd3d678f3376"],
+Cell[8363, 256, 2201, 69, 176, "Output",ExpressionUUID->"837fcea1-e9a8-4774-b9d0-d98878f1ed3e"]
+}, Open  ]],
+Cell[10579, 328, 3220, 97, 294, "Text",ExpressionUUID->"9b6f4a72-90ab-457b-8a48-6b28fe046bcb"],
+Cell[CellGroupData[{
+Cell[13824, 429, 207, 4, 42, "Input",ExpressionUUID->"78c436e2-76b3-49d4-84d8-c9c4ab4ff5cc"],
+Cell[14034, 435, 13172, 307, 219, "Output",ExpressionUUID->"3eff8371-87f3-4f60-94dc-519958741487"]
+}, Open  ]],
+Cell[27221, 745, 226, 4, 52, "Text",ExpressionUUID->"ac5bd7d2-5bab-4515-8a15-9d8c60f4f9cd"],
+Cell[CellGroupData[{
+Cell[27472, 753, 570, 15, 104, "Input",ExpressionUUID->"0cc80be4-9dd1-4c15-9d45-eeae90042825",
+ CellID->26416],
+Cell[28045, 770, 876, 26, 71, "Output",ExpressionUUID->"f6d06cf6-311a-43c6-9736-30937d345789"],
+Cell[28924, 798, 987, 30, 71, "Output",ExpressionUUID->"16035c80-0f4f-45c9-a5dc-facd54a0f465"]
+}, Open  ]],
+Cell[29926, 831, 235, 4, 52, "Text",ExpressionUUID->"3b97de76-7dfa-4ff7-a9f4-bb553cd4aee7"],
+Cell[CellGroupData[{
+Cell[30186, 839, 673, 16, 128, "Input",ExpressionUUID->"af4760fc-8904-48ea-a84c-a12226aec5dd",
+ CellID->712571874],
+Cell[30862, 857, 1246, 36, 67, "Output",ExpressionUUID->"e49a4e84-6893-4092-a4ae-913ff616ac33"],
+Cell[32111, 895, 2606, 76, 91, "Output",ExpressionUUID->"3538f135-a032-49b2-b7fe-83d2dc1a4b4f"]
+}, Open  ]],
+Cell[34732, 974, 433, 12, 52, "Text",ExpressionUUID->"dbd00382-8966-4398-a79c-7fde5eaa34a7"],
+Cell[CellGroupData[{
+Cell[35190, 990, 867, 20, 157, "Input",ExpressionUUID->"c06d6297-b0e2-4f39-8f9f-dba7e36e8e49",
+ CellID->190052711],
+Cell[36060, 1012, 1537, 45, 67, "Output",ExpressionUUID->"5ed26faa-ec4b-4909-8cd5-e2c248b4689d"],
+Cell[37600, 1059, 5240, 145, 212, "Output",ExpressionUUID->"b301a983-c059-4f7a-87cf-6024e7112c3f"]
+}, Open  ]],
+Cell[42855, 1207, 699, 22, 52, "Text",ExpressionUUID->"638133d5-8801-4188-9526-2519c8da15ed"]
+}, Open  ]]
+}
+]
+*)
+
