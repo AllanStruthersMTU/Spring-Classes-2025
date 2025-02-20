@@ -1,0 +1,428 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16787,        420]
+NotebookOptionsPosition[     14340,        369]
+NotebookOutlinePosition[     14867,        388]
+CellTagsIndexPosition[     14824,        385]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Hessian Modification", "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.946463319261049*^9, 
+  3.946463329254393*^9}, {3.949047570095934*^9, 3.949047575428689*^9}, {
+  3.9490497943598337`*^9, 
+  3.949049798165171*^9}},ExpressionUUID->"8e791b87-b8fe-4d47-a58b-\
+235908e2ee0d"],
+
+Cell[TextData[{
+ "Line search methods require an SPD Hessian or approximate Hessian.  Newton \
+methods which compute ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["\[Del]", "2"], 
+    RowBox[{"f", "(", "x", ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "d9dc10d3-143b-4154-8fc8-2e0d170acd9c"],
+ " will not generally satisfy this requirement. Hessian modification means \
+\[OpenCurlyDoubleQuote]traditional\[CloseCurlyDoubleQuote] methods for \
+messing with a Hessian to make it SPD.  "
+}], "Text",
+ CellChangeTimes->{{3.949047578156623*^9, 3.9490476672664566`*^9}, {
+  3.9490498040829067`*^9, 
+  3.949049929628639*^9}},ExpressionUUID->"419c5791-d35f-4b15-b05c-\
+c5255849fd75"],
+
+Cell["\<\
+The plan is to try to explain several things about solving linear systems and \
+detecting if a matrix is positive definite. \
+\>", "Text",
+ CellChangeTimes->{{3.9490476702551284`*^9, 
+  3.9490477400508957`*^9}},ExpressionUUID->"3960f57e-ec06-4b6f-bc3f-\
+c039f3d8c8c6"],
+
+Cell[CellGroupData[{
+
+Cell["Eigenvalue Modification", "Subtitle",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.946463319261049*^9, 
+  3.946463329254393*^9}, {3.949047570095934*^9, 3.949047575428689*^9}, {
+  3.9490477758614807`*^9, 3.949047792355195*^9}, {3.9490499388690195`*^9, 
+  3.949049944013194*^9}},ExpressionUUID->"48e5beea-8a8c-48a9-a2b5-\
+41c231d36585"],
+
+Cell[TextData[{
+ "Compute the eigenvalue decomposition ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"A", "=", 
+    RowBox[{"Q", ".", "\[CapitalLambda]", ".", 
+     RowBox[{"Q", "\[Transpose]"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "2389abee-7c7a-48e5-8055-8baedcc44175"],
+ " use the positive definite replacement \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    OverscriptBox["A", "^"], "=", 
+    RowBox[{"Q", ".", 
+     OverscriptBox["\[CapitalLambda]", "^"], ".", 
+     RowBox[{"Q", "\[Transpose]"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "288b53b7-0686-49d3-8ea5-6e6e4d647d6e"],
+ "\nwhere ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["\[CapitalLambda]", "^"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "700c7341-3805-4087-81f3-856991692541"],
+ " is the diagonal matrix of eigenvalues with any negative eigenvalues \
+replaced with a small positive value."
+}], "Text",
+ CellChangeTimes->{{3.9490479321502557`*^9, 3.949048049019831*^9}, {
+  3.9490480889636116`*^9, 3.949048217232643*^9}, {3.949049969482604*^9, 
+  3.9490500280339255`*^9}, {3.949050123698678*^9, 
+  3.9490502625924187`*^9}},ExpressionUUID->"4c9f0c2e-5f48-4968-9126-\
+3e68e424e910"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "23"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"RandomReal", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "n"}], "}"}]}], "]"}]}], ";", 
+  RowBox[{"A", "=", 
+   RowBox[{"A", "+", 
+    RowBox[{"A", "\[Transpose]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\[Lambda]", ",", "Q"}], "}"}], "=", 
+   RowBox[{"Eigensystem", "[", "A", "]"}]}], ";", 
+  RowBox[{"Q", "=", 
+   RowBox[{"Q", "\[Transpose]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Norm", "[", 
+  RowBox[{"A", "-", 
+   RowBox[{"Q", ".", 
+    RowBox[{"DiagonalMatrix", "[", "\[Lambda]", "]"}], ".", 
+    RowBox[{"Q", "\[Transpose]"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.9490477991670375`*^9, 3.9490478838736405`*^9}, {
+   3.9490479171773148`*^9, 3.949047917661708*^9}, {3.949048062866109*^9, 
+   3.94904807726163*^9}, 3.949048159298169*^9, {3.949048286380848*^9, 
+   3.949048286551607*^9}, {3.9490500418660884`*^9, 3.949050117373729*^9}},
+ CellLabel->
+  "In[226]:=",ExpressionUUID->"cfa5751e-6656-4d1b-9f60-ffaddbd722e1"],
+
+Cell[BoxData["1.0389592350887302`*^-13"], "Output",
+ CellChangeTimes->{{3.9490501087732544`*^9, 3.9490501177484674`*^9}},
+ CellLabel->
+  "Out[229]=",ExpressionUUID->"72783120-4b2d-464e-a3f0-6e0767b2a693"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Adding a multiple of the Identity", "Subtitle",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.946463319261049*^9, 
+  3.946463329254393*^9}, {3.949047570095934*^9, 3.949047575428689*^9}, {
+  3.9490477758614807`*^9, 3.949047792355195*^9}, {3.9490499388690195`*^9, 
+  3.949049944013194*^9}, {3.949050289637088*^9, 
+  3.9490503011717167`*^9}},ExpressionUUID->"d674a345-3298-482d-af19-\
+ec032ed5ef35"],
+
+Cell[TextData[{
+ "Find a hopefully small value \[Tau] such that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"A", "+", 
+    RowBox[{"\[Tau]", " ", "Id"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "34df988a-0782-425e-b6cc-874d7f9ecd83"],
+ " is SPD. Use that instead of the Hessian.  The smallest possible value is \
+the most negative eigenvalue! "
+}], "Text",
+ CellChangeTimes->{{3.9490479321502557`*^9, 3.949048049019831*^9}, {
+  3.9490480889636116`*^9, 3.949048217232643*^9}, {3.949049969482604*^9, 
+  3.9490500280339255`*^9}, {3.949050123698678*^9, 3.9490502625924187`*^9}, {
+  3.949050306836522*^9, 
+  3.949050387709207*^9}},ExpressionUUID->"39bc20ee-68a7-4f33-83df-\
+b5a10c521bb1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "23"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"RandomReal", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "n"}], "}"}]}], "]"}]}], ";", 
+  RowBox[{"A", "=", 
+   RowBox[{"A", "+", 
+    RowBox[{"A", "\[Transpose]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\[Lambda]", ",", "Q"}], "}"}], "=", 
+   RowBox[{"Eigensystem", "[", "A", "]"}]}], ";", 
+  RowBox[{"Q", "=", 
+   RowBox[{"Q", "\[Transpose]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Norm", "[", 
+  RowBox[{"A", "-", 
+   RowBox[{"Q", ".", 
+    RowBox[{"DiagonalMatrix", "[", "\[Lambda]", "]"}], ".", 
+    RowBox[{"Q", "\[Transpose]"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.9490477991670375`*^9, 3.9490478838736405`*^9}, {
+   3.9490479171773148`*^9, 3.949047917661708*^9}, {3.949048062866109*^9, 
+   3.94904807726163*^9}, 3.949048159298169*^9, {3.949048286380848*^9, 
+   3.949048286551607*^9}, {3.9490500418660884`*^9, 3.949050117373729*^9}},
+ CellLabel->
+  "In[226]:=",ExpressionUUID->"0f83cdfa-1113-49ae-843a-38613d8c3477"],
+
+Cell[BoxData["1.0389592350887302`*^-13"], "Output",
+ CellChangeTimes->{{3.9490501087732544`*^9, 3.9490501177484674`*^9}},
+ CellLabel->
+  "Out[229]=",ExpressionUUID->"c2a318ae-5ae1-4ddb-a6ae-bc213e7319d1"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Cholesky Decomposition + \[Tau] Id", "Subtitle",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.946463319261049*^9, 
+  3.946463329254393*^9}, {3.949047570095934*^9, 3.949047575428689*^9}, {
+  3.9490477758614807`*^9, 3.949047792355195*^9}, {3.9490499388690195`*^9, 
+  3.949049944013194*^9}, {3.949050289637088*^9, 3.9490503011717167`*^9}, {
+  3.949050437313884*^9, 3.9490504442968473`*^9}, {3.9490506366392756`*^9, 
+  3.9490506648353205`*^9}},ExpressionUUID->"b6965847-64e1-4b90-aa24-\
+3cdcfadc825e"],
+
+Cell[TextData[{
+ "Choose ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Tau]", "=", 
+    SuperscriptBox["10", 
+     RowBox[{"-", "4"}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "a237d04a-b954-4463-9044-ebd42906035d"],
+ ".  Attempt to compute ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"L", ".", 
+     RowBox[{"L", "\[Transpose]"}]}], "=", 
+    RowBox[{"A", "+", 
+     RowBox[{"\[Tau]", " ", "Id"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "92b047ec-5859-4240-9121-bf14b3364a52"],
+ ".  If Cholesky succeeds use ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"L", " ", 
+    RowBox[{"L", "\[Transpose]"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "cef7ebc8-7f11-4b19-86a5-f1dc2cb28858"],
+ " as an approximate Hessian.  If it fails increase ",
+ Cell[BoxData[
+  FormBox["\[Tau]", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "465ae680-df07-43b1-bf0a-705dd6659571"],
+ " and try again.  "
+}], "Text",
+ CellChangeTimes->{{3.9490479321502557`*^9, 3.949048049019831*^9}, {
+  3.9490480889636116`*^9, 3.949048217232643*^9}, {3.949049969482604*^9, 
+  3.9490500280339255`*^9}, {3.949050123698678*^9, 3.9490502625924187`*^9}, {
+  3.949050306836522*^9, 3.949050387709207*^9}, {3.949050449423979*^9, 
+  3.949050611573016*^9}},ExpressionUUID->"a9a9f599-f9b1-44e3-bc69-\
+ff8365c7297f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Modified Cholesky Decomposition", "Subtitle",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.946463319261049*^9, 
+  3.946463329254393*^9}, {3.949047570095934*^9, 3.949047575428689*^9}, {
+  3.9490477758614807`*^9, 3.949047792355195*^9}, {3.9490499388690195`*^9, 
+  3.949049944013194*^9}, {3.949050289637088*^9, 3.9490503011717167`*^9}, {
+  3.949050437313884*^9, 3.9490504442968473`*^9}, {3.9490506366392756`*^9, 
+  3.949050689263693*^9}},ExpressionUUID->"b8e182ee-2070-41c3-905d-\
+6e73e3b31b84"],
+
+Cell[TextData[{
+ "Run modified Cholesky decomposition that dynamically replaces ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox[
+    RowBox[{"-", "\[Alpha]"}]], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "a1d7c197-3c12-4b01-bdc2-a022407f7920"],
+ " with ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox["\[Epsilon]"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "9e0f163e-030e-44d2-93d2-f8320b803df9"],
+ " as needed in the algorithm.  Various possible choices of ",
+ Cell[BoxData[
+  FormBox["\[Epsilon]", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "82127a5e-9d86-4ed4-9d00-75b02f40db24"],
+ " are described in the text on p51. "
+}], "Text",
+ CellChangeTimes->{{3.9490479321502557`*^9, 3.949048049019831*^9}, {
+  3.9490480889636116`*^9, 3.949048217232643*^9}, {3.949049969482604*^9, 
+  3.9490500280339255`*^9}, {3.949050123698678*^9, 3.9490502625924187`*^9}, {
+  3.949050306836522*^9, 3.949050387709207*^9}, {3.949050449423979*^9, 
+  3.949050611573016*^9}, {3.9490506935280666`*^9, 
+  3.949050806747691*^9}},ExpressionUUID->"bca683c0-e528-4014-9721-\
+6aacd07e4879"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subtitle",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.946463319261049*^9, 
+  3.946463329254393*^9}, {3.949047570095934*^9, 3.949047575428689*^9}, {
+  3.9490477758614807`*^9, 3.949047792355195*^9}, {3.9490499388690195`*^9, 
+  3.949049944013194*^9}, {3.949050289637088*^9, 3.9490503011717167`*^9}, {
+  3.949050437313884*^9, 3.9490504442968473`*^9}, {3.9490506366392756`*^9, 
+  3.949050689263693*^9}, {3.9490508223063793`*^9, 
+  3.9490508248817453`*^9}},ExpressionUUID->"287147dc-9001-4f15-9a50-\
+442e7f3854d8"],
+
+Cell["\<\
+These all look pretty weird to me!  They are driven by the need for a line \
+search algorithm to use a descent direction.  This means that any line search \
+method that includes curvature information needs to maintain an SPD \
+approximation to the Hessian. \
+\>", "Text",
+ CellChangeTimes->{{3.9490508290074787`*^9, 3.9490509166135845`*^9}, {
+  3.949050950214872*^9, 
+  3.9490509990342026`*^9}},ExpressionUUID->"8caf1497-5aba-499b-9da4-\
+d68b8f6c7d2a"],
+
+Cell["\<\
+The need for an SPD Hessian approximation also drives the complicated update \
+formulas fro BFGS and DFP.  \
+\>", "Text",
+ CellChangeTimes->{{3.9490508290074787`*^9, 3.949050941491186*^9}, {
+  3.9490510024902873`*^9, 
+  3.949051032373638*^9}},ExpressionUUID->"56d7629f-cd6a-4b62-b3d6-\
+a0821755a29b"],
+
+Cell["\<\
+Trust region algorithms do not need an SPD Hessian.  A Newton trust region \
+algorithm can use an accurate Hessian.  A Quasi-Newton trust-region algorithm \
+can approximate an indefinite Hessian faithfully using a simple update such \
+as SR1.   \
+\>", "Text",
+ CellChangeTimes->{{3.9490508290074787`*^9, 3.949050904699303*^9}, {
+  3.949051037968303*^9, 
+  3.9490511457609825`*^9}},ExpressionUUID->"58161ef8-22bb-43d5-9b26-\
+557e72ea7319"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{982.5, 575},
+WindowMargins->{{Automatic, -1474.5}, {Automatic, -170}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification:>1.5 Inherited,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"8e7110d5-253d-4870-a4a9-a5bc67f87689"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 518, 8, 146, "Title",ExpressionUUID->"8e791b87-b8fe-4d47-a58b-235908e2ee0d"],
+Cell[1101, 32, 721, 17, 121, "Text",ExpressionUUID->"419c5791-d35f-4b15-b05c-c5255849fd75"],
+Cell[1825, 51, 278, 6, 87, "Text",ExpressionUUID->"3960f57e-ec06-4b6f-bc3f-c039f3d8c8c6"],
+Cell[CellGroupData[{
+Cell[2128, 61, 572, 8, 79, "Subtitle",ExpressionUUID->"48e5beea-8a8c-48a9-a2b5-41c231d36585"],
+Cell[2703, 71, 1239, 32, 192, "Text",ExpressionUUID->"4c9f0c2e-5f48-4968-9126-3e68e424e910"],
+Cell[CellGroupData[{
+Cell[3967, 107, 1216, 32, 128, "Input",ExpressionUUID->"cfa5751e-6656-4d1b-9f60-ffaddbd722e1"],
+Cell[5186, 141, 204, 3, 48, "Output",ExpressionUUID->"72783120-4b2d-464e-a3f0-6e0767b2a693"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5439, 150, 633, 9, 79, "Subtitle",ExpressionUUID->"d674a345-3298-482d-af19-ec032ed5ef35"],
+Cell[6075, 161, 709, 16, 87, "Text",ExpressionUUID->"39bc20ee-68a7-4f33-83df-b5a10c521bb1"],
+Cell[CellGroupData[{
+Cell[6809, 181, 1216, 32, 128, "Input",ExpressionUUID->"0f83cdfa-1113-49ae-843a-38613d8c3477"],
+Cell[8028, 215, 204, 3, 48, "Output",ExpressionUUID->"c2a318ae-5ae1-4ddb-a6ae-bc213e7319d1"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8281, 224, 735, 10, 79, "Subtitle",ExpressionUUID->"b6965847-64e1-4b90-aa24-3cdcfadc825e"],
+Cell[9019, 236, 1379, 38, 87, "Text",ExpressionUUID->"a9a9f599-f9b1-44e3-bc69-ff8365c7297f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10435, 279, 730, 10, 79, "Subtitle",ExpressionUUID->"b8e182ee-2070-41c3-905d-6e73e3b31b84"],
+Cell[11168, 291, 1119, 27, 88, "Text",ExpressionUUID->"bca683c0-e528-4014-9721-6aacd07e4879"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12324, 323, 759, 11, 79, "Subtitle",ExpressionUUID->"287147dc-9001-4f15-9a50-442e7f3854d8"],
+Cell[13086, 336, 462, 9, 121, "Text",ExpressionUUID->"8caf1497-5aba-499b-9da4-d68b8f6c7d2a"],
+Cell[13551, 347, 310, 7, 87, "Text",ExpressionUUID->"56d7629f-cd6a-4b62-b3d6-a0821755a29b"],
+Cell[13864, 356, 448, 9, 121, "Text",ExpressionUUID->"58161ef8-22bb-43d5-9b26-557e72ea7319"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
