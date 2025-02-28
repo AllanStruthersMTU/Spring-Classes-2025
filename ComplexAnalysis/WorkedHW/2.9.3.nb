@@ -1,0 +1,157 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4418,        149]
+NotebookOptionsPosition[      3824,        129]
+NotebookOutlinePosition[      4339,        148]
+CellTagsIndexPosition[      4296,        145]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["2.9.3", "Section",
+ CellChangeTimes->{{3.9478430617222404`*^9, 3.947843062696886*^9}, {
+   3.9497436069940166`*^9, 3.9497436083139486`*^9}, {3.9497514979723806`*^9, 
+   3.94975149920187*^9}, 
+   3.9497572796197343`*^9},ExpressionUUID->"fe8d480d-9c2d-4f13-90c9-\
+3eead85046cd"],
+
+Cell[TextData[{
+ "If ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"w", "=", 
+    RowBox[{"ArcTanh", "[", "z", "]"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "40f9d6c3-c689-4802-b1f0-6b39281028d2"],
+ " then ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"Tanh", "[", "w", "]"}], "=", "z"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3f4f2df1-9ac5-4ea7-be95-438a7549a805"],
+ " and \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"z", "=", 
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", "w"], "-", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"-", "w"}]]}], 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", "w"], "+", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"-", "w"}]]}]], "=", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"2", "w"}]], "-", "1"}], 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"2", "w"}]], "+", "1"}]]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "aca708ba-023b-414c-8a69-d1639550d848"],
+ "\nso \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"2", "w"}]], "=", 
+    FractionBox[
+     RowBox[{"1", "+", "z"}], 
+     RowBox[{"1", "-", "z"}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "b6095d6a-f7b8-454d-a880-722fb8db5d8a"],
+ "\nso\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"2", "w"}], "=", 
+    RowBox[{"log", "(", 
+     FractionBox[
+      RowBox[{"1", "+", "z"}], 
+      RowBox[{"1", "-", "z"}]], ")"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "395467d7-bf20-4848-ba00-dc0d14589f79"],
+ "\nor \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"w", "=", 
+    RowBox[{
+     FractionBox["1", "2"], 
+     RowBox[{"log", "(", 
+      FractionBox[
+       RowBox[{"1", "+", "z"}], 
+       RowBox[{"1", "-", "z"}]], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "683dbfcc-65d4-4d8b-8e43-e23bd3dadcf4"],
+ ".\nIn words is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"w", "=", 
+    RowBox[{"ArcTanh", "[", "z", "]"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "7c87d537-12d3-4767-8a27-3524ec5698ff"],
+ " then ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"w", "=", 
+    RowBox[{
+     FractionBox["1", "2"], 
+     RowBox[{"log", "(", 
+      FractionBox[
+       RowBox[{"1", "+", "z"}], 
+       RowBox[{"1", "-", "z"}]], ")"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "47b51714-7b81-46b6-9a5b-669b39b5c691"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.9497436536117296`*^9, 3.949743696642362*^9}, {
+  3.9497438125221443`*^9, 3.9497440513668756`*^9}, {3.9497515089843993`*^9, 
+  3.949751549913497*^9}, {3.949757327500824*^9, 
+  3.9497575643095846`*^9}},ExpressionUUID->"c7a04f8c-e34e-4db8-9d34-\
+b8a23ff4353b"]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{787, 580},
+WindowMargins->{{Automatic, -804.5}, {475.5, Automatic}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification->1.5,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"8a77afe2-9f8d-4a16-88ef-35d561350705"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 282, 5, 100, "Section",ExpressionUUID->"fe8d480d-9c2d-4f13-90c9-3eead85046cd"],
+Cell[865, 29, 2943, 97, 357, "Text",ExpressionUUID->"c7a04f8c-e34e-4db8-9d34-b8a23ff4353b"]
+}, Open  ]]
+}
+]
+*)
+
