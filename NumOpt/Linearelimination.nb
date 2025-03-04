@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13088,        366]
-NotebookOptionsPosition[     11338,        329]
-NotebookOutlinePosition[     11866,        348]
-CellTagsIndexPosition[     11823,        345]
+NotebookDataLength[     13113,        365]
+NotebookOptionsPosition[     11363,        328]
+NotebookOutlinePosition[     11891,        347]
+CellTagsIndexPosition[     11848,        344]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,8 +31,7 @@ Cell["Linear Elimination", "Title",
 Cell[TextData[{
  "A set of linear equality constraints  on an n vector ",
  Cell[BoxData[
-  FormBox["x", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["x", TraditionalForm]],ExpressionUUID->
   "bd2b60f3-cbfa-46e3-8832-3e021ed4d328"],
  " is an underdetermined system of linear equations\n\t",
  Cell[BoxData[
@@ -40,20 +39,22 @@ Cell[TextData[{
    RowBox[{
     RowBox[{
      RowBox[{"B", ".", "x"}], "-", "b"}], "=", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "2e435c77-741b-4f06-bd52-dc5802c38659"],
+  ExpressionUUID->"2e435c77-741b-4f06-bd52-dc5802c38659"],
  "\nwith an ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"m", "\[Times]", "n"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"m", "\[Times]", "n"}], TraditionalForm]],ExpressionUUID->
   "8d9de316-ab3d-4a85-8db7-69d2ee63f395"],
- " coefficient matrix B: each row of the matrix is an equation; the ith \
-column of the matrix gives the dependence on the variable ",
+ " coefficient matrix B: each row of the matrix is an equation; the ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["x", "i"], TraditionalForm]],
+   SuperscriptBox["i", "th"], TraditionalForm]],
   FormatType->TraditionalForm,ExpressionUUID->
+  "331fcd89-4c01-49f7-83e4-a09970b1b900"],
+ " column of the matrix gives the dependence on the variable ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "i"], TraditionalForm]],ExpressionUUID->
   "056d77d4-4920-40aa-9ac5-8480a3d2926c"],
  ".  We want to work out how to minimize\n\t",
  Cell[BoxData[
@@ -61,22 +62,20 @@ column of the matrix gives the dependence on the variable ",
    RowBox[{
     RowBox[{"0.5", " ", 
      RowBox[{"x", ".", "A", ".", "x"}]}], "+", 
-    RowBox[{"g", ".", "x"}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    RowBox[{"g", ".", "x"}]}], TraditionalForm]],ExpressionUUID->
   "403e2064-56a4-46f2-a31f-3f36273d0951"],
  "\nwith the m constraints ",
  Cell[BoxData[
   FormBox[
    RowBox[{
-    RowBox[{"B", ".", "x"}], "=", "b"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    RowBox[{"B", ".", "x"}], "=", "b"}], TraditionalForm]],ExpressionUUID->
   "36e80d90-6ad9-46b4-88f4-6ffb9e6d616d"],
  ".   We want to work out how to do this as stably as possible.  Then we want \
 to work out how to do it reasonably stably and reasonably efficiently.  "
 }], "Text",
  CellChangeTimes->{{3.95009406820533*^9, 3.9500944375581837`*^9}, {
-  3.9500944944948025`*^9, 
-  3.950094572221246*^9}},ExpressionUUID->"0e0b8580-f61b-4132-9db4-\
+  3.9500944944948025`*^9, 3.950094572221246*^9}, {3.950098321589733*^9, 
+  3.950098324627533*^9}},ExpressionUUID->"0e0b8580-f61b-4132-9db4-\
 bc4793cf65b3"],
 
 Cell[BoxData[{
@@ -349,25 +348,25 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 368, 6, 146, "Title",ExpressionUUID->"8e791b87-b8fe-4d47-a58b-235908e2ee0d"],
-Cell[951, 30, 1826, 49, 259, "Text",ExpressionUUID->"0e0b8580-f61b-4132-9db4-bc4793cf65b3"],
-Cell[2780, 81, 1677, 50, 243, "Input",ExpressionUUID->"bbf0600d-2e1a-4bb0-b8aa-8114988a5ca0"],
+Cell[951, 30, 1851, 48, 259, "Text",ExpressionUUID->"0e0b8580-f61b-4132-9db4-bc4793cf65b3"],
+Cell[2805, 80, 1677, 50, 243, "Input",ExpressionUUID->"bbf0600d-2e1a-4bb0-b8aa-8114988a5ca0"],
 Cell[CellGroupData[{
-Cell[4482, 135, 672, 16, 100, "Input",ExpressionUUID->"dfa7143a-8f09-4697-8c37-e27e4aa4f247"],
-Cell[5157, 153, 175, 3, 48, "Output",ExpressionUUID->"a50cc9c7-ca73-4270-a43f-3274c4ca202c"],
-Cell[5335, 158, 1080, 27, 116, "Output",ExpressionUUID->"376201e2-4203-4039-89e1-d71852c2be85"]
+Cell[4507, 134, 672, 16, 100, "Input",ExpressionUUID->"dfa7143a-8f09-4697-8c37-e27e4aa4f247"],
+Cell[5182, 152, 175, 3, 48, "Output",ExpressionUUID->"a50cc9c7-ca73-4270-a43f-3274c4ca202c"],
+Cell[5360, 157, 1080, 27, 116, "Output",ExpressionUUID->"376201e2-4203-4039-89e1-d71852c2be85"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6452, 190, 720, 20, 100, "Input",ExpressionUUID->"3d2e070b-3b40-4f18-ae9c-bd3e23d4ae2f"],
-Cell[7175, 212, 299, 5, 48, "Output",ExpressionUUID->"c4850067-8c98-4fdd-a0ba-2b8b1ddc3aa7"],
-Cell[7477, 219, 964, 25, 116, "Output",ExpressionUUID->"e91150da-4162-445d-baba-be0541ccacc0"]
+Cell[6477, 189, 720, 20, 100, "Input",ExpressionUUID->"3d2e070b-3b40-4f18-ae9c-bd3e23d4ae2f"],
+Cell[7200, 211, 299, 5, 48, "Output",ExpressionUUID->"c4850067-8c98-4fdd-a0ba-2b8b1ddc3aa7"],
+Cell[7502, 218, 964, 25, 116, "Output",ExpressionUUID->"e91150da-4162-445d-baba-be0541ccacc0"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8478, 249, 1477, 48, 186, "Input",ExpressionUUID->"23a07509-ffd7-456a-95cb-f516d04ace87"],
-Cell[9958, 299, 459, 8, 48, "Output",ExpressionUUID->"4f5596b6-583a-424d-abe1-23f8bd16d017"],
-Cell[10420, 309, 815, 14, 77, "Output",ExpressionUUID->"5ab09dda-973a-40b4-8664-39523bd79a42"]
+Cell[8503, 248, 1477, 48, 186, "Input",ExpressionUUID->"23a07509-ffd7-456a-95cb-f516d04ace87"],
+Cell[9983, 298, 459, 8, 48, "Output",ExpressionUUID->"4f5596b6-583a-424d-abe1-23f8bd16d017"],
+Cell[10445, 308, 815, 14, 77, "Output",ExpressionUUID->"5ab09dda-973a-40b4-8664-39523bd79a42"]
 }, Open  ]]
 }, Open  ]],
-Cell[11262, 327, 72, 0, 146, "Title",ExpressionUUID->"1af6980f-66c3-42e3-be37-149a2d0af533"]
+Cell[11287, 326, 72, 0, 146, "Title",ExpressionUUID->"1af6980f-66c3-42e3-be37-149a2d0af533"]
 }
 ]
 *)
