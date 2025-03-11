@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1833911,      30513]
+NotebookDataLength[   1833897,      30513]
 NotebookOptionsPosition[   1830156,      30442]
-NotebookOutlinePosition[   1830687,      30461]
-CellTagsIndexPosition[   1830644,      30458]
+NotebookOutlinePosition[   1830673,      30461]
+CellTagsIndexPosition[   1830630,      30458]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30441,8 +30441,8 @@ aNoX/g8+Zy9s\
 }, Open  ]]
 },
 WindowToolbars->{"EditBar", "MultipurposeBar"},
-WindowSize->{1016.4, 566.4},
-WindowMargins->{{8.4, Automatic}, {-4.7999999999999545`, Automatic}},
+WindowSize->{1016, 566.5},
+WindowMargins->{{Automatic, -1241.5}, {Automatic, -219}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 Magnification->2.,
 FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
