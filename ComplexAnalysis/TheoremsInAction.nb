@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     27697,        743]
-NotebookOptionsPosition[     24286,        674]
-NotebookOutlinePosition[     24802,        693]
-CellTagsIndexPosition[     24759,        690]
+NotebookDataLength[     27807,        745]
+NotebookOptionsPosition[     24396,        676]
+NotebookOutlinePosition[     24912,        695]
+CellTagsIndexPosition[     24869,        692]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -515,9 +515,10 @@ Cell[TextData[{
 
 Cell[CellGroupData[{
 
-Cell["Taylor and Series", "Subsection",
- CellChangeTimes->{{3.9507003976695733`*^9, 
-  3.950700439876745*^9}},ExpressionUUID->"ad0c1b33-b389-4315-9650-\
+Cell["Taylor and Series p105-108", "Subsection",
+ CellChangeTimes->{{3.9507003976695733`*^9, 3.950700439876745*^9}, {
+  3.950700634486661*^9, 
+  3.9507006499807005`*^9}},ExpressionUUID->"ad0c1b33-b389-4315-9650-\
 32443ab38c92"],
 
 Cell[TextData[{
@@ -663,10 +664,11 @@ Cell[TextData[{
    SubscriptBox["z", "0"], TraditionalForm]],
   FormatType->TraditionalForm,ExpressionUUID->
   "25b813f4-2cfa-4cad-95f0-7f5e092c23ff"],
- ".  In other words, Taylor and Laurent series are unique. "
+ ".  In other words, these series are uniquely defined. "
 }], "Text",
- CellChangeTimes->{{3.950700495542461*^9, 
-  3.950700549573402*^9}},ExpressionUUID->"383100f0-f4f3-4d56-a1f2-\
+ CellChangeTimes->{{3.950700495542461*^9, 3.950700549573402*^9}, {
+  3.9507006696747913`*^9, 
+  3.9507006808360343`*^9}},ExpressionUUID->"383100f0-f4f3-4d56-a1f2-\
 5aa558d1974c"]
 }, Open  ]]
 }, Open  ]]
@@ -674,7 +676,7 @@ Cell[TextData[{
 },
 WindowToolbars->{"EditBar", "MultipurposeBar"},
 WindowSize->{1284, 566.5},
-WindowMargins->{{1361, Automatic}, {Automatic, -325.5}},
+WindowMargins->{{1365.5, Automatic}, {Automatic, -325}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 Magnification->2.,
 FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
@@ -738,10 +740,10 @@ Cell[17251, 478, 783, 11, 107, "Subsection",ExpressionUUID->"ad0bb872-581a-47bf-
 Cell[18037, 491, 1095, 21, 114, "Text",ExpressionUUID->"c70ad707-0d5c-4a3e-b7e6-931dee6dbbca"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19169, 517, 167, 3, 107, "Subsection",ExpressionUUID->"ad0c1b33-b389-4315-9650-32443ab38c92"],
-Cell[19339, 522, 2284, 68, 180, "Text",ExpressionUUID->"cbf0d5b1-c439-4178-987a-2ae4b64f46e5"],
-Cell[21626, 592, 2175, 64, 174, "Text",ExpressionUUID->"0707498f-0ee7-4911-8d5d-59fa3ad65cd9"],
-Cell[23804, 658, 442, 11, 114, "Text",ExpressionUUID->"383100f0-f4f3-4d56-a1f2-5aa558d1974c"]
+Cell[19169, 517, 227, 4, 107, "Subsection",ExpressionUUID->"ad0c1b33-b389-4315-9650-32443ab38c92"],
+Cell[19399, 523, 2284, 68, 180, "Text",ExpressionUUID->"cbf0d5b1-c439-4178-987a-2ae4b64f46e5"],
+Cell[21686, 593, 2175, 64, 174, "Text",ExpressionUUID->"0707498f-0ee7-4911-8d5d-59fa3ad65cd9"],
+Cell[23864, 659, 492, 12, 114, "Text",ExpressionUUID->"383100f0-f4f3-4d56-a1f2-5aa558d1974c"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
