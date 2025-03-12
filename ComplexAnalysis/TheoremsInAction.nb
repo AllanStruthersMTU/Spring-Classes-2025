@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     27807,        745]
-NotebookOptionsPosition[     24396,        676]
-NotebookOutlinePosition[     24912,        695]
-CellTagsIndexPosition[     24869,        692]
+NotebookDataLength[     27151,        723]
+NotebookOptionsPosition[     23743,        654]
+NotebookOutlinePosition[     24255,        673]
+CellTagsIndexPosition[     24212,        670]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30,7 +30,7 @@ Cell["Theorems", "Title",
 e0906461c14b"],
 
 Cell["\<\
-There are lots of theorems i Chapter 4.  They are useful in at least three \
+There are lots of theorems in Chapter 4.  They are useful in at least three \
 different ways!
 1) They sometimes let us compute things efficiently.
 2) They promise that things exist and usually that there is only one such \
@@ -40,8 +40,9 @@ representation makes a useful property obvious.
 Anyway we are going to check some of the properties promised by the theorems \
 in Chapter 4. \
 \>", "Text",
- CellChangeTimes->{{3.950698347149164*^9, 
-  3.9506985725331016`*^9}},ExpressionUUID->"d0921e94-3046-4e8d-a6c5-\
+ CellChangeTimes->{{3.950698347149164*^9, 3.9506985725331016`*^9}, {
+  3.950782916564413*^9, 
+  3.950782916712496*^9}},ExpressionUUID->"d0921e94-3046-4e8d-a6c5-\
 99d1162b9c74"],
 
 Cell[CellGroupData[{
@@ -68,8 +69,7 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"F", "'"}], 
      RowBox[{"(", "z", ")"}]}], "=", 
-    RowBox[{"f", "(", "z", ")"}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    RowBox[{"f", "(", "z", ")"}]}], TraditionalForm]],ExpressionUUID->
   "04233f7f-cd22-4302-8c7c-9876e0a8a484"],
  " then ",
  Cell[BoxData[
@@ -85,8 +85,7 @@ Cell[TextData[{
      RowBox[{"F", "(", 
       SubscriptBox["z", "b"], ")"}], "-", 
      RowBox[{"F", "(", 
-      SubscriptBox["z", "a"], ")"}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+      SubscriptBox["z", "a"], ")"}]}]}], TraditionalForm]],ExpressionUUID->
   "d4afeccf-5bea-470c-b387-ea9e539db79b"],
  "."
 }], "Text",
@@ -112,17 +111,14 @@ Cell[TextData[{
      SubscriptBox["\[ContourIntegral]", "\[CapitalGamma]"], 
      RowBox[{
       RowBox[{"f", "(", "z", ")"}], "dz"}]}], "=", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "a75e9bc5-7be8-4fa3-8bfb-be4bc7ff75d9"],
+  ExpressionUUID->"a75e9bc5-7be8-4fa3-8bfb-be4bc7ff75d9"],
  " when ",
  Cell[BoxData[
-  FormBox["f", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["f", TraditionalForm]],ExpressionUUID->
   "aabd7106-114b-4f63-bb1e-52e3af7c7c0f"],
  " is analytic and singularity free inside the closed contour ",
  Cell[BoxData[
-  FormBox["\[CapitalGamma]", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["\[CapitalGamma]", TraditionalForm]],ExpressionUUID->
   "3a9cd1b3-6c91-482e-a185-cc58138d5ea6"],
  "."
 }], "Text",
@@ -149,12 +145,10 @@ Cell[TextData[{
      SubscriptBox["\[ContourIntegral]", "\[CapitalGamma]"], 
      RowBox[{
       RowBox[{"f", "(", "z", ")"}], "dz"}]}], "=", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "fe5e838b-7b79-4de4-a312-d288292964d9"],
+  ExpressionUUID->"fe5e838b-7b79-4de4-a312-d288292964d9"],
  " for every closed contour ",
  Cell[BoxData[
-  FormBox["\[CapitalGamma]", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["\[CapitalGamma]", TraditionalForm]],ExpressionUUID->
   "c766f8ad-980b-4172-9996-5d4153118ff7"],
  " inside a domain \[ScriptCapitalD] then f is analytic on \[ScriptCapitalD]."
 }], "Text",
@@ -204,8 +198,7 @@ Cell[TextData[{
           "af6b899b-f4b9-4859-b5af-050fba4a3e5f"], "or", " ", 
          SubscriptBox["z", "0"], " ", "is", " ", "outside", " ", 
          "\[CapitalGamma]", "   "}]}
-      }]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+      }]}]}], TraditionalForm]],ExpressionUUID->
   "7883088c-1ae5-4be9-9726-906ab93f6f96"]
 }], "Text",
  CellChangeTimes->{{3.950698857019575*^9, 3.9506989061793003`*^9}, {
@@ -228,20 +221,17 @@ Cell["Theorem 4.8 p101 (Cauchy Argument P)", "Subsection",
 Cell[TextData[{
  "If ",
  Cell[BoxData[
-  FormBox["f", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["f", TraditionalForm]],ExpressionUUID->
   "ff4936ac-b476-4cc0-b107-046e0c35c179"],
  " is meromorphic with n zeros and p poles inside a closed CCW contour ",
  Cell[BoxData[
-  FormBox["\[CapitalGamma]", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["\[CapitalGamma]", TraditionalForm]],ExpressionUUID->
   "1ac9fdd4-2209-425b-bde2-ef6f44df63d4"],
  " then\n\t",
  Cell[BoxData[
   FormBox[
    RowBox[{
-    RowBox[{"n", "-", "p"}], "="}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    RowBox[{"n", "-", "p"}], "="}], TraditionalForm]],ExpressionUUID->
   "eda9787a-a816-4724-9672-cb52798f6fb7"],
  " ",
  Cell[BoxData[
@@ -257,8 +247,7 @@ Cell[TextData[{
         RowBox[{"f", "'"}], 
         RowBox[{"(", "z", ")"}]}], 
        RowBox[{"f", "(", "z", ")"}]], "dz"}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "ef8b5093-9065-429d-ae70-d2d7f9ee3395"]
+  ExpressionUUID->"ef8b5093-9065-429d-ae70-d2d7f9ee3395"]
 }], "Text",
  CellChangeTimes->{{3.950698857019575*^9, 3.9506989061793003`*^9}, {
   3.9506989589208083`*^9, 3.950699032550519*^9}, {3.950699063386454*^9, 
@@ -282,13 +271,11 @@ dc4173a69353"],
 Cell[TextData[{
  "If ",
  Cell[BoxData[
-  FormBox["f", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["f", TraditionalForm]],ExpressionUUID->
   "96493101-790d-482d-804b-058e159bf94e"],
  " is analytic inside a closed CCW contour ",
  Cell[BoxData[
-  FormBox["\[CapitalGamma]", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["\[CapitalGamma]", TraditionalForm]],ExpressionUUID->
   "81422ecc-dd7e-4feb-8457-2443b28355df"],
  " then\n\t",
  Cell[BoxData[
@@ -304,8 +291,7 @@ Cell[TextData[{
        FractionBox[
         RowBox[{"f", "(", "\[Zeta]", ")"}], 
         RowBox[{"\[Zeta]", "-", "z"}]], "d\[Zeta]"}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "63cbcd26-101f-4a96-8fd8-4865054d3b47"],
+  ExpressionUUID->"63cbcd26-101f-4a96-8fd8-4865054d3b47"],
  "\nand a similar formula holds for any derivative\n\t",
  Cell[BoxData[
   FormBox[
@@ -325,8 +311,7 @@ Cell[TextData[{
          RowBox[{"(", 
           RowBox[{"\[Zeta]", "-", "z"}], ")"}], 
          RowBox[{"k", "+", "1"}]]], "d\[Zeta]"}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "6de45ff3-9c7c-4681-a35f-cff5fe2e30c3"],
+  ExpressionUUID->"6de45ff3-9c7c-4681-a35f-cff5fe2e30c3"],
  "."
 }], "Text",
  CellChangeTimes->{{3.950698857019575*^9, 3.9506989061793003`*^9}, {
@@ -353,21 +338,18 @@ f614ec753388"],
 Cell[TextData[{
  "If ",
  Cell[BoxData[
-  FormBox["f", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["f", TraditionalForm]],ExpressionUUID->
   "6a2d40a1-8407-4362-8252-acc2d5554bac"],
  " is entire and bounded ",
  Cell[BoxData[
   FormBox[
    RowBox[{"|", 
     RowBox[{"f", "(", "z", ")"}], "|", 
-    RowBox[{"\[LessEqual]", " ", "M"}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    RowBox[{"\[LessEqual]", " ", "M"}]}], TraditionalForm]],ExpressionUUID->
   "b5f1c600-8951-434c-9312-8c55df9ad283"],
  " then ",
  Cell[BoxData[
-  FormBox["f", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["f", TraditionalForm]],ExpressionUUID->
   "657929da-9652-4197-9631-1d15eb01a4c3"],
  " is a constant function. "
 }], "Text",
@@ -399,14 +381,12 @@ Cell[TextData[{
  "4.14\tA polynomial ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"p", "(", "z", ")"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"p", "(", "z", ")"}], TraditionalForm]],ExpressionUUID->
   "b04bdacf-5561-4644-b459-c7c34cf0b9d7"],
  " has at least one zero.\n4.15\tA polynomial ",
  Cell[BoxData[
   FormBox[
-   RowBox[{"p", "(", "z", ")"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+   RowBox[{"p", "(", "z", ")"}], TraditionalForm]],ExpressionUUID->
   "32782e35-012d-4c5e-b6c3-ae92f962fb83"],
  " of degree n has n zeros."
 }], "Text",
@@ -438,8 +418,7 @@ Cell["Theorem 4.16 p104 (Mean Value)", "Subsection",
 Cell[TextData[{
  "For analytic ",
  Cell[BoxData[
-  FormBox["f", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["f", TraditionalForm]],ExpressionUUID->
   "59cabac7-2603-4112-b9ba-fb612b1dfd08"],
  " we have ",
  Cell[BoxData[
@@ -458,8 +437,7 @@ Cell[TextData[{
          RowBox[{"R", " ", 
           SuperscriptBox["\[ExponentialE]", 
            RowBox[{"\[ImaginaryI]", " ", "\[Theta]"}]]}]}], ")"}], 
-       "d\[Theta]"}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+       "d\[Theta]"}]}]}]}], TraditionalForm]],ExpressionUUID->
   "8f28b5a7-19d6-4e4f-b96c-0ab14b2e359f"]
 }], "Text",
  CellChangeTimes->{{3.950698857019575*^9, 3.9506989061793003`*^9}, {
@@ -496,9 +474,8 @@ Cell[TextData[{
    RowBox[{"f", "=", 
     RowBox[{"u", "+", 
      RowBox[{"\[ImaginaryI]", " ", "v"}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "9e428e79-53b3-4e06-b60f-86a32c357bd1"],
- " is analytic can not have local maximums or minimums.  "
+  ExpressionUUID->"9e428e79-53b3-4e06-b60f-86a32c357bd1"],
+ " can not have local maximums or minimums.  "
 }], "Text",
  CellChangeTimes->{{3.950698857019575*^9, 3.9506989061793003`*^9}, {
   3.9506989589208083`*^9, 3.950699032550519*^9}, {3.950699063386454*^9, 
@@ -508,8 +485,9 @@ Cell[TextData[{
   3.9506998242937965`*^9, 3.9506998769099708`*^9}, {3.9506999325663757`*^9, 
   3.950699959855136*^9}, {3.950699995311144*^9, 3.950700042492429*^9}, {
   3.950700122953723*^9, 3.9507001768675175`*^9}, {3.9507002131197186`*^9, 
-  3.95070021349121*^9}, {3.950700251246441*^9, 
-  3.950700365790144*^9}},ExpressionUUID->"c70ad707-0d5c-4a3e-b7e6-\
+  3.95070021349121*^9}, {3.950700251246441*^9, 3.950700365790144*^9}, {
+  3.9507832933520765`*^9, 
+  3.9507832956504297`*^9}},ExpressionUUID->"c70ad707-0d5c-4a3e-b7e6-\
 931dee6dbbca"]
 }, Open  ]],
 
@@ -675,8 +653,8 @@ Cell[TextData[{
 }, Open  ]]
 },
 WindowToolbars->{"EditBar", "MultipurposeBar"},
-WindowSize->{1284, 566.5},
-WindowMargins->{{1365.5, Automatic}, {Automatic, -325}},
+WindowSize->{1141, 567},
+WindowMargins->{{1767, Automatic}, {Automatic, -163}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 Magnification->2.,
 FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
@@ -696,54 +674,54 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 452, 7, 194, "Title",ExpressionUUID->"aa162031-8f8e-4e85-bcb2-e0906461c14b"],
-Cell[1035, 31, 598, 13, 339, "Text",ExpressionUUID->"d0921e94-3046-4e8d-a6c5-99d1162b9c74"],
+Cell[1035, 31, 648, 14, 429, "Text",ExpressionUUID->"d0921e94-3046-4e8d-a6c5-99d1162b9c74"],
 Cell[CellGroupData[{
-Cell[1658, 48, 208, 4, 134, "Section",ExpressionUUID->"3e855f4d-a220-4e82-9ca9-6a9e0b337c2c"],
+Cell[1708, 49, 208, 4, 134, "Section",ExpressionUUID->"3e855f4d-a220-4e82-9ca9-6a9e0b337c2c"],
 Cell[CellGroupData[{
-Cell[1891, 56, 240, 4, 107, "Subsection",ExpressionUUID->"7599d8f9-2dbe-47a9-ab39-9e243020760b"],
-Cell[2134, 62, 912, 32, 78, "Text",ExpressionUUID->"6429ed4e-823e-4bfa-8a82-ebb729f76003"]
+Cell[1941, 57, 240, 4, 107, "Subsection",ExpressionUUID->"7599d8f9-2dbe-47a9-ab39-9e243020760b"],
+Cell[2184, 63, 850, 30, 78, "Text",ExpressionUUID->"6429ed4e-823e-4bfa-8a82-ebb729f76003"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3083, 99, 227, 4, 107, "Subsection",ExpressionUUID->"fa071275-ee12-4b23-8a2e-ce1cf9ee303d"],
-Cell[3313, 105, 878, 26, 73, "Text",ExpressionUUID->"76ccaf4d-fb82-4d24-a515-26d26b01d525"]
+Cell[3071, 98, 227, 4, 107, "Subsection",ExpressionUUID->"fa071275-ee12-4b23-8a2e-ce1cf9ee303d"],
+Cell[3301, 104, 785, 23, 118, "Text",ExpressionUUID->"76ccaf4d-fb82-4d24-a515-26d26b01d525"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4228, 136, 275, 4, 107, "Subsection",ExpressionUUID->"954d60d5-57cc-4443-9381-7cf8d1fe71a8"],
-Cell[4506, 142, 817, 21, 73, "Text",ExpressionUUID->"32cea20f-da8f-4c56-8065-1df722d65094"]
+Cell[4123, 132, 275, 4, 107, "Subsection",ExpressionUUID->"954d60d5-57cc-4443-9381-7cf8d1fe71a8"],
+Cell[4401, 138, 755, 19, 118, "Text",ExpressionUUID->"32cea20f-da8f-4c56-8065-1df722d65094"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5360, 168, 390, 6, 107, "Subsection",ExpressionUUID->"800c8687-aa97-4feb-bca5-707e54d725de"],
-Cell[5753, 176, 1318, 38, 110, "Text",ExpressionUUID->"5030341c-e005-4823-93df-c05dd9b9a890"]
+Cell[5193, 162, 390, 6, 107, "Subsection",ExpressionUUID->"800c8687-aa97-4feb-bca5-707e54d725de"],
+Cell[5586, 170, 1287, 37, 110, "Text",ExpressionUUID->"5030341c-e005-4823-93df-c05dd9b9a890"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7108, 219, 439, 6, 107, "Subsection",ExpressionUUID->"2d7d5213-04a5-476c-bb98-006a1363cbc4"],
-Cell[7550, 227, 1390, 40, 125, "Text",ExpressionUUID->"71f62654-39c7-4f42-9188-c11f443b964f"]
+Cell[6910, 212, 439, 6, 107, "Subsection",ExpressionUUID->"2d7d5213-04a5-476c-bb98-006a1363cbc4"],
+Cell[7352, 220, 1266, 36, 170, "Text",ExpressionUUID->"71f62654-39c7-4f42-9188-c11f443b964f"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8977, 272, 518, 7, 107, "Subsection",ExpressionUUID->"daa3f1b7-6ca0-4c73-ae8a-dc4173a69353"],
-Cell[9498, 281, 2009, 56, 229, "Text",ExpressionUUID->"5acfa741-f4f1-4b2f-89ec-5d1f66a0d87a"]
+Cell[8655, 261, 518, 7, 107, "Subsection",ExpressionUUID->"daa3f1b7-6ca0-4c73-ae8a-dc4173a69353"],
+Cell[9176, 270, 1885, 52, 229, "Text",ExpressionUUID->"5acfa741-f4f1-4b2f-89ec-5d1f66a0d87a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11544, 342, 582, 8, 107, "Subsection",ExpressionUUID->"4ddc11d0-f78c-42d6-99e4-f614ec753388"],
-Cell[12129, 352, 1096, 28, 69, "Text",ExpressionUUID->"225b28ff-cb09-4325-a9f1-4bb259c96527"]
+Cell[11098, 327, 582, 8, 107, "Subsection",ExpressionUUID->"4ddc11d0-f78c-42d6-99e4-f614ec753388"],
+Cell[11683, 337, 1003, 25, 69, "Text",ExpressionUUID->"225b28ff-cb09-4325-a9f1-4bb259c96527"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13262, 385, 694, 10, 107, "Subsection",ExpressionUUID->"10a05b1e-bd94-4134-b62c-1acc6c1fb17d"],
-Cell[13959, 397, 1043, 23, 114, "Text",ExpressionUUID->"54ae13aa-2cd3-4c68-83a2-bb8865be7bef"]
+Cell[12723, 367, 694, 10, 160, "Subsection",ExpressionUUID->"10a05b1e-bd94-4134-b62c-1acc6c1fb17d"],
+Cell[13420, 379, 981, 21, 114, "Text",ExpressionUUID->"54ae13aa-2cd3-4c68-83a2-bb8865be7bef"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15039, 425, 715, 10, 107, "Subsection",ExpressionUUID->"fd9b8ff3-aed4-4b15-bebc-0a32ac606bd3"],
-Cell[15757, 437, 1457, 36, 75, "Text",ExpressionUUID->"64eabfdc-6f27-459e-8932-9567d36db481"]
+Cell[14438, 405, 715, 10, 107, "Subsection",ExpressionUUID->"fd9b8ff3-aed4-4b15-bebc-0a32ac606bd3"],
+Cell[15156, 417, 1395, 34, 75, "Text",ExpressionUUID->"64eabfdc-6f27-459e-8932-9567d36db481"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17251, 478, 783, 11, 107, "Subsection",ExpressionUUID->"ad0bb872-581a-47bf-8f43-06dda2dcff6c"],
-Cell[18037, 491, 1095, 21, 114, "Text",ExpressionUUID->"c70ad707-0d5c-4a3e-b7e6-931dee6dbbca"]
+Cell[16588, 456, 783, 11, 107, "Subsection",ExpressionUUID->"ad0bb872-581a-47bf-8f43-06dda2dcff6c"],
+Cell[17374, 469, 1105, 21, 114, "Text",ExpressionUUID->"c70ad707-0d5c-4a3e-b7e6-931dee6dbbca"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19169, 517, 227, 4, 107, "Subsection",ExpressionUUID->"ad0c1b33-b389-4315-9650-32443ab38c92"],
-Cell[19399, 523, 2284, 68, 180, "Text",ExpressionUUID->"cbf0d5b1-c439-4178-987a-2ae4b64f46e5"],
-Cell[21686, 593, 2175, 64, 174, "Text",ExpressionUUID->"0707498f-0ee7-4911-8d5d-59fa3ad65cd9"],
-Cell[23864, 659, 492, 12, 114, "Text",ExpressionUUID->"383100f0-f4f3-4d56-a1f2-5aa558d1974c"]
+Cell[18516, 495, 227, 4, 107, "Subsection",ExpressionUUID->"ad0c1b33-b389-4315-9650-32443ab38c92"],
+Cell[18746, 501, 2284, 68, 180, "Text",ExpressionUUID->"cbf0d5b1-c439-4178-987a-2ae4b64f46e5"],
+Cell[21033, 571, 2175, 64, 174, "Text",ExpressionUUID->"0707498f-0ee7-4911-8d5d-59fa3ad65cd9"],
+Cell[23211, 637, 492, 12, 114, "Text",ExpressionUUID->"383100f0-f4f3-4d56-a1f2-5aa558d1974c"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
