@@ -1,0 +1,339 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10562,        331]
+NotebookOptionsPosition[      9891,        312]
+NotebookOutlinePosition[     10298,        328]
+CellTagsIndexPosition[     10255,        325]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["DDS", "Title",
+ CellChangeTimes->{{3.95080065503623*^9, 
+  3.9508006689494476`*^9}},ExpressionUUID->"6f1314dc-c878-4ed9-a8eb-\
+f1030d4ba611"],
+
+Cell[TextData[{
+ "Copied several functions from Dan\[CloseCurlyQuote]s test suite that have \
+the same structure ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubsuperscriptBox["\[Sum]", 
+     RowBox[{"i", "=", "1"}], 
+     RowBox[{"n", "-", "1"}]], 
+    SuperscriptBox[
+     RowBox[{"g", "(", 
+      RowBox[{
+       SubscriptBox["x", 
+        RowBox[{"i", "+", "1"}]], ",", 
+       SubscriptBox["x", "i"]}], ")"}], "2"]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "777a7522-3acf-4dd8-b838-51a14779e101"],
+ "   as Gen Rosenbrock.  The other common patterns are double sum ones and \
+ones with special treatment of the first few or last few entries.  Some have \
+coefficents that vary with i."
+}], "Text",
+ CellChangeTimes->{{3.950800671964497*^9, 3.9508007094819365`*^9}, {
+  3.9508007700626974`*^9, 3.9508008309945817`*^9}, {3.9508019322799835`*^9, 
+  3.9508019838150554`*^9}, {3.9508023053633165`*^9, 
+  3.950802317667367*^9}},ExpressionUUID->"2b7c61d6-9885-43b1-8d32-\
+783b07257602"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<GenRosen\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"100.0", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"c", "-", 
+       RowBox[{"p", "^", "2"}]}], ")"}], "^", "2"}]}], " ", "+", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1.0", " ", "-", "p"}], ")"}], "^", 
+    "2"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<GenTD1\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"p", "^", "2"}], "+", " ", 
+   RowBox[{"p", " ", "c"}], " ", "-", 
+   RowBox[{"4", " ", 
+    RowBox[{"c", "^", "2"}], "p"}], "+", " ", 
+   RowBox[{"3", " ", "c"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<GenHW\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"100.0", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"c", "-", 
+       RowBox[{"p", "^", "3"}]}], ")"}], "^", "2"}]}], " ", "+", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1.0", " ", "-", "p"}], ")"}], "^", 
+    "2"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"g", "[", "\"\<GenPSC1\>\"", "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"c", "^", "2"}], "-", 
+       RowBox[{"+", 
+        RowBox[{"p", "^", "2"}]}], "+", 
+       RowBox[{"p", " ", "c"}]}], ")"}], "^", "2"}], " ", "+", " ", 
+    RowBox[{
+     RowBox[{"Sin", "[", "p", "]"}], "^", "2"}], "+", 
+    RowBox[{
+     RowBox[{"Cos", "[", "p", "]"}], "^", "2"}]}]}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"something", " ", "is", " ", "messed", " ", "up", " ", 
+    RowBox[{"here", "!"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<ExtTD2\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"p", "*", "c"}], "-", "1"}], ")"}], "^", "2"}], " ", "+", " ", 
+   RowBox[{"0.1", " ", 
+    RowBox[{"(", 
+     RowBox[{"p", "+", "1"}], ")"}], 
+    RowBox[{"(", 
+     RowBox[{"c", "+", "1"}], ")"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<FletchCR\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", 
+  RowBox[{"100.0", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"c", "-", "p", "+", "1", "-", 
+      RowBox[{"c", "^", "2"}]}], ")"}], "^", "2"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<Rosen\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"100.0", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"c", "-", 
+       RowBox[{"p", "^", "2"}]}], ")"}], "^", "2"}]}], " ", "+", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1.0", " ", "-", "p"}], ")"}], "^", 
+    "2"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"h", "[", "\"\<NotBroydenTD\>\"", "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{"p_", ",", "c_", ",", "n_"}], "}"}], "]"}], ":=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"3", " ", "c"}], "-", " ", 
+      RowBox[{"2", 
+       RowBox[{"c", "^", "2"}]}], " ", "-", "c", "-", "p", "+", 
+      RowBox[{"2", " ", "n"}]}], ")"}], "^", "2"}]}], "  ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "typed", " ", "this", " ", "one", " ", "because", " ", "it", " ", "has", 
+    " ", "3", " ", 
+    RowBox[{"terms", ".", "  ", "It"}], " ", "has", " ", "special", " ", "1", 
+    " ", "and", " ", "n", " ", "terms"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<EngVal1\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"p", "+", 
+      RowBox[{"c", "^", "2"}]}], ")"}], "^", "2"}], " ", "+", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "4.0"}], " ", "c"}], " ", "+", "3.0"}], 
+    ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<Edensch\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"p", "-", "2"}], ")"}], "^", "4"}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"p", "*", "c"}], "-", 
+      RowBox[{"2", "c"}]}], ")"}], "^", "2"}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"c", "+", "1"}], ")"}], "^", "2"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"h", "[", "\"\<BDExp\>\"", "]"}], "[", 
+    RowBox[{"{", 
+     RowBox[{"p_", ",", "c_", ",", "n_"}], "}"}], "]"}], ":=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"p", "+", "c"}], ")"}], 
+    SuperscriptBox["E", 
+     RowBox[{
+      RowBox[{"-", "n"}], 
+      RowBox[{"(", 
+       RowBox[{"p", "+", "c"}], ")"}], " "}]]}]}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "typed", " ", "this", " ", "one", " ", "because", " ", "it", " ", "has", 
+    " ", "3", " ", 
+    RowBox[{"terms", ".", "  ", "It"}], " ", "has", " ", "no", " ", "special",
+     " ", "1", " ", "and", " ", "n", " ", "terms"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<GenHumps\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Sin", "[", 
+      RowBox[{"2", "p"}], "]"}], "^", "2"}], " ", 
+    RowBox[{
+     RowBox[{"Sin", "[", 
+      RowBox[{"2", " ", "c"}], "]"}], "^", "2"}]}], "+", 
+   RowBox[{"0.05", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"p", "^", "2"}], "+", 
+       RowBox[{"c", "^", "2"}]}], ")"}], "^", 
+     "2"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<McCormck\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "1.5"}], " ", "p"}], "+", 
+   RowBox[{"2.5", " ", "c"}], "+", "1", " ", "+", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"p", "-", "c"}], ")"}], "^", "2"}], "+", 
+   RowBox[{"Sin", "[", 
+    RowBox[{"p", "+", "c"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<CosF\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{"Cos", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "0.5"}], " ", "c"}], "+", 
+    RowBox[{"p", "^", "2"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<SinF\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{"Sin", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "0.5"}], " ", "c"}], "+", 
+    RowBox[{"p", "^", "2"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", "\"\<GenQ\>\"", "]"}], "[", 
+   RowBox[{"{", 
+    RowBox[{"p_", ",", "c_"}], "}"}], "]"}], ":=", " ", 
+  RowBox[{
+   SuperscriptBox["p", "2"], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"c", "+", 
+      RowBox[{"p", "^", "2"}]}], ")"}], "^", 
+    "2"}]}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.9508007122389536`*^9, 3.9508007284765987`*^9}, {
+  3.9508008369316516`*^9, 3.95080094680513*^9}, {3.950801002189957*^9, 
+  3.9508010738223486`*^9}, {3.9508011047088633`*^9, 3.9508012858028336`*^9}, {
+  3.950801422409631*^9, 3.9508015174610753`*^9}, {3.9508015514536257`*^9, 
+  3.950801633858116*^9}, {3.950801730492093*^9, 3.9508018959752026`*^9}, {
+  3.950802017885703*^9, 3.9508022591496105`*^9}, {3.950802351032365*^9, 
+  3.9508024277982917`*^9}, {3.950802482526715*^9, 3.9508026440874567`*^9}, {
+  3.9508027081148863`*^9, 
+  3.950802875148258*^9}},ExpressionUUID->"ae38044d-cad9-4cbe-af91-\
+7dfa70ae84b3"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.9508009045910597`*^9},ExpressionUUID->"8bf0186e-d5f8-4e9d-9f6b-\
+40cafddddc04"]
+}, Open  ]]
+},
+WindowSize->{1275, 575},
+WindowMargins->{{1607.5, Automatic}, {Automatic, -101.5}},
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"fbf0744e-a089-4bba-b4a8-679d216c4f58"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 147, 3, 98, "Title",ExpressionUUID->"6f1314dc-c878-4ed9-a8eb-f1030d4ba611"],
+Cell[730, 27, 1012, 25, 58, "Text",ExpressionUUID->"2b7c61d6-9885-43b1-8d32-783b07257602"],
+Cell[1745, 54, 7978, 250, 333, "Input",ExpressionUUID->"ae38044d-cad9-4cbe-af91-7dfa70ae84b3"],
+Cell[9726, 306, 149, 3, 48, "Input",ExpressionUUID->"8bf0186e-d5f8-4e9d-9f6b-40cafddddc04"]
+}, Open  ]]
+}
+]
+*)
+
