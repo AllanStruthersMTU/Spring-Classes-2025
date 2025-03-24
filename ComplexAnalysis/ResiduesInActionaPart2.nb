@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     56899,       1334]
-NotebookOptionsPosition[     54843,       1289]
-NotebookOutlinePosition[     55360,       1308]
-CellTagsIndexPosition[     55317,       1305]
+NotebookDataLength[     56534,       1320]
+NotebookOptionsPosition[     54450,       1274]
+NotebookOutlinePosition[     54996,       1294]
+CellTagsIndexPosition[     54953,       1291]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -265,13 +265,13 @@ Cell[BoxData[{
  CellChangeTimes->{{3.951379557080098*^9, 3.951379966051404*^9}, {
   3.951380004999097*^9, 3.95138018615516*^9}, {3.951380324322104*^9, 
   3.9513804408128414`*^9}, {3.9513804879318914`*^9, 3.9513806654230947`*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"8bd8cf99-ee67-4f21-9a25-9f888ba7bab0"],
+ CellLabel->"In[90]:=",ExpressionUUID->"8bd8cf99-ee67-4f21-9a25-9f888ba7bab0"],
 
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`t$$ = 0.2, Typeset`show$$ = True, 
-    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+   DynamicModuleBox[{$CellContext`t$$ = 0.34147294616699353`, Typeset`show$$ =
+     True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
     "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`t$$], 0.2}, 0, 1}}, Typeset`size$$ = {
@@ -303,7 +303,7 @@ $CellContext`R][$CellContext`t$$]}]]}, {White,
              2}, {$CellContext`R + $CellContext`\[Epsilon], $CellContext`\
 \[Epsilon]/2}]}}], "Specifications" :> {{{$CellContext`t$$, 0.2}, 0, 1}}, 
       "Options" :> {}, "DefaultOptions" :> {}],
-     ImageSizeCache->{686., {327.7010498046875, 336.2989501953125}},
+     ImageSizeCache->{1017., {308.7010498046875, 317.2989501953125}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -318,8 +318,9 @@ $CellContext`R][$CellContext`t$$]}]]}, {White,
    3.9513799105021234`*^9, 3.9513799195654893`*^9}, 3.951379967311019*^9, {
    3.951380072829774*^9, 3.9513801866146045`*^9}, {3.95138040307355*^9, 
    3.951380441618788*^9}, {3.951380508568035*^9, 3.9513805225906105`*^9}, {
-   3.9513806527262135`*^9, 3.9513806666599417`*^9}, 3.9518109284992*^9},
- CellLabel->"Out[7]=",ExpressionUUID->"88a57795-137b-421c-8430-7ced62e1c6f4"]
+   3.9513806527262135`*^9, 3.9513806666599417`*^9}, 3.9518109284992*^9, {
+   3.951819260354899*^9, 3.9518192883068137`*^9}},
+ CellLabel->"Out[96]=",ExpressionUUID->"6d7b88b2-6cdd-4426-873b-759ee9a161d6"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -327,12 +328,10 @@ Cell[TextData[{
  Cell[BoxData[
   FormBox[
    SubscriptBox["\[ContourIntegral]", "\[CapitalGamma]"], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "ad034eb1-9273-4fd3-bfec-0d14be91834a"],
+  ExpressionUUID->"ad034eb1-9273-4fd3-bfec-0d14be91834a"],
  " cancel unless there is a branch cut along the real axis! if ",
  Cell[BoxData[
-  FormBox["f", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["f", TraditionalForm]],ExpressionUUID->
   "0ba48400-6e48-4717-8eca-e6e0f5239a25"],
  " has no branch cuts then we can be weird and put the branch cut for log \
 along the real axis and\n\t",
@@ -375,8 +374,7 @@ along the real axis and\n\t",
       RowBox[{
        RowBox[{"log", "(", "z", ")"}], 
        RowBox[{"f", "(", "z", ")"}], "dz"}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "742d741f-6091-4459-8068-d643d814d7d7"],
+  ExpressionUUID->"742d741f-6091-4459-8068-d643d814d7d7"],
  ".\n\t\nFlipping the order of the limits in the second term gives\n\n",
  Cell[BoxData[
   FormBox[
@@ -422,20 +420,17 @@ along the real axis and\n\t",
        RowBox[{
         RowBox[{"log", "(", "z", ")"}], 
         RowBox[{"f", "(", "z", ")"}], "dz"}]}],
-      FontColor->RGBColor[0, 1, 0]]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+      FontColor->RGBColor[0, 1, 0]]}]}], TraditionalForm]],ExpressionUUID->
   "59a62a02-38c9-4816-8f1a-7896a8779577"],
  "\n\nSince ",
  Cell[BoxData[
-  FormBox["f", TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+  FormBox["f", TraditionalForm]],ExpressionUUID->
   "d015ffc1-9a85-47e4-9a7e-1e52141567fd"],
  " is continuous let ",
  Cell[BoxData[
   FormBox[
    RowBox[{"\[Epsilon]", "->", 
-    SuperscriptBox["0", "+"]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    SuperscriptBox["0", "+"]}], TraditionalForm]],ExpressionUUID->
   "71b5bbab-b0b7-41d1-ae8c-a6e10f349f73"],
  " and the red term becomes\n\t",
  Cell[BoxData[
@@ -477,8 +472,7 @@ along the real axis and\n\t",
  Cell[BoxData[
   FormBox[
    RowBox[{"\[Epsilon]", "->", 
-    SuperscriptBox["0", "+"]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    SuperscriptBox["0", "+"]}], TraditionalForm]],ExpressionUUID->
   "a3429456-dda0-4f39-92e1-70703eadd852"],
  " the green term because to zero because ",
  Cell[BoxData[
@@ -487,9 +481,7 @@ along the real axis and\n\t",
     RowBox[{"\[ImaginaryI]", " ", "\[Epsilon]", " ", "\[Pi]", " ", 
      SuperscriptBox["\[ExponentialE]", 
       RowBox[{"\[ImaginaryI]", " ", "\[Pi]", " ", "t"}]], " "}]}], 
-   TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "b0c82a6c-63fd-416f-9c67-fe277f294793"],
+   TraditionalForm]],ExpressionUUID->"b0c82a6c-63fd-416f-9c67-fe277f294793"],
  "\n\t",
  Cell[BoxData[
   FormBox[
@@ -506,8 +498,7 @@ along the real axis and\n\t",
     RowBox[{"\[TildeTilde]", " ", 
      RowBox[{"-", 
       RowBox[{"log", "(", "\[Epsilon]", ")"}]}]}], "|", 
-    RowBox[{"f", "(", "0", ")"}], "|"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
+    RowBox[{"f", "(", "0", ")"}], "|"}], TraditionalForm]],ExpressionUUID->
   "3a6e4baf-fdb6-4f12-951a-443a05eb1401"],
  "\nso \n\t",
  Cell[BoxData[
@@ -525,7 +516,6 @@ along the real axis and\n\t",
        RowBox[{"-", "\[Epsilon]"}], " ", "\[Pi]", " ", 
        RowBox[{"log", "(", "\[Epsilon]", ")"}]}]}], "|", 
      RowBox[{"f", "(", "0", ")"}], "|"}], "\[Rule]", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,
   FontColor->GrayLevel[0],ExpressionUUID->
   "fe91bd3c-c5cb-477c-9b12-cdafb26619db"]
 }], "Text",
@@ -1023,22 +1013,19 @@ Cell[TextData[{
       RowBox[{
        RowBox[{"log", "(", "z", ")"}], 
        RowBox[{"f", "(", "z", ")"}], "dz"}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "e7bb1e85-3ffd-4846-8df8-6a7331597964"],
+  ExpressionUUID->"e7bb1e85-3ffd-4846-8df8-6a7331597964"],
  "\nIf ",
  Cell[BoxData[
   FormBox[
    RowBox[{
     RowBox[{"f", "(", "z", ")"}], " ", "\[Rule]", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "b018061e-ebab-4810-8f08-cc15238d6d2f"],
+  ExpressionUUID->"b018061e-ebab-4810-8f08-cc15238d6d2f"],
  " fast enough as ",
  Cell[BoxData[
   FormBox[
    RowBox[{
     RowBox[{"|", "z", "|"}], "\[Rule]", "\[Infinity]"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "a0cb098b-4385-4640-8149-6029ec08e5a2"],
+  ExpressionUUID->"a0cb098b-4385-4640-8149-6029ec08e5a2"],
  " then ",
  Cell[BoxData[
   FormBox[
@@ -1049,8 +1036,7 @@ Cell[TextData[{
      RowBox[{
       RowBox[{"log", "(", "z", ")"}], 
       RowBox[{"f", "(", "z", ")"}], "dz"}]}], "->", "0"}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "854105dd-47dc-481e-9619-c6c2855899c7"],
+  ExpressionUUID->"854105dd-47dc-481e-9619-c6c2855899c7"],
  " and we can evaluate\n\t",
  Cell[BoxData[
   FormBox[
@@ -1067,8 +1053,7 @@ Cell[TextData[{
       RowBox[{
        RowBox[{"log", "(", "z", ")"}], 
        RowBox[{"f", "(", "z", ")"}], "dz"}]}]}]}], TraditionalForm]],
-  FormatType->TraditionalForm,ExpressionUUID->
-  "50ced264-a7af-4ba0-90e8-98c8e4a52bee"],
+  ExpressionUUID->"50ced264-a7af-4ba0-90e8-98c8e4a52bee"],
  "\nusing the residue theorem!"
 }], "Text",
  CellChangeTimes->{{3.9513827748620386`*^9, 3.95138289564645*^9}, {
@@ -1232,7 +1217,7 @@ Cell[BoxData[{
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`\[Epsilon]$$ = 0.08940000000000001, 
+   DynamicModuleBox[{$CellContext`\[Epsilon]$$ = 0.0078000000000000005`, 
     Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
     Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
     1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
@@ -1269,7 +1254,7 @@ Cell[BoxData[
          PlotRange -> {{-0.2, 1.2}, {-1, 1}}]), 
       "Specifications" :> {{{$CellContext`\[Epsilon]$$, 0.1}, 0, 0.2}}, 
       "Options" :> {}, "DefaultOptions" :> {}],
-     ImageSizeCache->{534., {382.2010498046875, 390.7989501953125}},
+     ImageSizeCache->{535., {381.7010498046875, 390.2989501953125}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -1288,8 +1273,9 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowToolbars->{"EditBar", "MultipurposeBar"},
-WindowSize->{906, 558},
-WindowMargins->{{Automatic, -1256.5}, {Automatic, -231.5}},
+WindowSize->{1152, 585.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 Magnification->1.5,
 FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
@@ -1316,22 +1302,22 @@ Cell[CellGroupData[{
 Cell[3571, 104, 209, 6, 121, "Subsection",ExpressionUUID->"6172cd3d-5f6c-4ad6-89d1-b633068f5287"],
 Cell[3783, 112, 718, 19, 87, "Text",ExpressionUUID->"994c7a36-748b-4388-9fa2-a0f9b30c05f8"],
 Cell[CellGroupData[{
-Cell[4526, 135, 4845, 132, 614, "Input",ExpressionUUID->"8bd8cf99-ee67-4f21-9a25-9f888ba7bab0"],
-Cell[9374, 269, 2661, 52, 708, "Output",ExpressionUUID->"88a57795-137b-421c-8430-7ced62e1c6f4"]
+Cell[4526, 135, 4846, 132, 557, "Input",ExpressionUUID->"8bd8cf99-ee67-4f21-9a25-9f888ba7bab0"],
+Cell[9375, 269, 2732, 53, 653, "Output",ExpressionUUID->"6d7b88b2-6cdd-4426-873b-759ee9a161d6"]
 }, Open  ]],
-Cell[12050, 324, 7552, 213, 678, "Text",ExpressionUUID->"f10e9731-b7bb-4d7d-92b9-6dd875378f49"],
+Cell[12122, 325, 7239, 202, 525, "Text",ExpressionUUID->"f10e9731-b7bb-4d7d-92b9-6dd875378f49"],
 Cell[CellGroupData[{
-Cell[19627, 541, 376, 9, 42, "Input",ExpressionUUID->"de345059-064b-499c-82a4-4f51438ff445"],
-Cell[20006, 552, 24555, 448, 344, "Output",ExpressionUUID->"2e73b44f-a24c-4e3d-bea1-621f6f8b1370"]
+Cell[19386, 531, 376, 9, 42, "Input",ExpressionUUID->"de345059-064b-499c-82a4-4f51438ff445"],
+Cell[19765, 542, 24555, 448, 344, "Output",ExpressionUUID->"2e73b44f-a24c-4e3d-bea1-621f6f8b1370"]
 }, Open  ]],
-Cell[44576, 1003, 2398, 73, 243, "Text",ExpressionUUID->"a884098b-3a3c-4cb6-bc09-765e953661df"]
+Cell[44335, 993, 2243, 68, 208, "Text",ExpressionUUID->"a884098b-3a3c-4cb6-bc09-765e953661df"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47011, 1081, 250, 7, 121, "Subsection",ExpressionUUID->"ae23c6bd-fd14-4c6e-914d-de49e1c61b23"],
-Cell[47264, 1090, 577, 13, 87, "Text",ExpressionUUID->"2e0e597d-d97d-4788-bd17-005db3bd43e7"],
+Cell[46615, 1066, 250, 7, 121, "Subsection",ExpressionUUID->"ae23c6bd-fd14-4c6e-914d-de49e1c61b23"],
+Cell[46868, 1075, 577, 13, 52, "Text",ExpressionUUID->"2e0e597d-d97d-4788-bd17-005db3bd43e7"],
 Cell[CellGroupData[{
-Cell[47866, 1107, 4287, 122, 564, "Input",ExpressionUUID->"f13c8e2e-fc27-4218-8c04-46b0ae4c39e1"],
-Cell[52156, 1231, 2635, 52, 800, "Output",ExpressionUUID->"ad4aa7ac-c0b1-4528-b3b4-3cedf0eecea6"]
+Cell[47470, 1092, 4287, 122, 564, "Input",ExpressionUUID->"f13c8e2e-fc27-4218-8c04-46b0ae4c39e1"],
+Cell[51760, 1216, 2638, 52, 799, "Output",ExpressionUUID->"ad4aa7ac-c0b1-4528-b3b4-3cedf0eecea6"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
