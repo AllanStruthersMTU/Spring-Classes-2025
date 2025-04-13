@@ -1,0 +1,225 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7353,        217]
+NotebookOptionsPosition[      6518,        193]
+NotebookOutlinePosition[      7032,        212]
+CellTagsIndexPosition[      6989,        209]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Spectral Updates", "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.947105560300281*^9, 
+  3.947105570086295*^9}, {3.947437306411929*^9, 3.947437316413533*^9}, {
+  3.951301930373879*^9, 3.951301932517168*^9}, {3.9513948855231276`*^9, 
+  3.9513948876868668`*^9}, {3.953038827641922*^9, 3.953038880641579*^9}, {
+  3.9533810088104763`*^9, 
+  3.9533810130001707`*^9}},ExpressionUUID->"c5e37016-7f0a-42ee-8f08-\
+164c0dfb9afc"],
+
+Cell[TextData[{
+ "Standard Limited Memory QN schemes store a stack of changes in ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "k"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "d606bbc8-fe65-46f3-9fd7-fda5ed04c365"],
+ " \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["y", "k"], "=", 
+    RowBox[{
+     SubscriptBox["x", 
+      RowBox[{"k", "+", "1"}]], "-", 
+     SubscriptBox["x", "k"]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f43eb0bd-6bac-405b-950b-5d7bb62f4cb5"],
+ "\nsteps and changes in gradients\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["s", "k"], "=", 
+    RowBox[{
+     RowBox[{"\[Del]", 
+      SubscriptBox["f", 
+       RowBox[{"k", "+", "1"}]]}], "-", 
+     RowBox[{"\[Del]", 
+      SubscriptBox["f", "k"]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "d9d139ee-44c9-4049-96fb-b06dad0f417d"],
+ ".\nand install updates satisfying the secant condition\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["s", "k"], "=", 
+    RowBox[{
+     SubscriptBox["B", 
+      RowBox[{"k", "+", "1"}]], 
+     SubscriptBox["y", "k"]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "bbcfecc6-d0a4-4b35-a39f-739ed906ad4c"],
+ "\nA limited memory update has the form \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["B", "k"], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[Alpha]", "k"], "I"}], " ", "+", " ", 
+     RowBox[{
+      SubsuperscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "m"], 
+      RowBox[{
+       SubscriptBox["\[Alpha]", "k"], 
+       RowBox[{
+        SubscriptBox["v", "k"], "\[CircleTimes]", 
+        SubscriptBox["v", "k"]}]}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "cd4b5a8f-2bb3-4cad-8c87-f65171ab8145"],
+ "   \nfor a rank one update i.e. SR1 and\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["B", "k"], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[Alpha]", "k"], "I"}], " ", "+", " ", 
+     RowBox[{
+      SubsuperscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "m"], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["\[Alpha]", "k"], 
+         RowBox[{
+          SubscriptBox["v", "k"], "\[CircleTimes]", 
+          SubscriptBox["v", "k"]}]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Beta]", "k"], " ", 
+         RowBox[{
+          SubscriptBox["w", "k"], "\[CircleTimes]", 
+          SubscriptBox["w", "k"]}]}]}], ")"}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "bbb158cd-39e5-42a4-971e-19b6e04d0c1f"],
+ "\nfor a rank two update e.g. DF and BFGS.  In all cases \nthe vectors ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "k"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "0a650920-14d3-4df4-8be8-9269bbe9b3ad"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["w", "k"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f5b74f4b-a75c-4224-9dcf-9c270ad033d4"],
+ " are easily computed from the steps. "
+}], "Text",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9533810315814686`*^9, 3.953381571040292*^9}, {
+  3.953381601745231*^9, 
+  3.953381672714467*^9}},ExpressionUUID->"18e08a0d-3b5a-42ad-ab64-\
+150b603d9d76"],
+
+Cell[TextData[{
+ "The question is can I do a fancier update and maintain a spectral \
+decomposition\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"B", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"\[Alpha]", " ", "I"}], " ", "+", " ", 
+     RowBox[{
+      SubsuperscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "m"], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SubscriptBox["\[Lambda]", "i"], "-", "\[Alpha]"}], ")"}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          SubscriptBox["q", "i"], "\[CircleTimes]", 
+          SubscriptBox["q", "i"]}], ")"}], "\[LongLeftRightArrow]", 
+        RowBox[{"{", 
+         RowBox[{"\[Alpha]", ",", 
+          SubscriptBox[
+           RowBox[{"{", 
+            RowBox[{
+             SubscriptBox["\[Lambda]", "i"], ",", 
+             SubscriptBox["q", "i"]}], "}"}], 
+           RowBox[{"1", ":", "m"}]]}], "}"}]}]}]}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "2bf6c495-333b-43ce-9811-165d8816b93d"],
+ "\nWhat I would want to be able to do is\nA) Efficiently and parsimoniously \
+update an existing  spectral thing to satisfy ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"B", ".", "y"}], "=", "s"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3a276952-faa1-4cef-83be-a0ed392c99c0"],
+ "\nB) Efficiently and parsimoniously trim an existing spectral thing.\nC) \
+Efficiently apply a spectral thing.\nD) Efficiently apply the inverse of a \
+spectral thing."
+}], "Text",
+ InitializationCell->True,
+ CellChangeTimes->{{3.953381675291724*^9, 3.9533817851909065`*^9}, {
+  3.9533818168523383`*^9, 3.9533819689858556`*^9}, {3.953382021638468*^9, 
+  3.95338215899104*^9}},ExpressionUUID->"c928db51-e8dd-42a2-ba56-\
+409cb00545e0"],
+
+Cell["C and D are easy.  B should be easy.   ", "Text",
+ CellChangeTimes->{{3.9533858686471353`*^9, 
+  3.953385914640237*^9}},ExpressionUUID->"c43b4c34-e52b-4d7e-afd3-\
+2b7e77511c36"]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{1141, 580},
+WindowMargins->{{1358, Automatic}, {227.5, Automatic}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification->1.5,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"7002e229-1017-472e-8168-c4c1f0e043e5"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 664, 10, 146, "Title",ExpressionUUID->"c5e37016-7f0a-42ee-8f08-164c0dfb9afc"],
+Cell[1247, 34, 3308, 103, 432, "Text",ExpressionUUID->"18e08a0d-3b5a-42ad-ab64-150b603d9d76",
+ InitializationCell->True],
+Cell[4558, 139, 1758, 46, 259, "Text",ExpressionUUID->"c928db51-e8dd-42a2-ba56-409cb00545e0",
+ InitializationCell->True],
+Cell[6319, 187, 183, 3, 52, "Text",ExpressionUUID->"c43b4c34-e52b-4d7e-afd3-2b7e77511c36"]
+}, Open  ]]
+}
+]
+*)
+
