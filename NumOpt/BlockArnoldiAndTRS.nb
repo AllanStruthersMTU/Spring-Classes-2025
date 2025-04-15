@@ -1,0 +1,308 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10976,        300]
+NotebookOptionsPosition[     10100,        277]
+NotebookOutlinePosition[     10611,        296]
+CellTagsIndexPosition[     10568,        293]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["TRS", "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.947105560300281*^9, 
+  3.947105570086295*^9}, {3.947437306411929*^9, 3.947437316413533*^9}, {
+  3.951301930373879*^9, 3.951301932517168*^9}, {3.9513948855231276`*^9, 
+  3.9513948876868668`*^9}, {3.953038827641922*^9, 3.953038880641579*^9}, {
+  3.9533810088104763`*^9, 3.9533810130001707`*^9}, {3.953712066227762*^9, 
+  3.9537120690217524`*^9}, {3.9537165202111015`*^9, 
+  3.9537165312585764`*^9}},ExpressionUUID->"c5e37016-7f0a-42ee-8f08-\
+164c0dfb9afc"],
+
+Cell[TextData[{
+ "The Adachi paper gives the solution of \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["argmin", 
+      RowBox[{
+       RowBox[{"x", ".", "B", ".", "x"}], "\[LessEqual]", 
+       SuperscriptBox["\[CapitalDelta]", "2"]}]], "0.5", " ", 
+     RowBox[{"x", ".", "A", ".", "x"}]}], "+", 
+    RowBox[{"g", ".", "x"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "e8a5c430-de55-4b9c-acf9-71ed34590e8a"],
+ "\nin terms of the eigenvector for the leftmost eigenvalue of a ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", "n", "\[Times]", "2", "n"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "523d5d9d-2eed-4447-bd2b-3fba180a7057"],
+ " matrix pencil\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["M", "0"], ".", "v"}], "=", 
+    RowBox[{"\[Lambda]", " ", 
+     RowBox[{
+      SubscriptBox["M", "1"], ".", "v"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "44779025-a526-4552-a4e8-206f8adcb36b"],
+ "\t  \nWhen B is diagonal ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["M", "1"], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "699908d4-7ff0-4d81-9713-d3fe541408ad"],
+ "can be explicitly inverted and the solutions is given by the leftmost \
+eigenvector of \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubsuperscriptBox["M", "1", 
+      RowBox[{"-", "1"}]], ".", 
+     SubscriptBox["M", "0"], ".", "v"}], "=", 
+    RowBox[{"\[Lambda]", " ", "v"}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "b8025858-fb7a-4557-9b31-068269480bc8"],
+ "\nFor a large sparse matrix A and diagonal B the action of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"M", "=", 
+    RowBox[{
+     SubsuperscriptBox["M", "1", 
+      RowBox[{"-", "1"}]], ".", 
+     SubscriptBox["M", "0"]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "019f4190-e7b4-4da3-af88-6b68d6f8ef8e"],
+ " can be computed efficiently and it makes sense to approximate the target \
+eigenvector using an Arnoldi algorithm.     "
+}], "Text",
+ CellChangeTimes->{{3.953712078307712*^9, 3.953712164589856*^9}, {
+  3.9537132061942315`*^9, 3.9537132420413847`*^9}, {3.9537165370751424`*^9, 
+  3.9537169535235395`*^9}, {3.9537170340697412`*^9, 
+  3.9537170340697412`*^9}},ExpressionUUID->"19334bc9-2379-49c9-b2cb-\
+6e797e11cd7c"],
+
+Cell[TextData[{
+ "The standard Arnoldi Algorithm iteratively constructs an orthonormal basis \
+for the Krylov spaces\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[ScriptCapitalK]", "(", 
+     RowBox[{"M", ",", 
+      SubscriptBox["v", "0"], ",", 
+      RowBox[{"k", "+", "1"}]}], ")"}], "=", 
+    RowBox[{"span", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["v", "0"], ",", 
+       RowBox[{"M", ".", 
+        SubscriptBox["v", "0"]}], ",", "\[Ellipsis]", ",", 
+       RowBox[{
+        SuperscriptBox["M", "k"], ".", 
+        SubscriptBox["v", "0"]}]}], "}"}]}]}], TraditionalForm]],
+  ExpressionUUID->"6f0c2ea5-9c9d-48ba-abde-20e878b698f8"],
+ "\nstarting from a initial vector ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "0"], TraditionalForm]],ExpressionUUID->
+  "fab13e40-af54-43f5-bfe4-0b74bfb66c01"],
+ ".  If you do not provide an initial vector then most computer code simply \
+use a random vector.  Steve has found out that giving the TRS problem \
+informed starting vectors improves convergence. "
+}], "Text",
+ CellChangeTimes->{{3.9537169599062757`*^9, 3.95371714298751*^9}, {
+  3.9537192520874276`*^9, 3.9537192907352924`*^9}, {3.9537193325103507`*^9, 
+  3.953719421150898*^9}},ExpressionUUID->"1a1dc20d-807d-4551-b39e-\
+e345ba123a71"],
+
+Cell[TextData[{
+ "A block Arnoldi Algorithm iteratively constructs an orthonormal basis for \
+the Krylov spaces\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"\[ScriptCapitalK]", "(", 
+     RowBox[{"M", ",", 
+      SubscriptBox["V", "0"], ",", 
+      RowBox[{"k", "+", "1"}]}], ")"}], "=", 
+    RowBox[{"span", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["V", "0"], ",", 
+       RowBox[{"M", ".", 
+        SubscriptBox["V", "0"]}], ",", "\[Ellipsis]", ",", 
+       RowBox[{
+        SuperscriptBox["M", "k"], ".", 
+        SubscriptBox["V", "0"]}]}], "}"}]}]}], TraditionalForm]],
+  ExpressionUUID->"2be3767a-c204-4bb0-9615-ae4da98cf084"],
+ "\nstarting from a block of initial vectors ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["V", "0"], TraditionalForm]],ExpressionUUID->
+  "26a530d1-280b-4211-9f89-a2df4268879c"],
+ ".  There is a matlab package that makes it easy to do a Block Arnoldi.   \
+Steve is trying to find out if giving the TRS problem an informed block of \
+starting vectors improves convergence. "
+}], "Text",
+ CellChangeTimes->{{3.9537169599062757`*^9, 3.95371714298751*^9}, {
+  3.9537192520874276`*^9, 3.9537192907352924`*^9}, {3.9537193325103507`*^9, 
+  3.953719421150898*^9}, {3.953719472765253*^9, 
+  3.9537196098456564`*^9}},ExpressionUUID->"61b070a1-d776-4731-80f9-\
+d2841160d83e"],
+
+Cell[TextData[{
+ "The extreme version of this would be to try to solve the TRS problem over a \
+small set of orthonormal vectors.  For instance they could be the vectors in \
+a block ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["V", "0"], TraditionalForm]],ExpressionUUID->
+  "018aa00f-a511-48c7-835e-fcd3fad0571e"],
+ " used to initialize a block Arnoldi scheme.  As a reminder the competitors \
+to the TRS scheme were SD (look only in the negative gradient direction) and \
+2D minimization (look only in the SD and Newton direction) and dog-leg \
+(minimize along a fixed 1D curve with a kink in the middle).  So picking a \
+bunch of directions and looking at a lower dimensional problem is not crazy.  \
+ This means for the vectors ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"Q", "=", 
+    RowBox[{"[", GridBox[{
+       {
+        SubscriptBox["q", "1"], "|", 
+        SubscriptBox["q", "2"], "|", "\[Ellipsis]", "|", 
+        SubscriptBox["q", "r"]}
+      }], "]"}]}], TraditionalForm]],ExpressionUUID->
+  "f5970964-5c75-447d-8457-628008d15145"],
+ " we are doing something like\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["x", "*"], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["argmin", 
+       RowBox[{
+        RowBox[{"x", ".", "B", ".", "x"}], "\[LessEqual]", 
+        SuperscriptBox["\[CapitalDelta]", "2"]}]], "0.5", " ", 
+      RowBox[{"x", ".", "A", ".", "x"}]}], "+", 
+     RowBox[{"g", ".", "x"}]}]}], TraditionalForm]],ExpressionUUID->
+  "04e13801-15ff-4b99-a3a1-e168a1e41bdf"],
+ "  with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "=", 
+    RowBox[{
+     RowBox[{
+      SubsuperscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "r"], 
+      RowBox[{
+       SubscriptBox["\[Alpha]", "i"], 
+       SubscriptBox["q", "i"]}]}], "=", 
+     RowBox[{"Q", ".", "\[Alpha]"}]}]}], TraditionalForm]],ExpressionUUID->
+  "d02f7cba-d247-42be-b519-4e7075e78dda"],
+ "\nor equivalently\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["\[Alpha]", "*"], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["argmin", 
+       RowBox[{
+        RowBox[{"\[Alpha]", ".", 
+         OverscriptBox["B", "^"], ".", "\[Alpha]"}], "\[LessEqual]", 
+        SuperscriptBox["\[CapitalDelta]", "2"]}]], "0.5", 
+      RowBox[{"\[Alpha]", ".", 
+       OverscriptBox["A", "^"], ".", "\[Alpha]"}]}], "+", 
+     RowBox[{
+      OverscriptBox["g", "^"], ".", "\[Alpha]"}]}]}], TraditionalForm]],
+  ExpressionUUID->"32a945d9-3548-4c10-a808-b58d1c436c72"],
+ "\nwhere \n\t",
+ Cell[BoxData[
+  FormBox[GridBox[{
+     {
+      SuperscriptBox["x", "*"], "=", 
+      RowBox[{"Q", ".", 
+       SuperscriptBox["\[Alpha]", "*"]}]},
+     {
+      OverscriptBox["B", "^"], "=", 
+      RowBox[{
+       RowBox[{"Q", "\[Transpose]"}], ".", "B", ".", "Q"}]},
+     {
+      OverscriptBox["A", "^"], "=", 
+      RowBox[{
+       RowBox[{"Q", "\[Transpose]"}], ".", "A", ".", "Q"}]},
+     {
+      OverscriptBox["g", "^"], "=", 
+      RowBox[{
+       RowBox[{"Q", "\[Transpose]"}], ".", "g"}]}
+    }], TraditionalForm]],ExpressionUUID->
+  "35bc41bb-a2a0-4926-818d-c785f239a79a"],
+ "\nWe could take the informed set of guesses for ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["V", "0"], TraditionalForm]],ExpressionUUID->
+  "354b349b-5fd4-4d21-8e65-8b10a4ee6409"],
+ " in our Block Arnoldi and just see what the minimum is. "
+}], "Text",
+ CellChangeTimes->{{3.9537169599062757`*^9, 3.95371714298751*^9}, {
+  3.9537192520874276`*^9, 3.9537192907352924`*^9}, {3.9537193325103507`*^9, 
+  3.953719421150898*^9}, {3.953719472765253*^9, 3.953720332870311*^9}, {
+  3.9537204619084415`*^9, 3.9537204734058485`*^9}, {3.9537205036140223`*^9, 
+  3.953720508637223*^9}, {3.9537206423734436`*^9, 
+  3.953720643877881*^9}},ExpressionUUID->"a424960b-d44e-487d-b6b9-\
+3f9239f9442b"]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{1141.2, 609.6},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification->1.5,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"710b17fd-2c9d-43ac-8ffe-adbe1f771113"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 752, 11, 146, "Title",ExpressionUUID->"c5e37016-7f0a-42ee-8f08-164c0dfb9afc"],
+Cell[1335, 35, 2390, 66, 294, "Text",ExpressionUUID->"19334bc9-2379-49c9-b2cb-6e797e11cd7c"],
+Cell[3728, 103, 1273, 32, 192, "Text",ExpressionUUID->"1a1dc20d-807d-4551-b39e-e345ba123a71"],
+Cell[5004, 137, 1324, 33, 192, "Text",ExpressionUUID->"61b070a1-d776-4731-80f9-d2841160d83e"],
+Cell[6331, 172, 3753, 102, 533, "Text",ExpressionUUID->"a424960b-d44e-487d-b6b9-3f9239f9442b"]
+}, Open  ]]
+}
+]
+*)
+

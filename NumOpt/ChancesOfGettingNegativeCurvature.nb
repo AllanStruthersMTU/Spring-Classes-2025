@@ -1,0 +1,896 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     42505,        888]
+NotebookOptionsPosition[     41182,        857]
+NotebookOutlinePosition[     41689,        876]
+CellTagsIndexPosition[     41646,        873]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Negative Curvature Directions", "Title",
+ CellChangeTimes->{{3.9398152070839567`*^9, 3.9398152117860727`*^9}, {
+  3.9421541444318066`*^9, 3.9421541513390083`*^9}, {3.944393994649187*^9, 
+  3.9443940027240753`*^9}, {3.9443979907577295`*^9, 3.944397995195145*^9}, {
+  3.9454196831749916`*^9, 3.9454196934074483`*^9}, {3.947105560300281*^9, 
+  3.947105570086295*^9}, {3.947437306411929*^9, 3.947437316413533*^9}, {
+  3.951301930373879*^9, 3.951301932517168*^9}, {3.9513948855231276`*^9, 
+  3.9513948876868668`*^9}, {3.953038827641922*^9, 3.953038880641579*^9}, {
+  3.9533810088104763`*^9, 3.9533810130001707`*^9}, {3.953712066227762*^9, 
+  3.9537120690217524`*^9}, {3.9537165202111015`*^9, 3.9537165312585764`*^9}, {
+  3.953721220700381*^9, 
+  3.9537212257160997`*^9}},ExpressionUUID->"c5e37016-7f0a-42ee-8f08-\
+164c0dfb9afc"],
+
+Cell[TextData[{
+ "A negative curvature direction for \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"f", "(", "x", ")"}], "=", 
+    RowBox[{
+     RowBox[{"0.5", 
+      RowBox[{"x", ".", "A", ".", "x"}]}], "+", 
+     RowBox[{"g", ".", "x"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "96daa54e-0c02-491d-92da-a2853fe8ddba"],
+ "\nis any direction satisfying ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"v", ".", "A", ".", "v"}], "<", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "bf0d3656-8c22-49d2-a5fd-48d433f91b18"],
+ ".  We have found lots of Hessians at saddle points.  An optimization \
+algorithm that uses negative curvature directions (i.e. not one that ignores \
+negative curvature like BFGS, DFP, or the Cholesky Modified Newton \
+algorithms) will escape from such a saddle if it picks up a negative \
+curvature direction.  "
+}], "Text",
+ CellChangeTimes->{{3.9537212293142195`*^9, 3.9537216249583645`*^9}, {
+  3.9537318386485577`*^9, 
+  3.9537318448500786`*^9}},ExpressionUUID->"b0502c8f-4c06-4e63-a337-\
+dba68f84d470"],
+
+Cell["\<\
+We can estimate the probability of finding a negative curvature direction by \
+simply sampling from uniformly distributed vectors on the surface of a \
+sphere.  The easiest way to do this is to simply normalize a vector drawn \
+from a standard normal distribution.  This distribution is called a Haar \
+distribution. \
+\>", "Text",
+ CellChangeTimes->{{3.9537216340097957`*^9, 
+  3.9537217995867777`*^9}},ExpressionUUID->"c288537c-99f6-4c8e-b73d-\
+760eccc2a1d9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "9"}], ";", " ", 
+  RowBox[{"SampleSize", "=", 
+   SuperscriptBox["10", "4"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"RandomReal", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "n"}], "}"}]}], "]"}]}], ";", 
+  RowBox[{"A", "=", 
+   RowBox[{"A", "+", 
+    RowBox[{"A", "\[Transpose]"}], "+", 
+    RowBox[{"2", 
+     RowBox[{"IdentityMatrix", "[", "n", "]"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Data1", "=", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"v", "=", 
+       RowBox[{"Normalize", "[", 
+        RowBox[{"RandomVariate", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"0", ",", "1"}], "]"}], ",", "n"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"v", ".", "A", ".", "v"}]}], ",", 
+     RowBox[{"{", "SampleSize", "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Histogram", "[", 
+  RowBox[{"Data1", ",", "60"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.9537218133394365`*^9, 3.953721957634063*^9}, {
+  3.9537220230930305`*^9, 3.953722048065082*^9}, {3.9537220787090673`*^9, 
+  3.9537220939552603`*^9}, {3.9537323002606993`*^9, 3.953732300573239*^9}},
+ CellLabel->
+  "In[283]:=",ExpressionUUID->"a93be274-ff11-4db9-a7aa-3ae8153e3963"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+    Opacity[0.217], Thickness[Small]}], {}, 
+    {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+     Opacity[0.217], Thickness[Small]}], RectangleBox[{-1.2, 0}, {-1.1, 2.},
+      RoundingRadius->0], RectangleBox[{-1.1, 0}, {-1., 10.},
+      RoundingRadius->0], RectangleBox[{-1., 0}, {-0.9, 6.},
+      RoundingRadius->0], RectangleBox[{-0.9, 0}, {-0.8, 15.},
+      RoundingRadius->0], RectangleBox[{-0.8, 0}, {-0.7, 15.},
+      RoundingRadius->0], RectangleBox[{-0.7, 0}, {-0.6, 23.},
+      RoundingRadius->0], RectangleBox[{-0.6, 0}, {-0.5, 31.},
+      RoundingRadius->0], RectangleBox[{-0.5, 0}, {-0.4, 36.},
+      RoundingRadius->0], RectangleBox[{-0.4, 0}, {-0.3, 51.},
+      RoundingRadius->0], RectangleBox[{-0.3, 0}, {-0.2, 72.},
+      RoundingRadius->0], RectangleBox[{-0.2, 0}, {-0.1, 60.},
+      RoundingRadius->0], RectangleBox[{-0.1, 0}, {0., 89.},
+      RoundingRadius->0], RectangleBox[{0., 0}, {0.1, 95.},
+      RoundingRadius->0], RectangleBox[{0.1, 0}, {0.2, 104.},
+      RoundingRadius->0], RectangleBox[{0.2, 0}, {0.3, 124.},
+      RoundingRadius->0], RectangleBox[{0.3, 0}, {0.4, 165.},
+      RoundingRadius->0], RectangleBox[{0.4, 0}, {0.5, 165.},
+      RoundingRadius->0], RectangleBox[{0.5, 0}, {0.6, 175.},
+      RoundingRadius->0], RectangleBox[{0.6, 0}, {0.7, 213.},
+      RoundingRadius->0], RectangleBox[{0.7, 0}, {0.8, 230.},
+      RoundingRadius->0], RectangleBox[{0.8, 0}, {0.9, 213.},
+      RoundingRadius->0], RectangleBox[{0.9, 0}, {1., 265.},
+      RoundingRadius->0], RectangleBox[{1., 0}, {1.1, 251.},
+      RoundingRadius->0], RectangleBox[{1.1, 0}, {1.2, 287.},
+      RoundingRadius->0], RectangleBox[{1.2, 0}, {1.3, 284.},
+      RoundingRadius->0], RectangleBox[{1.3, 0}, {1.4, 316.},
+      RoundingRadius->0], RectangleBox[{1.4, 0}, {1.5, 328.},
+      RoundingRadius->0], RectangleBox[{1.5, 0}, {1.6, 332.},
+      RoundingRadius->0], RectangleBox[{1.6, 0}, {1.7, 327.},
+      RoundingRadius->0], RectangleBox[{1.7, 0}, {1.8, 347.},
+      RoundingRadius->0], RectangleBox[{1.8, 0}, {1.9, 377.},
+      RoundingRadius->0], RectangleBox[{1.9, 0}, {2., 338.},
+      RoundingRadius->0], RectangleBox[{2., 0}, {2.1, 355.},
+      RoundingRadius->0], RectangleBox[{2.1, 0}, {2.2, 347.},
+      RoundingRadius->0], RectangleBox[{2.2, 0}, {2.3, 329.},
+      RoundingRadius->0], RectangleBox[{2.3, 0}, {2.4, 329.},
+      RoundingRadius->0], RectangleBox[{2.4, 0}, {2.5, 317.},
+      RoundingRadius->0], RectangleBox[{2.5, 0}, {2.6, 275.},
+      RoundingRadius->0], RectangleBox[{2.6, 0}, {2.7, 287.},
+      RoundingRadius->0], RectangleBox[{2.7, 0}, {2.8, 276.},
+      RoundingRadius->0], RectangleBox[{2.8, 0}, {2.9, 258.},
+      RoundingRadius->0], RectangleBox[{2.9, 0}, {3., 214.},
+      RoundingRadius->0], RectangleBox[{3., 0}, {3.1, 220.},
+      RoundingRadius->0], RectangleBox[{3.1, 0}, {3.2, 210.},
+      RoundingRadius->0], RectangleBox[{3.2, 0}, {3.3, 190.},
+      RoundingRadius->0], RectangleBox[{3.3, 0}, {3.4, 132.},
+      RoundingRadius->0], RectangleBox[{3.4, 0}, {3.5, 143.},
+      RoundingRadius->0], RectangleBox[{3.5, 0}, {3.6, 131.},
+      RoundingRadius->0], RectangleBox[{3.6, 0}, {3.7, 119.},
+      RoundingRadius->0], RectangleBox[{3.7, 0}, {3.8, 96.},
+      RoundingRadius->0], RectangleBox[{3.8, 0}, {3.9, 88.},
+      RoundingRadius->0], RectangleBox[{3.9, 0}, {4., 67.},
+      RoundingRadius->0], RectangleBox[{4., 0}, {4.1, 59.},
+      RoundingRadius->0], RectangleBox[{4.1, 0}, {4.2, 54.},
+      RoundingRadius->0], RectangleBox[{4.2, 0}, {4.3, 39.},
+      RoundingRadius->0], RectangleBox[{4.3, 0}, {4.4, 29.},
+      RoundingRadius->0], RectangleBox[{4.4, 0}, {4.5, 21.},
+      RoundingRadius->0], RectangleBox[{4.5, 0}, {4.6, 17.},
+      RoundingRadius->0], RectangleBox[{4.6, 0}, {4.7, 13.},
+      RoundingRadius->0], RectangleBox[{4.7, 0}, {4.8, 9.},
+      RoundingRadius->0], RectangleBox[{4.8, 0}, {4.9, 11.},
+      RoundingRadius->0], RectangleBox[{4.9, 0}, {5., 3.},
+      RoundingRadius->0], RectangleBox[{5., 0}, {5.1, 9.},
+      RoundingRadius->0], RectangleBox[{5.1, 0}, {5.2, 1.},
+      RoundingRadius->0], RectangleBox[{5.2, 0}, {5.3, 4.},
+      RoundingRadius->0], RectangleBox[{5.4, 0}, {5.5, 2.},
+      RoundingRadius->
+       0]}, {}, {}}, {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{-1.334, 0},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  PlotRange->{{-1.2, 5.5}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.953722029105585*^9, 3.953722094633788*^9}, 
+   3.95372218699387*^9, 3.9537323289064703`*^9},
+ CellLabel->
+  "Out[286]=",ExpressionUUID->"608a3383-6d99-46af-9d6c-6e96b66cddd3"]
+}, Open  ]],
+
+Cell[TextData[{
+ "If we are careful to use a rotationally invariant distribution then since \n\
+\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"A", "=", 
+    RowBox[{"Q", ".", "\[CapitalLambda]", ".", 
+     RowBox[{"Q", "\[Transpose]"}]}]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "2958c8d5-71ab-4840-9a3f-bc38a55abd35"],
+ "\nwhere ",
+ Cell[BoxData[
+  FormBox["Q", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3dcb4fa0-d8be-480b-ad5d-ed190c290fe5"],
+ " is the orthogonal matrix of eigenvectors and ",
+ Cell[BoxData[
+  FormBox["\[CapitalLambda]", TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "82d1f9ff-80ff-40da-ad41-85ab0ab34e8e"],
+ " is the diagonal matrix of eigenvalues we will get the same distribution by \
+sampling from the diagonal matrix. "
+}], "Text",
+ CellChangeTimes->{{3.9537222143299294`*^9, 
+  3.953722380908469*^9}},ExpressionUUID->"71531e28-1406-4477-b5b3-\
+51410a8618b5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[Lambda]s", "=", 
+   RowBox[{"Eigenvalues", "[", "A", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[CapitalLambda]", "=", 
+   RowBox[{"DiagonalMatrix", "[", "\[Lambda]s", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Data2", "=", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"v", "=", 
+       RowBox[{"Normalize", "[", 
+        RowBox[{"RandomVariate", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"0", ",", "1"}], "]"}], ",", "n"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"v", ".", "\[CapitalLambda]", ".", "v"}]}], ",", 
+     RowBox[{"{", "SampleSize", "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"PairedHistogram", "[", 
+  RowBox[{"Data1", ",", "Data2"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.953722429624301*^9, 3.953722535935306*^9}, {
+  3.953723638438586*^9, 3.9537236388825026`*^9}},
+ CellLabel->
+  "In[279]:=",ExpressionUUID->"88044394-4198-4844-baa7-f9cf1bbbc22f"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+    Opacity[0.49699999999999994`], Thickness[Small]}], {{{}, 
+      {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], 
+       EdgeForm[{Opacity[0.49699999999999994`], Thickness[Small]}], 
+       RectangleBox[Offset[{0, 0}, {-136.62686567164178, -1.5}], 
+        Offset[{0, 0}, {-134.62686567164178, -1.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-158.62686567164178, -1.}], 
+        Offset[{0, 0}, {-134.62686567164178, -0.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-250.62686567164178, -0.5}], 
+        Offset[{0, 0}, {-134.62686567164178, 0.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-550.6268656716418, 0.}], Offset[{0, 0}, {-134.62686567164178, 0.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-1011.6268656716418, 0.5}], 
+        Offset[{0, 0}, {-134.62686567164178, 1.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-1402.6268656716418, 1.}], 
+        Offset[{0, 0}, {-134.62686567164178, 1.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-1820.6268656716418, 1.5}], 
+        Offset[{0, 0}, {-134.62686567164178, 2.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-1850.6268656716418, 2.}], 
+        Offset[{0, 0}, {-134.62686567164178, 2.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-1736.6268656716418, 2.5}], 
+        Offset[{0, 0}, {-134.62686567164178, 3.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-1346.6268656716418, 3.}], 
+        Offset[{0, 0}, {-134.62686567164178, 3.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-820.6268656716418, 3.5}], 
+        Offset[{0, 0}, {-134.62686567164178, 4.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-428.6268656716418, 4.}], Offset[{0, 0}, {-134.62686567164178, 4.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-220.62686567164178, 4.5}], 
+        Offset[{0, 0}, {-134.62686567164178, 5.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-148.62686567164178, 5.}], 
+        Offset[{0, 0}, {-134.62686567164178, 5.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {-135.62686567164178, 5.5}], 
+        Offset[{0, 0}, {-134.62686567164178, 6.}],
+        RoundingRadius->0]}, {}, {}}, {{}, 
+      {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], 
+       EdgeForm[{Opacity[0.49699999999999994`], Thickness[Small]}], 
+       RectangleBox[Offset[{0, 0}, {135.62686567164178, -1.5}], 
+        Offset[{0, 0}, {134.62686567164178, -1.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {161.62686567164178, -1.}], 
+        Offset[{0, 0}, {134.62686567164178, -0.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {281.6268656716418, -0.5}], 
+        Offset[{0, 0}, {134.62686567164178, 0.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {552.6268656716418, 0.}], Offset[{0, 0}, {134.62686567164178, 0.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {965.6268656716418, 0.5}], Offset[{0, 0}, {134.62686567164178, 1.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {1458.6268656716418, 1.}], Offset[{0, 0}, {134.62686567164178, 1.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {1793.6268656716418, 1.5}], 
+        Offset[{0, 0}, {134.62686567164178, 2.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {1938.6268656716418, 2.}], Offset[{0, 0}, {134.62686567164178, 2.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {1713.6268656716418, 2.5}], 
+        Offset[{0, 0}, {134.62686567164178, 3.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {1331.6268656716418, 3.}], Offset[{0, 0}, {134.62686567164178, 3.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {793.6268656716418, 3.5}], Offset[{0, 0}, {134.62686567164178, 4.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {397.6268656716418, 4.}], Offset[{0, 0}, {134.62686567164178, 4.5}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {214.62686567164178, 4.5}], 
+        Offset[{0, 0}, {134.62686567164178, 5.}],
+        RoundingRadius->0], 
+       RectangleBox[Offset[{0, 0}, {145.62686567164178, 5.}], Offset[{0, 0}, {134.62686567164178, 5.5}],
+        RoundingRadius->
+         0]}, {}, {}}}, {}}, {{{{{{{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}, {}}, {}}, {}}, {{{{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}}, {}}, {}}}, {}}, {}}, 
+   StyleBox[{
+     TagBox[{
+       StyleBox[
+        StyleBox[{
+          LineBox[{
+           Offset[{0, 0}, {-134.62686567164178`, -1.875}], 
+            Offset[{0, 0}, {-2035.558208955224, -1.875}]}], 
+          
+          StyleBox[{{
+             LineBox[{{
+               Offset[{0, 0}, {-134.62686567164178`, -1.875}], 
+                Offset[{0, -4.}, {-134.62686567164178`, -1.875}]}, {
+               Offset[{0, 0}, {-634.6268656716417, -1.875}], 
+                Offset[{0, -4.}, {-634.6268656716417, -1.875}]}, {
+               Offset[{0, 0}, {-1134.6268656716418`, -1.875}], 
+                Offset[{0, -4.}, {-1134.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {-1634.6268656716418`, -1.875}], 
+                Offset[{0, -4.}, {-1634.6268656716418`, -1.875}]}}], 
+             LineBox[{{
+               Offset[{0, 0}, {-234.62686567164178`, -1.875}], 
+                Offset[{0., -2.5}, {-234.62686567164178`, -1.875}]}, {
+               Offset[{0, 0}, {-334.6268656716418, -1.875}], 
+                Offset[{0., -2.5}, {-334.6268656716418, -1.875}]}, {
+               Offset[{0, 0}, {-434.6268656716418, -1.875}], 
+                Offset[{0., -2.5}, {-434.6268656716418, -1.875}]}, {
+               Offset[{0, 0}, {-534.6268656716418, -1.875}], 
+                Offset[{0., -2.5}, {-534.6268656716418, -1.875}]}, {
+               Offset[{0, 0}, {-734.6268656716417, -1.875}], 
+                Offset[{0., -2.5}, {-734.6268656716417, -1.875}]}, {
+               Offset[{0, 0}, {-834.6268656716417, -1.875}], 
+                Offset[{0., -2.5}, {-834.6268656716417, -1.875}]}, {
+               Offset[{0, 0}, {-934.6268656716417, -1.875}], 
+                Offset[{0., -2.5}, {-934.6268656716417, -1.875}]}, {
+               Offset[{0, 0}, {-1034.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {-1034.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {-1234.626865671642, -1.875}], 
+                Offset[{0., -2.5}, {-1234.626865671642, -1.875}]}, {
+               Offset[{0, 0}, {-1334.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {-1334.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {-1434.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {-1434.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {-1534.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {-1534.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {-1734.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {-1734.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {-1834.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {-1834.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {-1934.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {-1934.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {-2034.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {-2034.6268656716418`, -1.875}]}}]}, 
+            
+            StyleBox[{{{
+                InsetBox["0", 
+                 Offset[{0., -7.}, {-134.62686567164178, -1.875}], 
+                 ImageScaled[{0.5, 1.}], Automatic, {1, 0}], 
+                InsetBox["500", 
+                 Offset[{0., -7.}, {-634.6268656716417, -1.875}], 
+                 ImageScaled[{0.5, 1.}], Automatic, {1, 0}], 
+                InsetBox["1000", 
+                 Offset[{0., -7.}, {-1134.6268656716418, -1.875}], 
+                 ImageScaled[{0.5, 1.}], Automatic, {1, 0}], 
+                InsetBox["1500", 
+                 Offset[{0., -7.}, {-1634.6268656716418, -1.875}], 
+                 ImageScaled[{0.5, 1.}], Automatic, {1, 
+                 0}]}, {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}}}, {}}, "GraphicsLabel",
+             StripOnInput->False]}, "GraphicsTicks",
+           StripOnInput->False]},
+         Antialiasing->False], "GraphicsAxes",
+        StripOnInput->False], 
+       StyleBox[
+        StyleBox[{
+          LineBox[{
+           Offset[{0, 0}, {134.62686567164178`, -1.875}], 
+            Offset[{0, 0}, {2035.558208955224, -1.875}]}], 
+          
+          StyleBox[{{
+             LineBox[{{
+               Offset[{0, 0}, {134.62686567164178`, -1.875}], 
+                Offset[{0, -4.}, {134.62686567164178`, -1.875}]}, {
+               Offset[{0, 0}, {634.6268656716417, -1.875}], 
+                Offset[{0, -4.}, {634.6268656716417, -1.875}]}, {
+               Offset[{0, 0}, {1134.6268656716418`, -1.875}], 
+                Offset[{0, -4.}, {1134.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {1634.6268656716418`, -1.875}], 
+                Offset[{0, -4.}, {1634.6268656716418`, -1.875}]}}], 
+             LineBox[{{
+               Offset[{0, 0}, {234.62686567164178`, -1.875}], 
+                Offset[{0., -2.5}, {234.62686567164178`, -1.875}]}, {
+               Offset[{0, 0}, {334.6268656716418, -1.875}], 
+                Offset[{0., -2.5}, {334.6268656716418, -1.875}]}, {
+               Offset[{0, 0}, {434.6268656716418, -1.875}], 
+                Offset[{0., -2.5}, {434.6268656716418, -1.875}]}, {
+               Offset[{0, 0}, {534.6268656716418, -1.875}], 
+                Offset[{0., -2.5}, {534.6268656716418, -1.875}]}, {
+               Offset[{0, 0}, {734.6268656716417, -1.875}], 
+                Offset[{0., -2.5}, {734.6268656716417, -1.875}]}, {
+               Offset[{0, 0}, {834.6268656716417, -1.875}], 
+                Offset[{0., -2.5}, {834.6268656716417, -1.875}]}, {
+               Offset[{0, 0}, {934.6268656716417, -1.875}], 
+                Offset[{0., -2.5}, {934.6268656716417, -1.875}]}, {
+               Offset[{0, 0}, {1034.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {1034.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {1234.626865671642, -1.875}], 
+                Offset[{0., -2.5}, {1234.626865671642, -1.875}]}, {
+               Offset[{0, 0}, {1334.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {1334.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {1434.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {1434.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {1534.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {1534.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {1734.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {1734.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {1834.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {1834.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {1934.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {1934.6268656716418`, -1.875}]}, {
+               Offset[{0, 0}, {2034.6268656716418`, -1.875}], 
+                Offset[{0., -2.5}, {2034.6268656716418`, -1.875}]}}]}, 
+            
+            StyleBox[{{{
+                InsetBox["0", Offset[{0., -7.}, {134.62686567164178, -1.875}],
+                  ImageScaled[{0.5, 1.}], Automatic, {1, 0}], 
+                InsetBox["500", 
+                 Offset[{0., -7.}, {634.6268656716417, -1.875}], 
+                 ImageScaled[{0.5, 1.}], Automatic, {1, 0}], 
+                InsetBox["1000", 
+                 Offset[{0., -7.}, {1134.6268656716418, -1.875}], 
+                 ImageScaled[{0.5, 1.}], Automatic, {1, 0}], 
+                InsetBox["1500", 
+                 Offset[{0., -7.}, {1634.6268656716418, -1.875}], 
+                 ImageScaled[{0.5, 1.}], Automatic, {1, 
+                 0}]}, {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}}}, {}}, "GraphicsLabel",
+             StripOnInput->False]}, "GraphicsTicks",
+           StripOnInput->False]},
+         Antialiasing->False], "GraphicsAxes",
+        StripOnInput->False]},
+      Deploy,
+      DefaultBaseStyle->"Deploy"], {
+      StyleBox[
+       StyleBox[{
+         LineBox[{
+          Offset[{0, 0}, {-134.62686567164178`, -1.875}], 
+           Offset[{0, 0}, {-134.62686567164178`, 6.375}]}], 
+         StyleBox[{{
+            LineBox[{{
+              Offset[{0, 0}, {-134.62686567164178`, 0.}], 
+               Offset[{4., 0}, {-134.62686567164178`, 0.}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 2.}], 
+               Offset[{4., 0}, {-134.62686567164178`, 2.}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 4.}], 
+               Offset[{4., 0}, {-134.62686567164178`, 4.}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 6.}], 
+               Offset[{4., 0}, {-134.62686567164178`, 6.}]}}], 
+            LineBox[{{
+              Offset[{0, 0}, {-134.62686567164178`, -1.5}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, -1.5}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, -1.}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, -1.}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, -0.5}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, -0.5}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 0.5}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, 0.5}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 1.}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, 1.}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 1.5}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, 1.5}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 2.5}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, 2.5}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 3.}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, 3.}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 3.5}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, 3.5}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 4.5}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, 4.5}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 5.}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, 5.}]}, {
+              Offset[{0, 0}, {-134.62686567164178`, 5.5}], 
+               Offset[{2.5, 0.}, {-134.62686567164178`, 5.5}]}}]}, 
+           
+           StyleBox[{{{{}, {}, {}, {}}, {{}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}}}, {}}, "GraphicsLabel",
+            StripOnInput->False]}, "GraphicsTicks",
+          StripOnInput->False]},
+        Antialiasing->False], "GraphicsAxes",
+       StripOnInput->False], 
+      StyleBox[
+       StyleBox[{
+         LineBox[{
+          Offset[{0, 0}, {134.62686567164178`, -1.875}], 
+           Offset[{0, 0}, {134.62686567164178`, 6.375}]}], 
+         StyleBox[{{
+            LineBox[{{
+              Offset[{0, 0}, {134.62686567164178`, 0.}], 
+               Offset[{-4., 0}, {134.62686567164178`, 0.}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 2.}], 
+               Offset[{-4., 0}, {134.62686567164178`, 2.}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 4.}], 
+               Offset[{-4., 0}, {134.62686567164178`, 4.}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 6.}], 
+               Offset[{-4., 0}, {134.62686567164178`, 6.}]}}], 
+            LineBox[{{
+              Offset[{0, 0}, {134.62686567164178`, -1.5}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, -1.5}]}, {
+              Offset[{0, 0}, {134.62686567164178`, -1.}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, -1.}]}, {
+              Offset[{0, 0}, {134.62686567164178`, -0.5}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, -0.5}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 0.5}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, 0.5}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 1.}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, 1.}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 1.5}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, 1.5}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 2.5}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, 2.5}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 3.}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, 3.}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 3.5}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, 3.5}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 4.5}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, 4.5}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 5.}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, 5.}]}, {
+              Offset[{0, 0}, {134.62686567164178`, 5.5}], 
+               Offset[{-2.5, 0.}, {134.62686567164178`, 5.5}]}}]}, 
+           
+           StyleBox[{{{{}, {}, {}, {}}, {{}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}}}, {}}, "GraphicsLabel",
+            StripOnInput->False]}, "GraphicsTicks",
+          StripOnInput->False]},
+        Antialiasing->False], "GraphicsAxes",
+       StripOnInput->False], {
+       StyleBox[InsetBox[
+         PaneBox["0"], {0, 0.}, NCache[
+         ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+          ImageScaled[{0.5, 0.5}]]], "GraphicsLabel",
+        StripOnInput->False], 
+       StyleBox[InsetBox[
+         PaneBox["2"], {0, 2.}, NCache[
+         ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+          ImageScaled[{0.5, 0.5}]]], "GraphicsLabel",
+        StripOnInput->False], 
+       StyleBox[InsetBox[
+         PaneBox["4"], {0, 4.}, NCache[
+         ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+          ImageScaled[{0.5, 0.5}]]], "GraphicsLabel",
+        StripOnInput->False], 
+       StyleBox[InsetBox[
+         PaneBox["6"], {0, 6.}, NCache[
+         ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+          ImageScaled[{0.5, 0.5}]]], "GraphicsLabel",
+        StripOnInput->False]}, {}}},
+    Antialiasing->False]},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{False, False},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {{{-134.62686567164178`, 
+       FormBox["0", TraditionalForm], {0.01, 0.}}, {-634.6268656716418, 
+       FormBox["500", TraditionalForm], {0.01, 0.}}, {-1134.6268656716418`, 
+       FormBox["1000", TraditionalForm], {0.01, 0.}}, {-1634.6268656716418`, 
+       FormBox["1500", TraditionalForm], {0.01, 0.}}, {-234.62686567164178`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-334.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-434.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-534.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-734.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-834.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-934.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-1034.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-1234.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-1334.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-1434.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-1534.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-1734.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-1834.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-1934.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-2034.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}, {-2134.626865671642, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      134.62686567164178`, 
+       FormBox["0", TraditionalForm], {0.01, 0.}}, {634.6268656716418, 
+       FormBox["500", TraditionalForm], {0.01, 0.}}, {1134.6268656716418`, 
+       FormBox["1000", TraditionalForm], {0.01, 0.}}, {1634.6268656716418`, 
+       FormBox["1500", TraditionalForm], {0.01, 0.}}, {234.62686567164178`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      334.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      434.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      534.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      734.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      834.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      934.6268656716418, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      1034.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      1234.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      1334.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      1434.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      1534.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      1734.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      1834.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      1934.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      2034.6268656716418`, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 0.}}, {
+      2134.626865671642, 
+       FormBox[
+        TemplateBox[{0, 0}, "Spacer2"], TraditionalForm], {0.005, 
+       0.}}}, {{-134.62686567164178`, 
+       FormBox["\"\"", TraditionalForm], {0.01, 0.}}, {-634.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.01, 0.}}, {-1134.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.01, 0.}}, {-1634.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.01, 0.}}, {-234.62686567164178`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-334.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-434.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-534.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-734.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-834.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-934.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-1034.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-1234.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-1334.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-1434.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-1534.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-1734.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-1834.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-1934.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-2034.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {-2134.626865671642, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {134.62686567164178`, 
+       FormBox["\"\"", TraditionalForm], {0.01, 0.}}, {634.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.01, 0.}}, {1134.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.01, 0.}}, {1634.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.01, 0.}}, {234.62686567164178`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {334.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {434.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {534.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {734.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {834.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {934.6268656716418, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {1034.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {1234.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {1334.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {1434.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {1534.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {1734.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {1834.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {1934.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {2034.6268656716418`, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}, {2134.626865671642, 
+       FormBox["\"\"", TraditionalForm], {0.005, 0.}}}}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  PlotRange->{{All, All}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.02]}}]], "Output",
+ CellChangeTimes->{3.9537236396554613`*^9},
+ CellLabel->
+  "Out[282]=",ExpressionUUID->"caa74d7a-4ac2-44c6-993c-8964c721e1a6"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The diagonal matrix is much simpler to understand. In particular, we can \
+normalize after the matrix vector product and apply standard statistical \
+tools to \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"v", ".", "\[CapitalLambda]", ".", "v"}], "=", 
+    FractionBox[
+     RowBox[{
+      SubsuperscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "n"], 
+      RowBox[{
+       SubscriptBox["\[Lambda]", "i"], 
+       SuperscriptBox[
+        SubscriptBox["v", "i"], "2"]}]}], 
+     RowBox[{
+      SubsuperscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "n"], 
+      SubsuperscriptBox["v", "i", "2"]}]]}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "3a2ab5ef-d2b4-4735-8f2f-a64de6e35687"],
+ "\nWe are interested in seeing the probability that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"v", ".", "A", ".", "v"}], "<", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "6c9d9d8f-6d51-4cf0-8cd9-bc6cd7d55f9c"],
+ "  which is identical to the probability that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"v", ".", "\[CapitalLambda]", ".", "v"}], "<", "0"}], 
+   TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "f07fdce4-acba-4d07-818c-1339d0b014b7"],
+ " which is identical to the probability that \n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubsuperscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}], "n"], 
+     RowBox[{
+      SubscriptBox["\[Lambda]", "i"], 
+      SuperscriptBox[
+       SubscriptBox["v", "i"], "2"]}]}], "<", "0"}], TraditionalForm]],
+  FormatType->TraditionalForm,ExpressionUUID->
+  "00ffd049-0d15-4423-beb0-d12f3f2a7c7c"],
+ ".\nThis is simply a weighted sum of the squares of a set of n independent \
+standard normally distributed random variables.  Fairly standard statistical \
+techniques can be applied to this question.    With Ray Molzon\
+\[CloseCurlyQuote]s help it should be able to translate the \
+\[OpenCurlyDoubleQuote]Welch-Satherwaite\[CloseCurlyDoubleQuote] \
+approximation to estimate this probability.  \
+https://en.wikipedia.org/wiki/Welch%E2%80%93Satterthwaite_equation"
+}], "Text",
+ CellChangeTimes->{{3.953723655053959*^9, 3.953724147181588*^9}, {
+  3.953724256820868*^9, 3.9537243448788886`*^9}, {3.953724403486444*^9, 
+  3.953724428001628*^9}},ExpressionUUID->"ca832752-79aa-48e0-bf36-\
+7f93733598a4"]
+}, Open  ]]
+},
+WindowToolbars->{"EditBar", "MultipurposeBar"},
+WindowSize->{1038, 564},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification->1.5,
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"0eb460ff-bee9-44dc-8315-4b849440095b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 829, 12, 146, "Title",ExpressionUUID->"c5e37016-7f0a-42ee-8f08-164c0dfb9afc"],
+Cell[1412, 36, 1107, 28, 225, "Text",ExpressionUUID->"b0502c8f-4c06-4e63-a337-dba68f84d470"],
+Cell[2522, 66, 471, 9, 156, "Text",ExpressionUUID->"c288537c-99f6-4c8e-b73d-760eccc2a1d9"],
+Cell[CellGroupData[{
+Cell[3018, 79, 1474, 41, 186, "Input",ExpressionUUID->"a93be274-ff11-4db9-a7aa-3ae8153e3963"],
+Cell[4495, 122, 5339, 95, 374, "Output",ExpressionUUID->"608a3383-6d99-46af-9d6c-6e96b66cddd3"]
+}, Open  ]],
+Cell[9849, 220, 959, 25, 156, "Text",ExpressionUUID->"71531e28-1406-4477-b5b3-51410a8618b5"],
+Cell[CellGroupData[{
+Cell[10833, 249, 1082, 28, 186, "Input",ExpressionUUID->"88044394-4198-4844-baa7-f9cf1bbbc22f"],
+Cell[11918, 279, 26850, 511, 379, "Output",ExpressionUUID->"caa74d7a-4ac2-44c6-993c-8964c721e1a6"]
+}, Open  ]],
+Cell[38783, 793, 2383, 61, 552, "Text",ExpressionUUID->"ca832752-79aa-48e0-bf36-7f93733598a4"]
+}, Open  ]]
+}
+]
+*)
+
